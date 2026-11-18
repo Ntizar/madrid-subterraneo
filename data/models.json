@@ -1,0 +1,3209 @@
+[
+  {
+    "id": "acacias_esquema_trazado",
+    "name": "Acacias",
+    "file": "/models/acacias_esquema_trazado.glb",
+    "raw": [
+      "92"
+    ],
+    "kind": "reconstruction",
+    "subtitle": "Reconstrucci\u00f3n del croquis \u00b7 escala desconocida",
+    "credit": "Reconstrucci\u00f3n esquem\u00e1tica interpretada a partir del croquis de Albert Guillaumes, revisada18/11/2026. Alturas convencionales y escala f\u00edsica desconocida. Solo Acacias L5, no todo el complejo de Embajadores. El pasillo de250m no est\u00e1 modelado completo.",
+    "source": "https://estacions.albertguillaumes.cat/",
+    "anchor": {
+      "lon": -3.70664108607519,
+      "lat": 40.4038716437299,
+      "raw_station_code": "92",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "5",
+        "mesh_names": [
+          "03_Simbolo_verde_L5_fondo_2",
+          "04_Simbolo_verde_L5_frente_2"
+        ],
+        "path": [
+          [
+            -28.85457,
+            -0.18,
+            5.52777
+          ],
+          [
+            -24.46598,
+            -0.18,
+            5.45841
+          ],
+          [
+            -20.06816,
+            -0.18,
+            5.97368
+          ],
+          [
+            -15.67957,
+            -0.18,
+            5.90432
+          ],
+          [
+            -11.29098,
+            -0.18,
+            5.83496
+          ],
+          [
+            -6.90239,
+            -0.18,
+            5.7656
+          ],
+          [
+            -2.5138,
+            -0.18,
+            5.69624
+          ],
+          [
+            1.87479,
+            -0.18,
+            5.62688
+          ],
+          [
+            6.26691,
+            -0.18,
+            5.78096
+          ],
+          [
+            10.65549,
+            -0.18,
+            5.7116
+          ],
+          [
+            15.04408,
+            -0.18,
+            5.64224
+          ],
+          [
+            19.43267,
+            -0.18,
+            5.57289
+          ],
+          [
+            23.82126,
+            -0.18,
+            5.50353
+          ],
+          [
+            28.20985,
+            -0.18,
+            5.43417
+          ],
+          [
+            32.59844,
+            -0.18,
+            5.36481
+          ],
+          [
+            36.97432,
+            -0.18,
+            4.4915
+          ],
+          [
+            41.36291,
+            -0.18,
+            4.42215
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -0.2199999988079071
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/acacias.png"
+  },
+  {
+    "id": "alameda_de_osuna",
+    "name": "Alameda de Osuna",
+    "file": "/models/alameda_de_osuna.glb",
+    "raw": [
+      "252"
+    ],
+    "kind": "reconstruction",
+    "subtitle": "Reconstrucci\u00f3n del croquis \u00b7 escala desconocida",
+    "credit": "Reconstrucci\u00f3n esquem\u00e1tica interpretada a partir del croquis de Albert Guillaumes, revisada18/11/2026. Alturas convencionales y escala f\u00edsica desconocida. ",
+    "source": "https://estacions.albertguillaumes.cat/",
+    "anchor": {
+      "lon": -3.58752092904349,
+      "lat": 40.4577886285205,
+      "raw_station_code": "252",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "5",
+        "mesh_names": [
+          "Franja_L5_visible_2"
+        ],
+        "path": [
+          [
+            -20.12841,
+            -0.16,
+            14.56811
+          ],
+          [
+            -16.1916,
+            -0.16,
+            14.52612
+          ],
+          [
+            -12.25478,
+            -0.16,
+            14.48414
+          ],
+          [
+            -8.31796,
+            -0.16,
+            14.44215
+          ],
+          [
+            -4.38114,
+            -0.16,
+            14.40017
+          ],
+          [
+            -0.44432,
+            -0.16,
+            14.35819
+          ],
+          [
+            3.49249,
+            -0.16,
+            14.3162
+          ],
+          [
+            7.42931,
+            -0.16,
+            14.27422
+          ],
+          [
+            11.36611,
+            -0.16,
+            14.23067
+          ],
+          [
+            15.30291,
+            -0.16,
+            14.18712
+          ],
+          [
+            19.23973,
+            -0.16,
+            14.14513
+          ],
+          [
+            23.17655,
+            -0.16,
+            14.10315
+          ],
+          [
+            27.11337,
+            -0.16,
+            14.06116
+          ],
+          [
+            31.05019,
+            -0.16,
+            14.01918
+          ],
+          [
+            34.987,
+            -0.16,
+            13.97719
+          ],
+          [
+            38.92382,
+            -0.16,
+            13.93521
+          ],
+          [
+            42.86064,
+            -0.16,
+            13.89323
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -0.20000000298023224
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/alameda_de_osuna.png"
+  },
+  {
+    "id": "estacion_del_arte",
+    "name": "Estaci\u00f3n del Arte",
+    "file": "/models/estacion_del_arte.glb",
+    "raw": [
+      "15"
+    ],
+    "kind": "reconstruction",
+    "subtitle": "Reconstrucci\u00f3n del croquis \u00b7 escala desconocida",
+    "credit": "Reconstrucci\u00f3n esquem\u00e1tica interpretada a partir del croquis de Albert Guillaumes, revisada18/11/2026. Alturas convencionales y escala f\u00edsica desconocida. ",
+    "source": "https://estacions.albertguillaumes.cat/",
+    "anchor": {
+      "lon": -3.69248727105058,
+      "lat": 40.4088515983755,
+      "raw_station_code": "15",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "1",
+        "mesh_names": [
+          "Franja_L1_fondo_2",
+          "Franja_L1_frente_2"
+        ],
+        "path": [
+          [
+            -34.60709,
+            -0.16,
+            -0.93855
+          ],
+          [
+            -29.87675,
+            -0.16,
+            0.39838
+          ],
+          [
+            -25.14641,
+            -0.16,
+            1.73531
+          ],
+          [
+            -20.3236,
+            -0.16,
+            2.43329
+          ],
+          [
+            -15.50079,
+            -0.16,
+            3.13127
+          ],
+          [
+            -10.67798,
+            -0.16,
+            3.82925
+          ],
+          [
+            -5.85517,
+            -0.16,
+            4.52723
+          ],
+          [
+            -1.03235,
+            -0.16,
+            5.22521
+          ],
+          [
+            3.79046,
+            -0.16,
+            5.92319
+          ],
+          [
+            8.62699,
+            -0.16,
+            6.52634
+          ],
+          [
+            13.4498,
+            -0.16,
+            7.22432
+          ],
+          [
+            18.27262,
+            -0.16,
+            7.9223
+          ],
+          [
+            23.09543,
+            -0.16,
+            8.62028
+          ],
+          [
+            27.91824,
+            -0.16,
+            9.31826
+          ],
+          [
+            32.74105,
+            -0.16,
+            10.01624
+          ],
+          [
+            37.64703,
+            -0.16,
+            10.13956
+          ],
+          [
+            42.46984,
+            -0.16,
+            10.83754
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -0.20000000298023224
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/estacion_del_arte.png"
+  },
+  {
+    "id": "pinar_de_chamartin",
+    "name": "Pinar de Chamart\u00edn",
+    "file": "/models/pinar_de_chamartin.glb",
+    "raw": [
+      "263",
+      "266"
+    ],
+    "kind": "reconstruction",
+    "subtitle": "Reconstrucci\u00f3n del croquis \u00b7 escala desconocida",
+    "credit": "Reconstrucci\u00f3n esquem\u00e1tica interpretada a partir del croquis de Albert Guillaumes, revisada18/11/2026. Alturas convencionales y escala f\u00edsica desconocida. Representa tambi\u00e9n ML1, no incluida en el grafo de este atlas.",
+    "source": "https://estacions.albertguillaumes.cat/",
+    "anchor": {
+      "lon": -3.66680448144827,
+      "lat": 40.480139978151,
+      "raw_station_code": "263",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "1",
+        "mesh_names": [
+          "Franja_L1_2"
+        ],
+        "path": [
+          [
+            -43.54775,
+            -0.21,
+            25.09781
+          ],
+          [
+            -39.52473,
+            -0.21,
+            25.71805
+          ],
+          [
+            -35.50171,
+            -0.21,
+            26.3383
+          ],
+          [
+            -31.47869,
+            -0.21,
+            26.95854
+          ],
+          [
+            -27.45567,
+            -0.21,
+            27.57879
+          ],
+          [
+            -23.43265,
+            -0.21,
+            28.19904
+          ],
+          [
+            -19.40963,
+            -0.21,
+            28.81928
+          ],
+          [
+            -15.38661,
+            -0.21,
+            29.43953
+          ],
+          [
+            -11.36956,
+            -0.21,
+            30.09852
+          ],
+          [
+            -7.3398,
+            -0.21,
+            30.67505
+          ],
+          [
+            -3.31678,
+            -0.21,
+            31.2953
+          ],
+          [
+            0.70624,
+            -0.21,
+            31.91554
+          ],
+          [
+            4.72926,
+            -0.21,
+            32.53579
+          ],
+          [
+            8.75228,
+            -0.21,
+            33.15604
+          ],
+          [
+            12.7753,
+            -0.21,
+            33.77628
+          ],
+          [
+            16.79832,
+            -0.21,
+            34.39653
+          ],
+          [
+            20.82134,
+            -0.21,
+            35.01677
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -0.25
+      },
+      {
+        "line": "4",
+        "mesh_names": [
+          "Franja_L4_2"
+        ],
+        "path": [
+          [
+            -50.99855,
+            -0.21,
+            14.77754
+          ],
+          [
+            -46.01473,
+            -0.21,
+            15.53842
+          ],
+          [
+            -41.03092,
+            -0.21,
+            16.29929
+          ],
+          [
+            -36.0471,
+            -0.21,
+            17.06017
+          ],
+          [
+            -31.06329,
+            -0.21,
+            17.82105
+          ],
+          [
+            -26.07947,
+            -0.21,
+            18.58192
+          ],
+          [
+            -21.09566,
+            -0.21,
+            19.3428
+          ],
+          [
+            -16.11184,
+            -0.21,
+            20.10368
+          ],
+          [
+            -11.12765,
+            -0.21,
+            20.86209
+          ],
+          [
+            -6.14346,
+            -0.21,
+            21.62051
+          ],
+          [
+            -1.15965,
+            -0.21,
+            22.38139
+          ],
+          [
+            3.82417,
+            -0.21,
+            23.14226
+          ],
+          [
+            8.80798,
+            -0.21,
+            23.90314
+          ],
+          [
+            13.7918,
+            -0.21,
+            24.66401
+          ],
+          [
+            18.77562,
+            -0.21,
+            25.42489
+          ],
+          [
+            23.75943,
+            -0.21,
+            26.18577
+          ],
+          [
+            28.74325,
+            -0.21,
+            26.94664
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -0.25
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/pinar_de_chamartin.png"
+  },
+  {
+    "id": "alonso_martinez",
+    "name": "Alonso Mart\u00ednez",
+    "file": "/models/alonso_martinez.glb",
+    "raw": [
+      "57",
+      "195",
+      "85"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/alonso_martinez.gltf",
+    "anchor": {
+      "lon": -3.69593869523326,
+      "lat": 40.4277201133387,
+      "raw_station_code": "57",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "4",
+        "mesh_names": [
+          "path1940"
+        ],
+        "path": [
+          [
+            -79.07609,
+            -2.96,
+            -25.4907
+          ],
+          [
+            -77.6071,
+            -2.96,
+            -21.9481
+          ],
+          [
+            -74.51139,
+            -2.96,
+            -19.08004
+          ],
+          [
+            -73.0424,
+            -2.96,
+            -15.53743
+          ],
+          [
+            -71.5734,
+            -2.96,
+            -11.99483
+          ],
+          [
+            -70.10441,
+            -2.96,
+            -8.45223
+          ],
+          [
+            -68.63542,
+            -2.96,
+            -4.90963
+          ],
+          [
+            -67.16643,
+            -2.96,
+            -1.36703
+          ],
+          [
+            -69.02747,
+            -2.96,
+            3.55642
+          ],
+          [
+            -67.55848,
+            -2.96,
+            7.09902
+          ],
+          [
+            -66.08949,
+            -2.96,
+            10.64162
+          ],
+          [
+            -64.6205,
+            -2.96,
+            14.18422
+          ],
+          [
+            -63.15151,
+            -2.96,
+            17.72683
+          ],
+          [
+            -61.68252,
+            -2.96,
+            21.26943
+          ],
+          [
+            -60.21353,
+            -2.96,
+            24.81203
+          ],
+          [
+            -57.11782,
+            -2.96,
+            27.68009
+          ],
+          [
+            -55.64883,
+            -2.96,
+            31.22269
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -3
+      },
+      {
+        "line": "5",
+        "mesh_names": [
+          "path1944"
+        ],
+        "path": [
+          [
+            14.05701,
+            -16.96,
+            37.10238
+          ],
+          [
+            19.70063,
+            -16.96,
+            37.10238
+          ],
+          [
+            25.34425,
+            -16.96,
+            34.26862
+          ],
+          [
+            30.98787,
+            -16.96,
+            34.26862
+          ],
+          [
+            36.63149,
+            -16.96,
+            34.26862
+          ],
+          [
+            42.27511,
+            -16.96,
+            34.26862
+          ],
+          [
+            47.91873,
+            -16.96,
+            34.26862
+          ],
+          [
+            53.56235,
+            -16.96,
+            34.26862
+          ],
+          [
+            59.20597,
+            -16.96,
+            34.26862
+          ],
+          [
+            64.84959,
+            -16.96,
+            34.26862
+          ],
+          [
+            70.49321,
+            -16.96,
+            34.26862
+          ],
+          [
+            76.13683,
+            -16.96,
+            34.26862
+          ],
+          [
+            81.78045,
+            -16.96,
+            34.26862
+          ],
+          [
+            87.42407,
+            -16.96,
+            34.26862
+          ],
+          [
+            93.06769,
+            -16.96,
+            34.26862
+          ],
+          [
+            98.71131,
+            -16.96,
+            37.10238
+          ],
+          [
+            104.35493,
+            -16.96,
+            37.10238
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -17
+      },
+      {
+        "line": "10",
+        "mesh_names": [
+          "path1948"
+        ],
+        "path": [
+          [
+            -77.16109,
+            -24.96,
+            -67.24752
+          ],
+          [
+            -69.40961,
+            -24.96,
+            -67.24752
+          ],
+          [
+            -61.65813,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -53.90664,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -46.15516,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -38.40368,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -30.65219,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -22.90071,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -15.14923,
+            -24.96,
+            -69.95667
+          ],
+          [
+            -7.39774,
+            -24.96,
+            -69.95667
+          ],
+          [
+            0.35374,
+            -24.96,
+            -69.95667
+          ],
+          [
+            8.10523,
+            -24.96,
+            -69.95667
+          ],
+          [
+            15.85671,
+            -24.96,
+            -69.95667
+          ],
+          [
+            23.60819,
+            -24.96,
+            -69.95667
+          ],
+          [
+            31.35968,
+            -24.96,
+            -69.95667
+          ],
+          [
+            39.11116,
+            -24.96,
+            -67.24752
+          ],
+          [
+            46.86264,
+            -24.96,
+            -67.24752
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -25
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/alonso_martinez.png"
+  },
+  {
+    "id": "opera",
+    "name": "\u00d3pera",
+    "file": "/models/opera.glb",
+    "raw": [
+      "89",
+      "237",
+      "36"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/opera.gltf",
+    "anchor": {
+      "lon": -3.70934960270523,
+      "lat": 40.4180933419941,
+      "raw_station_code": "89",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "2",
+        "mesh_names": [
+          "path2344"
+        ],
+        "path": [
+          [
+            -16.44314,
+            -2.96,
+            -9.92313
+          ],
+          [
+            -13.49461,
+            -2.96,
+            -7.92359
+          ],
+          [
+            -10.63747,
+            -2.96,
+            -5.76802
+          ],
+          [
+            -7.72801,
+            -2.96,
+            -3.70177
+          ],
+          [
+            -4.72661,
+            -2.96,
+            -1.7925
+          ],
+          [
+            -1.70248,
+            -2.96,
+            0.07798
+          ],
+          [
+            1.30212,
+            -2.96,
+            1.98181
+          ],
+          [
+            4.3509,
+            -2.96,
+            3.81019
+          ],
+          [
+            7.41956,
+            -2.96,
+            5.60464
+          ],
+          [
+            10.50849,
+            -2.96,
+            7.36449
+          ],
+          [
+            13.63831,
+            -2.96,
+            9.05454
+          ],
+          [
+            16.8054,
+            -2.96,
+            10.68093
+          ],
+          [
+            19.93207,
+            -2.96,
+            12.37635
+          ],
+          [
+            23.07485,
+            -2.96,
+            14.04427
+          ],
+          [
+            26.30963,
+            -2.96,
+            15.55511
+          ],
+          [
+            29.57532,
+            -2.96,
+            17.01319
+          ],
+          [
+            32.74944,
+            -2.96,
+            18.62759
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -2.9999998807907104
+      },
+      {
+        "line": "5",
+        "mesh_names": [
+          "path2365"
+        ],
+        "path": [
+          [
+            -14.03755,
+            -10.96,
+            -39.20023
+          ],
+          [
+            -12.85359,
+            -10.96,
+            -34.03041
+          ],
+          [
+            -11.88909,
+            -10.96,
+            -28.80283
+          ],
+          [
+            -10.70784,
+            -10.96,
+            -23.6323
+          ],
+          [
+            -9.52177,
+            -10.96,
+            -18.46303
+          ],
+          [
+            -8.26565,
+            -10.96,
+            -13.3122
+          ],
+          [
+            -6.97475,
+            -10.96,
+            -8.17053
+          ],
+          [
+            -5.61277,
+            -10.96,
+            -3.04756
+          ],
+          [
+            -4.22498,
+            -10.96,
+            2.06861
+          ],
+          [
+            -2.85524,
+            -10.96,
+            7.18954
+          ],
+          [
+            -0.4376,
+            -10.96,
+            12.03466
+          ],
+          [
+            0.91161,
+            -10.96,
+            17.16099
+          ],
+          [
+            2.3043,
+            -10.96,
+            22.27587
+          ],
+          [
+            3.69578,
+            -10.96,
+            27.39108
+          ],
+          [
+            5.08359,
+            -10.96,
+            32.50724
+          ],
+          [
+            5.46961,
+            -10.96,
+            37.88707
+          ],
+          [
+            6.81883,
+            -10.96,
+            43.0134
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -10.99999988079071
+      },
+      {
+        "line": "R",
+        "mesh_names": [
+          "path2312"
+        ],
+        "path": [
+          [
+            -33.69654,
+            -2.96,
+            32.2891
+          ],
+          [
+            -30.12227,
+            -2.96,
+            32.24481
+          ],
+          [
+            -26.55109,
+            -2.96,
+            31.95053
+          ],
+          [
+            -22.97682,
+            -2.96,
+            31.90623
+          ],
+          [
+            -19.40255,
+            -2.96,
+            31.86193
+          ],
+          [
+            -15.82827,
+            -2.96,
+            31.81764
+          ],
+          [
+            -12.254,
+            -2.96,
+            31.77334
+          ],
+          [
+            -8.67973,
+            -2.96,
+            31.72904
+          ],
+          [
+            -5.09926,
+            -2.96,
+            32.1847
+          ],
+          [
+            -1.52499,
+            -2.96,
+            32.14041
+          ],
+          [
+            2.04928,
+            -2.96,
+            32.09611
+          ],
+          [
+            5.62356,
+            -2.96,
+            32.05181
+          ],
+          [
+            9.19783,
+            -2.96,
+            32.00751
+          ],
+          [
+            12.7721,
+            -2.96,
+            31.96322
+          ],
+          [
+            16.34637,
+            -2.96,
+            31.91892
+          ],
+          [
+            19.91755,
+            -2.96,
+            31.62464
+          ],
+          [
+            23.49182,
+            -2.96,
+            31.58034
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -2.9999999403953552
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/opera.png"
+  },
+  {
+    "id": "nnmm",
+    "name": "Nuevos Ministerios",
+    "file": "/models/nnmm.glb",
+    "raw": [
+      "120",
+      "193",
+      "155"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/nnmm.gltf",
+    "anchor": {
+      "lon": -3.69240645851146,
+      "lat": 40.4466212151825,
+      "raw_station_code": "120",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "6",
+        "mesh_names": [
+          "path1572-1-5"
+        ],
+        "path": [
+          [
+            -152.06233,
+            -20.96,
+            -105.7858
+          ],
+          [
+            -144.92778,
+            -20.96,
+            -105.7858
+          ],
+          [
+            -137.79322,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -130.65867,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -123.52411,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -116.38956,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -109.255,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -102.12045,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -94.98589,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -87.85134,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -80.71678,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -73.58223,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -66.44767,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -59.31312,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -52.17856,
+            -20.96,
+            -104.23122
+          ],
+          [
+            -45.04401,
+            -20.96,
+            -105.7858
+          ],
+          [
+            -37.90945,
+            -20.96,
+            -105.7858
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -21
+      },
+      {
+        "line": "8",
+        "mesh_names": [
+          "path1572"
+        ],
+        "path": [
+          [
+            136.46416,
+            -4.96,
+            16.33262
+          ],
+          [
+            136.46908,
+            -4.96,
+            9.42693
+          ],
+          [
+            138.15385,
+            -4.96,
+            2.52244
+          ],
+          [
+            138.15877,
+            -4.96,
+            -4.38325
+          ],
+          [
+            138.16369,
+            -4.96,
+            -11.28894
+          ],
+          [
+            138.16861,
+            -4.96,
+            -18.19463
+          ],
+          [
+            138.17353,
+            -4.96,
+            -25.10032
+          ],
+          [
+            138.17845,
+            -4.96,
+            -32.00601
+          ],
+          [
+            138.18337,
+            -4.96,
+            -38.91169
+          ],
+          [
+            134.74987,
+            -4.96,
+            -45.81983
+          ],
+          [
+            134.75479,
+            -4.96,
+            -52.72552
+          ],
+          [
+            134.75971,
+            -4.96,
+            -59.63121
+          ],
+          [
+            134.76463,
+            -4.96,
+            -66.5369
+          ],
+          [
+            134.76955,
+            -4.96,
+            -73.44259
+          ],
+          [
+            134.77446,
+            -4.96,
+            -80.34827
+          ],
+          [
+            136.45924,
+            -4.96,
+            -87.25277
+          ],
+          [
+            136.46416,
+            -4.96,
+            -94.15845
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -4.999999940395355
+      },
+      {
+        "line": "10",
+        "mesh_names": [
+          "path1589"
+        ],
+        "path": [
+          [
+            162.40853,
+            -10.96,
+            -79.30821
+          ],
+          [
+            162.4213,
+            -10.96,
+            -72.4023
+          ],
+          [
+            164.11381,
+            -10.96,
+            -65.4995
+          ],
+          [
+            164.12659,
+            -10.96,
+            -58.59359
+          ],
+          [
+            164.13936,
+            -10.96,
+            -51.68769
+          ],
+          [
+            164.15214,
+            -10.96,
+            -44.78178
+          ],
+          [
+            164.16491,
+            -10.96,
+            -37.87587
+          ],
+          [
+            164.17768,
+            -10.96,
+            -30.96996
+          ],
+          [
+            160.6266,
+            -10.96,
+            -24.05747
+          ],
+          [
+            160.63938,
+            -10.96,
+            -17.15156
+          ],
+          [
+            160.65215,
+            -10.96,
+            -10.24565
+          ],
+          [
+            160.66493,
+            -10.96,
+            -3.33974
+          ],
+          [
+            160.6777,
+            -10.96,
+            3.56616
+          ],
+          [
+            160.69048,
+            -10.96,
+            10.47207
+          ],
+          [
+            160.70325,
+            -10.96,
+            17.37798
+          ],
+          [
+            162.39576,
+            -10.96,
+            24.28078
+          ],
+          [
+            162.40854,
+            -10.96,
+            31.18668
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -10.999999940395355
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/nuevos_ministerios.png"
+  },
+  {
+    "id": "sol",
+    "name": "Sol (2009-2021)",
+    "file": "/models/sol.glb",
+    "raw": [
+      "12",
+      "35",
+      "48"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 versi\u00f3n hist\u00f3rica2009\u20132021",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas. Variante hist\u00f3rica Sol2009\u20132021: no acredita el conjunto ampliadoSol/GranV\u00eda2021 ni el estado actual.",
+    "source": "https://estacions.albertguillaumes.cat/3d/sol.gltf",
+    "anchor": {
+      "lon": -3.70326164857528,
+      "lat": 40.416876060894,
+      "raw_station_code": "12",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "1",
+        "mesh_names": [
+          "path1368"
+        ],
+        "path": [
+          [
+            -35.82392,
+            -8.96,
+            230.08767
+          ],
+          [
+            -34.53596,
+            -8.96,
+            222.09323
+          ],
+          [
+            -33.61042,
+            -8.96,
+            214.00571
+          ],
+          [
+            -31.91499,
+            -8.96,
+            206.11592
+          ],
+          [
+            -30.26144,
+            -8.96,
+            198.21537
+          ],
+          [
+            -29.10994,
+            -8.96,
+            190.18589
+          ],
+          [
+            -27.54632,
+            -8.96,
+            182.26224
+          ],
+          [
+            -25.86258,
+            -8.96,
+            174.36945
+          ],
+          [
+            -24.06824,
+            -8.96,
+            166.50506
+          ],
+          [
+            -22.17347,
+            -8.96,
+            158.66646
+          ],
+          [
+            -20.08344,
+            -8.96,
+            150.87801
+          ],
+          [
+            -17.7579,
+            -8.96,
+            143.15004
+          ],
+          [
+            -15.18779,
+            -8.96,
+            135.48488
+          ],
+          [
+            -12.73754,
+            -8.96,
+            127.78894
+          ],
+          [
+            -8.63841,
+            -8.96,
+            120.51647
+          ],
+          [
+            -5.91181,
+            -8.96,
+            112.8915
+          ],
+          [
+            -3.58884,
+            -8.96,
+            105.16288
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -8.99999988079071
+      },
+      {
+        "line": "2",
+        "mesh_names": [
+          "path1393"
+        ],
+        "path": [
+          [
+            -125.01129,
+            -1.96,
+            162.09383
+          ],
+          [
+            -120.97071,
+            -1.96,
+            160.72116
+          ],
+          [
+            -117.01366,
+            -1.96,
+            158.95819
+          ],
+          [
+            -112.95288,
+            -1.96,
+            157.67987
+          ],
+          [
+            -108.87511,
+            -1.96,
+            156.48092
+          ],
+          [
+            -104.84588,
+            -1.96,
+            155.0552
+          ],
+          [
+            -100.78324,
+            -1.96,
+            153.78558
+          ],
+          [
+            -96.67128,
+            -1.96,
+            152.74635
+          ],
+          [
+            -92.54446,
+            -1.96,
+            151.77657
+          ],
+          [
+            -88.42037,
+            -1.96,
+            150.79402
+          ],
+          [
+            -84.26817,
+            -1.96,
+            149.94282
+          ],
+          [
+            -80.08994,
+            -1.96,
+            149.2132
+          ],
+          [
+            -75.92216,
+            -1.96,
+            148.43479
+          ],
+          [
+            -71.74272,
+            -1.96,
+            147.71081
+          ],
+          [
+            -67.51734,
+            -1.96,
+            147.20151
+          ],
+          [
+            -63.26823,
+            -1.96,
+            146.80305
+          ],
+          [
+            -59.0676,
+            -1.96,
+            146.1781
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -1.9999998807907104
+      },
+      {
+        "line": "3",
+        "mesh_names": [
+          "path1332"
+        ],
+        "path": [
+          [
+            -117.95172,
+            -10.96,
+            122.70876
+          ],
+          [
+            -115.37047,
+            -10.96,
+            127.82745
+          ],
+          [
+            -111.84713,
+            -10.96,
+            132.47106
+          ],
+          [
+            -109.26588,
+            -10.96,
+            137.58974
+          ],
+          [
+            -106.68463,
+            -10.96,
+            142.70843
+          ],
+          [
+            -104.10338,
+            -10.96,
+            147.82712
+          ],
+          [
+            -101.52213,
+            -10.96,
+            152.94581
+          ],
+          [
+            -98.94088,
+            -10.96,
+            158.06449
+          ],
+          [
+            -96.35963,
+            -10.96,
+            163.18318
+          ],
+          [
+            -95.56042,
+            -10.96,
+            169.20051
+          ],
+          [
+            -92.97917,
+            -10.96,
+            174.3192
+          ],
+          [
+            -90.39792,
+            -10.96,
+            179.43789
+          ],
+          [
+            -87.81667,
+            -10.96,
+            184.55657
+          ],
+          [
+            -85.23542,
+            -10.96,
+            189.67526
+          ],
+          [
+            -82.65417,
+            -10.96,
+            194.79395
+          ],
+          [
+            -79.13082,
+            -10.96,
+            199.43756
+          ],
+          [
+            -76.54958,
+            -10.96,
+            204.55624
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -11
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/sol.png"
+  },
+  {
+    "id": "pl_castilla",
+    "name": "Plaza de Castilla",
+    "file": "/models/pl_castilla.glb",
+    "raw": [
+      "1",
+      "164",
+      "190"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/pl_castilla.gltf",
+    "anchor": {
+      "lon": -3.68916958703584,
+      "lat": 40.4668960373106,
+      "raw_station_code": "1",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "1",
+        "mesh_names": [
+          "path1143"
+        ],
+        "path": [
+          [
+            -71.3509,
+            -3.96,
+            78.62818
+          ],
+          [
+            -60.27903,
+            -3.96,
+            70.93646
+          ],
+          [
+            -46.11493,
+            -3.96,
+            65.95863
+          ],
+          [
+            -33.90657,
+            -3.96,
+            59.26435
+          ],
+          [
+            -22.00509,
+            -3.96,
+            52.30074
+          ],
+          [
+            -12.21435,
+            -3.96,
+            43.48462
+          ],
+          [
+            -3.4879,
+            -3.96,
+            33.73443
+          ],
+          [
+            4.709,
+            -3.96,
+            23.51948
+          ],
+          [
+            12.41921,
+            -3.96,
+            12.8774
+          ],
+          [
+            20.52972,
+            -3.96,
+            2.58662
+          ],
+          [
+            28.64022,
+            -3.96,
+            -7.70416
+          ],
+          [
+            36.60312,
+            -3.96,
+            -18.12447
+          ],
+          [
+            44.28837,
+            -3.96,
+            -28.78847
+          ],
+          [
+            51.83004,
+            -3.96,
+            -39.57849
+          ],
+          [
+            58.2141,
+            -3.96,
+            -51.38449
+          ],
+          [
+            63.75911,
+            -3.96,
+            -63.92686
+          ],
+          [
+            70.94887,
+            -3.96,
+            -75.02574
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -3.9999998807907104
+      },
+      {
+        "line": "9",
+        "mesh_names": [
+          "path1133"
+        ],
+        "path": [
+          [
+            -222.40903,
+            -23.96,
+            -109.77118
+          ],
+          [
+            -195.99044,
+            -23.96,
+            -98.36298
+          ],
+          [
+            -171.10312,
+            -23.96,
+            -81.96063
+          ],
+          [
+            -145.79913,
+            -23.96,
+            -66.91723
+          ],
+          [
+            -120.62014,
+            -23.96,
+            -51.46616
+          ],
+          [
+            -96.55574,
+            -23.96,
+            -32.37988
+          ],
+          [
+            -71.92884,
+            -23.96,
+            -15.12818
+          ],
+          [
+            -47.18087,
+            -23.96,
+            1.72864
+          ],
+          [
+            -20.81379,
+            -23.96,
+            13.30485
+          ],
+          [
+            5.32119,
+            -23.96,
+            25.63803
+          ],
+          [
+            33.14773,
+            -23.96,
+            32.45427
+          ],
+          [
+            62.01306,
+            -23.96,
+            35.88256
+          ],
+          [
+            92.41742,
+            -23.96,
+            34.29139
+          ],
+          [
+            122.85559,
+            -23.96,
+            32.58995
+          ],
+          [
+            155.73394,
+            -23.96,
+            22.92998
+          ],
+          [
+            188.44617,
+            -23.96,
+            13.81181
+          ],
+          [
+            219.10677,
+            -23.96,
+            11.38493
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -23.99999988079071
+      },
+      {
+        "line": "10",
+        "mesh_names": [
+          "path1137"
+        ],
+        "path": [
+          [
+            -3.88201,
+            -16.46,
+            127.80284
+          ],
+          [
+            3.81688,
+            -16.46,
+            111.65465
+          ],
+          [
+            9.80558,
+            -16.46,
+            94.1404
+          ],
+          [
+            18.40552,
+            -16.46,
+            78.71195
+          ],
+          [
+            27.13699,
+            -16.46,
+            63.38856
+          ],
+          [
+            36.34152,
+            -16.46,
+            48.44305
+          ],
+          [
+            46.80157,
+            -16.46,
+            34.50042
+          ],
+          [
+            57.86475,
+            -16.46,
+            21.03955
+          ],
+          [
+            69.58531,
+            -16.46,
+            8.10379
+          ],
+          [
+            81.09373,
+            -16.46,
+            -5.00143
+          ],
+          [
+            94.00187,
+            -16.46,
+            -16.98857
+          ],
+          [
+            106.20614,
+            -16.46,
+            -29.53796
+          ],
+          [
+            118.14015,
+            -16.46,
+            -42.30322
+          ],
+          [
+            130.61978,
+            -16.46,
+            -54.63266
+          ],
+          [
+            142.4926,
+            -16.46,
+            -67.4468
+          ],
+          [
+            154.56939,
+            -16.46,
+            -80.09801
+          ],
+          [
+            165.71564,
+            -16.46,
+            -93.49252
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -16.49999988079071
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/plaza_de_castilla.png"
+  },
+  {
+    "id": "cuatro_caminos",
+    "name": "Cuatro Caminos",
+    "file": "/models/cuatro_caminos.glb",
+    "raw": [
+      "6",
+      "42",
+      "121"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/cuatro_caminos.gltf",
+    "anchor": {
+      "lon": -3.70397477197826,
+      "lat": 40.446973952783,
+      "raw_station_code": "6",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "1",
+        "mesh_names": [
+          "path2080"
+        ],
+        "path": [
+          [
+            9.65196,
+            -2.96,
+            14.30621
+          ],
+          [
+            11.89478,
+            -2.96,
+            19.54914
+          ],
+          [
+            13.18472,
+            -2.96,
+            25.1997
+          ],
+          [
+            15.42753,
+            -2.96,
+            30.44264
+          ],
+          [
+            17.67035,
+            -2.96,
+            35.68557
+          ],
+          [
+            19.91316,
+            -2.96,
+            40.92851
+          ],
+          [
+            22.15597,
+            -2.96,
+            46.17145
+          ],
+          [
+            24.39879,
+            -2.96,
+            51.41438
+          ],
+          [
+            28.46494,
+            -2.96,
+            55.87734
+          ],
+          [
+            30.70775,
+            -2.96,
+            61.12028
+          ],
+          [
+            32.95057,
+            -2.96,
+            66.36321
+          ],
+          [
+            35.19338,
+            -2.96,
+            71.60615
+          ],
+          [
+            37.43619,
+            -2.96,
+            76.84909
+          ],
+          [
+            39.67901,
+            -2.96,
+            82.09202
+          ],
+          [
+            41.92182,
+            -2.96,
+            87.33496
+          ],
+          [
+            43.21177,
+            -2.96,
+            92.98552
+          ],
+          [
+            45.45458,
+            -2.96,
+            98.22845
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -3
+      },
+      {
+        "line": "2",
+        "mesh_names": [
+          "path2074"
+        ],
+        "path": [
+          [
+            -23.88039,
+            -2.96,
+            89.07419
+          ],
+          [
+            -24.18791,
+            -2.96,
+            85.31603
+          ],
+          [
+            -27.46903,
+            -2.96,
+            81.49487
+          ],
+          [
+            -27.84604,
+            -2.96,
+            77.73524
+          ],
+          [
+            -28.01862,
+            -2.96,
+            73.97994
+          ],
+          [
+            -27.88808,
+            -2.96,
+            70.23106
+          ],
+          [
+            -27.80864,
+            -2.96,
+            66.4811
+          ],
+          [
+            -27.7292,
+            -2.96,
+            62.73114
+          ],
+          [
+            -27.64976,
+            -2.96,
+            58.98117
+          ],
+          [
+            -27.57032,
+            -2.96,
+            55.23121
+          ],
+          [
+            -28.84566,
+            -2.96,
+            51.45255
+          ],
+          [
+            -28.76622,
+            -2.96,
+            47.70259
+          ],
+          [
+            -28.68678,
+            -2.96,
+            43.95263
+          ],
+          [
+            -28.60734,
+            -2.96,
+            40.20266
+          ],
+          [
+            -28.5279,
+            -2.96,
+            36.4527
+          ],
+          [
+            -24.52436,
+            -2.96,
+            32.78587
+          ],
+          [
+            -24.44492,
+            -2.96,
+            29.03591
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -2.9999998807907104
+      },
+      {
+        "line": "6",
+        "mesh_names": [
+          "path2082",
+          "path2084"
+        ],
+        "path": [
+          [
+            -83.18473,
+            -56.96,
+            -54.00056
+          ],
+          [
+            -72.96583,
+            -56.96,
+            -54.00056
+          ],
+          [
+            -62.74694,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -52.52804,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -42.30914,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -32.09025,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -21.87135,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -11.65246,
+            -56.96,
+            -56.40432
+          ],
+          [
+            -1.43356,
+            -56.96,
+            -56.40432
+          ],
+          [
+            8.78534,
+            -56.96,
+            -56.40432
+          ],
+          [
+            19.00423,
+            -56.96,
+            -56.40432
+          ],
+          [
+            29.22313,
+            -56.96,
+            -56.40432
+          ],
+          [
+            39.44203,
+            -56.96,
+            -56.40432
+          ],
+          [
+            49.66092,
+            -56.96,
+            -56.40432
+          ],
+          [
+            59.87982,
+            -56.96,
+            -56.40432
+          ],
+          [
+            70.09872,
+            -56.96,
+            -54.00056
+          ],
+          [
+            80.31761,
+            -56.96,
+            -54.00056
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -57
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/cuatro_caminos.png"
+  },
+  {
+    "id": "av_america",
+    "name": "Avenida de Am\u00e9rica",
+    "file": "/models/av_america.glb",
+    "raw": [
+      "64",
+      "118",
+      "141",
+      "170"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/av_america.gltf",
+    "anchor": {
+      "lon": -3.67663955532626,
+      "lat": 40.4380325773816,
+      "raw_station_code": "64",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "4",
+        "mesh_names": [
+          "path2401"
+        ],
+        "path": [
+          [
+            -60.31705,
+            -2.96,
+            -17.55138
+          ],
+          [
+            -57.8231,
+            -2.96,
+            -14.73082
+          ],
+          [
+            -54.26783,
+            -2.96,
+            -12.84867
+          ],
+          [
+            -51.77388,
+            -2.96,
+            -10.02811
+          ],
+          [
+            -49.27994,
+            -2.96,
+            -7.20754
+          ],
+          [
+            -46.78599,
+            -2.96,
+            -4.38698
+          ],
+          [
+            -44.29204,
+            -2.96,
+            -1.56641
+          ],
+          [
+            -41.7981,
+            -2.96,
+            1.25416
+          ],
+          [
+            -39.30415,
+            -2.96,
+            4.07472
+          ],
+          [
+            -38.935,
+            -2.96,
+            8.77403
+          ],
+          [
+            -36.44105,
+            -2.96,
+            11.5946
+          ],
+          [
+            -33.94711,
+            -2.96,
+            14.41516
+          ],
+          [
+            -31.45316,
+            -2.96,
+            17.23573
+          ],
+          [
+            -28.95921,
+            -2.96,
+            20.0563
+          ],
+          [
+            -26.46527,
+            -2.96,
+            22.87686
+          ],
+          [
+            -22.90999,
+            -2.96,
+            24.759
+          ],
+          [
+            -20.41604,
+            -2.96,
+            27.57957
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -3
+      },
+      {
+        "line": "6",
+        "mesh_names": [
+          "path2399"
+        ],
+        "path": [
+          [
+            -89.83489,
+            -10.96,
+            -12.84432
+          ],
+          [
+            -84.61001,
+            -10.96,
+            -7.79584
+          ],
+          [
+            -76.54074,
+            -10.96,
+            -5.69114
+          ],
+          [
+            -71.31586,
+            -10.96,
+            -0.64266
+          ],
+          [
+            -66.09098,
+            -10.96,
+            4.40582
+          ],
+          [
+            -60.8661,
+            -10.96,
+            9.4543
+          ],
+          [
+            -55.64123,
+            -10.96,
+            14.50278
+          ],
+          [
+            -50.41635,
+            -10.96,
+            19.55126
+          ],
+          [
+            -50.88188,
+            -10.96,
+            30.48898
+          ],
+          [
+            -45.65701,
+            -10.96,
+            35.53746
+          ],
+          [
+            -40.43213,
+            -10.96,
+            40.58594
+          ],
+          [
+            -35.20725,
+            -10.96,
+            45.63442
+          ],
+          [
+            -29.98237,
+            -10.96,
+            50.6829
+          ],
+          [
+            -24.75749,
+            -10.96,
+            55.73138
+          ],
+          [
+            -19.53261,
+            -10.96,
+            60.77986
+          ],
+          [
+            -11.46334,
+            -10.96,
+            62.88457
+          ],
+          [
+            -6.23846,
+            -10.96,
+            67.93305
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -11
+      },
+      {
+        "line": "7",
+        "mesh_names": [
+          "path2391"
+        ],
+        "path": [
+          [
+            -186.66438,
+            -18.96,
+            71.01565
+          ],
+          [
+            -179.49661,
+            -18.96,
+            71.01565
+          ],
+          [
+            -172.32883,
+            -18.96,
+            65.59991
+          ],
+          [
+            -165.16106,
+            -18.96,
+            65.59991
+          ],
+          [
+            -157.99328,
+            -18.96,
+            65.59991
+          ],
+          [
+            -150.8255,
+            -18.96,
+            65.59991
+          ],
+          [
+            -143.65773,
+            -18.96,
+            65.59991
+          ],
+          [
+            -136.48995,
+            -18.96,
+            65.59991
+          ],
+          [
+            -129.32218,
+            -18.96,
+            65.59991
+          ],
+          [
+            -122.1544,
+            -18.96,
+            65.47491
+          ],
+          [
+            -114.98663,
+            -18.96,
+            65.47491
+          ],
+          [
+            -107.81885,
+            -18.96,
+            65.47491
+          ],
+          [
+            -100.65108,
+            -18.96,
+            65.47491
+          ],
+          [
+            -93.4833,
+            -18.96,
+            65.47491
+          ],
+          [
+            -86.31552,
+            -18.96,
+            65.47491
+          ],
+          [
+            -79.14775,
+            -18.96,
+            71.01565
+          ],
+          [
+            -71.97997,
+            -18.96,
+            71.01565
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -19
+      },
+      {
+        "line": "9",
+        "mesh_names": [
+          "path2395"
+        ],
+        "path": [
+          [
+            -129.7691,
+            -24.96,
+            -61.53389
+          ],
+          [
+            -129.7691,
+            -24.96,
+            -54.2668
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -46.99971
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -39.73262
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -32.46553
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -25.19844
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -17.93135
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -10.66426
+          ],
+          [
+            -131.14575,
+            -24.96,
+            -3.39717
+          ],
+          [
+            -131.14575,
+            -24.96,
+            3.86992
+          ],
+          [
+            -131.14575,
+            -24.96,
+            11.13701
+          ],
+          [
+            -131.14575,
+            -24.96,
+            18.4041
+          ],
+          [
+            -131.14575,
+            -24.96,
+            25.6712
+          ],
+          [
+            -131.14575,
+            -24.96,
+            32.93829
+          ],
+          [
+            -131.14575,
+            -24.96,
+            40.20538
+          ],
+          [
+            -129.7691,
+            -24.96,
+            47.47247
+          ],
+          [
+            -129.7691,
+            -24.96,
+            54.73956
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -24.999999940395355
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/avenida_de_america.png"
+  },
+  {
+    "id": "arguelles",
+    "name": "Arg\u00fcelles",
+    "file": "/models/arguelles.glb",
+    "raw": [
+      "52",
+      "54",
+      "126"
+    ],
+    "kind": "original",
+    "subtitle": "Original Albert Guillaumes \u00b7 escala sin verificar",
+    "credit": "Modelo original de Albert Guillaumes, convertido a GLB. Escala f\u00edsica y orientaci\u00f3n geogr\u00e1fica no verificadas.",
+    "source": "https://estacions.albertguillaumes.cat/3d/arguelles.gltf",
+    "anchor": {
+      "lon": -3.71596265109483,
+      "lat": 40.4306609302246,
+      "raw_station_code": "52",
+      "source": "CRTM M4_Red / M4_Estaciones",
+      "source_date": "20260529"
+    },
+    "map_representation": {
+      "size": "symbolic_adjustable",
+      "orientation": "source_file_orientation_not_geographic",
+      "normalized_max_extent_km": 0.5,
+      "connection": "local schematic transition to line strip in source model; not geographic tunnel geometry"
+    },
+    "platforms": [
+      {
+        "line": "3",
+        "mesh_names": [
+          "path2628"
+        ],
+        "path": [
+          [
+            -97.85892,
+            0.04,
+            -83.54983
+          ],
+          [
+            -94.8869,
+            0.04,
+            -78.63756
+          ],
+          [
+            -91.80859,
+            0.04,
+            -73.78728
+          ],
+          [
+            -88.75883,
+            0.04,
+            -68.92036
+          ],
+          [
+            -85.80339,
+            0.04,
+            -63.99841
+          ],
+          [
+            -82.8481,
+            0.04,
+            -59.07638
+          ],
+          [
+            -79.86411,
+            0.04,
+            -54.17109
+          ],
+          [
+            -76.91734,
+            0.04,
+            -49.24408
+          ],
+          [
+            -74.01336,
+            0.04,
+            -44.29212
+          ],
+          [
+            -71.1337,
+            0.04,
+            -39.32597
+          ],
+          [
+            -68.27385,
+            0.04,
+            -34.34827
+          ],
+          [
+            -65.44346,
+            0.04,
+            -29.35338
+          ],
+          [
+            -62.59315,
+            0.04,
+            -24.37012
+          ],
+          [
+            -59.83933,
+            0.04,
+            -19.33056
+          ],
+          [
+            -57.02496,
+            0.04,
+            -14.32634
+          ],
+          [
+            -54.33504,
+            0.04,
+            -9.24951
+          ],
+          [
+            -51.59427,
+            0.04,
+            -4.20235
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": 1.1920928955078125e-07
+      },
+      {
+        "line": "4",
+        "mesh_names": [
+          "path2634"
+        ],
+        "path": [
+          [
+            14.9793,
+            -2.96,
+            2.73435
+          ],
+          [
+            19.6407,
+            -2.96,
+            3.28917
+          ],
+          [
+            23.81461,
+            -2.96,
+            7.93977
+          ],
+          [
+            28.47602,
+            -2.96,
+            8.49459
+          ],
+          [
+            33.13743,
+            -2.96,
+            9.04941
+          ],
+          [
+            37.79883,
+            -2.96,
+            9.60423
+          ],
+          [
+            42.46024,
+            -2.96,
+            10.15905
+          ],
+          [
+            47.12165,
+            -2.96,
+            10.71387
+          ],
+          [
+            51.8659,
+            -2.96,
+            10.57264
+          ],
+          [
+            56.52731,
+            -2.96,
+            11.12746
+          ],
+          [
+            61.18871,
+            -2.96,
+            11.68228
+          ],
+          [
+            65.85012,
+            -2.96,
+            12.2371
+          ],
+          [
+            70.51153,
+            -2.96,
+            12.79192
+          ],
+          [
+            75.14338,
+            -2.96,
+            13.59498
+          ],
+          [
+            79.80479,
+            -2.96,
+            14.1498
+          ],
+          [
+            84.92582,
+            -2.96,
+            10.84302
+          ],
+          [
+            90.04685,
+            -2.96,
+            7.53624
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -2.9999998807907104
+      },
+      {
+        "line": "6",
+        "mesh_names": [
+          "path2636"
+        ],
+        "path": [
+          [
+            -43.43338,
+            -28.96,
+            -2.12057
+          ],
+          [
+            -39.80777,
+            -28.96,
+            4.18702
+          ],
+          [
+            -34.97091,
+            -28.96,
+            9.79837
+          ],
+          [
+            -31.3453,
+            -28.96,
+            16.10596
+          ],
+          [
+            -27.71969,
+            -28.96,
+            22.41354
+          ],
+          [
+            -24.09407,
+            -28.96,
+            28.72113
+          ],
+          [
+            -20.46846,
+            -28.96,
+            35.02871
+          ],
+          [
+            -16.84285,
+            -28.96,
+            41.3363
+          ],
+          [
+            -13.21723,
+            -28.96,
+            47.64388
+          ],
+          [
+            -11.8104,
+            -28.96,
+            55.22682
+          ],
+          [
+            -8.18479,
+            -28.96,
+            61.53441
+          ],
+          [
+            -4.55917,
+            -28.96,
+            67.84199
+          ],
+          [
+            -0.93356,
+            -28.96,
+            74.14958
+          ],
+          [
+            2.69205,
+            -28.96,
+            80.45716
+          ],
+          [
+            6.31767,
+            -28.96,
+            86.76475
+          ],
+          [
+            11.15453,
+            -28.96,
+            92.3761
+          ],
+          [
+            14.78014,
+            -28.96,
+            98.68369
+          ]
+        ],
+        "evidence": "Explicit line-coloured strip in GLB; model-relative level, not a measured depth",
+        "level_in_file": -28.999999940395355
+      }
+    ],
+    "source_diagram": "https://estacions.albertguillaumes.cat/img/madrid/arguelles_1.png"
+  }
+]

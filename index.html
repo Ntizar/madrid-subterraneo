@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es" data-nz-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estaciones en corte · Metro de Madrid</title>
+<meta name="description" content="Estaciones del Metro de Madrid en corte natural: la estación dentro del terreno, con sus túneles, sus niveles y su andén.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Ntizar/Aurora@v10/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Ntizar/Aurora@v10/packs/all.css">
+<link rel="stylesheet" href="css/estacion.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+</head>
+<body class="nz">
+
+<div class="maqueta" id="maqueta">
+  <canvas id="lienzo" aria-label="Corte 3D de la estación seleccionada"></canvas>
+  <div class="etiquetas" id="etiquetas" aria-hidden="true"></div>
+  <div class="cargando" id="cargando" hidden><span class="maq-spin" aria-hidden="true"></span> Cargando la estación…</div>
+</div>
+
+<aside class="panel" aria-label="Estaciones y niveles">
+  <header class="panel__cab">
+    <p class="nz-lbl">Madrid subterráneo</p>
+    <h1 class="panel__titulo">Estaciones en corte</h1>
+    <p class="nz-text--muted nz-text--small" id="sub">La estación dentro del terreno, no flotando encima.</p>
+  </header>
+
+  <section class="bloque">
+    <label class="nz-lbl" for="sel-estacion">Estación</label>
+    <select class="maq-sel" id="sel-estacion"></select>
+    <p class="nz-text--muted nz-text--small" id="ficha"></p>
+  </section>
+
+  <section class="bloque">
+    <p class="nz-lbl">Niveles</p>
+    <div class="niveles" id="niveles"></div>
+  </section>
+
+  <section class="bloque">
+    <p class="nz-lbl">Corte</p>
+    <div class="controles">
+      <label class="fila"><span>Tierra</span><input type="range" id="tierra" min="0" max="100" value="100"></label>
+      <label class="fila fila--check"><input type="checkbox" id="tuneles" checked><span>Túneles</span></label>
+      <label class="fila fila--check"><input type="checkbox" id="etiqueta-on" checked><span>Etiquetas de nivel</span></label>
+      <label class="fila"><span>Tamaño</span><input type="range" id="tamano" min="40" max="200" value="100"></label>
+    </div>
+  </section>
+
+  <footer class="panel__pie">
+    <p class="nz-text--muted nz-text--small" id="aviso">Los niveles son los del archivo de origen, no profundidades reales.</p>
+    <p class="nz-lbl">Hecho con ❤️ por David Antizar</p>
+  </footer>
+</aside>
+
+<script type="module" src="estacion.js"></script>
+</body>
+</html>
