@@ -1,0 +1,476 @@
+{
+ "meta": {
+  "fuente": "metro.json + estaciones_3d.json + modelos3d.json",
+  "nota": "giro en grados (signo del visor), dx/dy en metros, cota en metros de profundidad"
+ },
+ "modelos": [
+  {
+   "id": "acacias_esquema_trazado",
+   "nombre": "Acacias",
+   "glb": "/models/acacias_esquema_trazado.glb",
+   "lineas_modelo": [
+    "5"
+   ],
+   "fuente": "ancla del manifiesto",
+   "giro_residuo_deg": 0.22,
+   "giro_refinado": true,
+   "estacion": "par_4_92",
+   "estacion_nombre": "Acacias",
+   "lat": 40.40387,
+   "lon": -3.70664,
+   "cota": 19.0,
+   "giro": 150.5,
+   "giro_modelo": null,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": null,
+   "ang_anden": 20.4,
+   "largo_anden": 90,
+   "tipo": "lateral",
+   "cotas_lineas": {
+    "5": 19.8
+   },
+   "caja_m": [
+    100.39,
+    11.95,
+    29.1
+   ],
+   "centro": [
+    -0.485,
+    8.503
+   ]
+  },
+  {
+   "id": "alameda_de_osuna",
+   "nombre": "Alameda de Osuna",
+   "glb": "/models/alameda_de_osuna.glb",
+   "lineas_modelo": [
+    "5"
+   ],
+   "fuente": "ancla del manifiesto",
+   "giro_residuo_deg": 0.11,
+   "giro_refinado": true,
+   "estacion": "par_4_252",
+   "estacion_nombre": "Alameda de Osuna",
+   "lat": 40.45779,
+   "lon": -3.58752,
+   "cota": 19.0,
+   "giro": 109.5,
+   "giro_modelo": null,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": null,
+   "ang_anden": -140.2,
+   "largo_anden": 90,
+   "tipo": "lateral",
+   "cotas_lineas": {
+    "5": 19.8
+   },
+   "caja_m": [
+    76.05,
+    18.92,
+    14.92
+   ],
+   "centro": [
+    5.926,
+    13.522
+   ]
+  },
+  {
+   "id": "estacion_del_arte",
+   "nombre": "Estación del Arte",
+   "glb": "/models/estacion_del_arte.glb",
+   "lineas_modelo": [
+    "1"
+   ],
+   "fuente": "ancla del manifiesto",
+   "giro_residuo_deg": 0.25,
+   "giro_refinado": true,
+   "estacion": "par_4_15",
+   "estacion_nombre": "Estacion del Arte",
+   "lat": 40.40885,
+   "lon": -3.69249,
+   "cota": 18.0,
+   "giro": 87.5,
+   "giro_modelo": null,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": null,
+   "ang_anden": -36.4,
+   "largo_anden": 90,
+   "tipo": "lateral",
+   "cotas_lineas": {
+    "1": 19.0
+   },
+   "caja_m": [
+    125.48,
+    10.95,
+    24.98
+   ],
+   "centro": [
+    2.867,
+    3.422
+   ]
+  },
+  {
+   "id": "pinar_de_chamartin",
+   "nombre": "Pinar de Chamartín",
+   "glb": "/models/pinar_de_chamartin.glb",
+   "lineas_modelo": [
+    "1",
+    "4"
+   ],
+   "fuente": "ancla del manifiesto",
+   "giro_residuo_deg": 21.95,
+   "giro_refinado": true,
+   "estacion": "est_4_263",
+   "estacion_nombre": "Pinar de Chamartin",
+   "lat": 40.48014,
+   "lon": -3.66679,
+   "cota": 19.5,
+   "giro": 273.5,
+   "giro_modelo": null,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": null,
+   "ang_anden": -42.9,
+   "largo_anden": 90,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "1": 19.0,
+    "4": 21.3
+   },
+   "caja_m": [
+    84.58,
+    31.97,
+    60.01
+   ],
+   "centro": [
+    -13.243,
+    7.719
+   ]
+  },
+  {
+   "id": "alonso_martinez",
+   "nombre": "Alonso Martínez",
+   "glb": "/models/alonso_martinez.glb",
+   "lineas_modelo": [
+    "10",
+    "4",
+    "5"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 30.58,
+   "giro_refinado": false,
+   "estacion": "est_4_57",
+   "estacion_nombre": "Alonso Martinez",
+   "lat": 40.427996,
+   "lon": -3.695974,
+   "cota": 23.5,
+   "giro": 42.0,
+   "giro_modelo": 42.0,
+   "dx": -16.0,
+   "dy": -12.0,
+   "giro_confiable": true,
+   "ang_anden": -24.2,
+   "largo_anden": 90,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "4": 21.3,
+    "5": 19.8,
+    "10": 29.2
+   },
+   "caja_m": [
+    208.5,
+    17,
+    161.73
+   ],
+   "centro": [
+    0.106,
+    -0.148
+   ]
+  },
+  {
+   "id": "opera",
+   "nombre": "Ópera",
+   "glb": "/models/opera.glb",
+   "lineas_modelo": [
+    "2",
+    "5",
+    "R"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 33.35,
+   "giro_refinado": false,
+   "estacion": "est_4_36",
+   "estacion_nombre": "Opera",
+   "lat": 40.418099,
+   "lon": -3.709372,
+   "cota": 19.5,
+   "giro": 2.0,
+   "giro_modelo": 2.0,
+   "dx": -4.0,
+   "dy": 4.0,
+   "giro_confiable": true,
+   "ang_anden": 147.0,
+   "largo_anden": 60,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "2": 20.5,
+    "5": 19.8,
+    "R": 22.8
+   },
+   "caja_m": [
+    69.48,
+    21,
+    89.33
+   ],
+   "centro": [
+    0.114,
+    -0.14
+   ]
+  },
+  {
+   "id": "nnmm",
+   "nombre": "Nuevos Ministerios",
+   "glb": "/models/nnmm.glb",
+   "lineas_modelo": [
+    "10",
+    "6",
+    "8"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 38.25,
+   "giro_refinado": false,
+   "estacion": "est_90_71",
+   "estacion_nombre": "Nuevos Ministerios",
+   "lat": 40.446466,
+   "lon": -3.692439,
+   "cota": 28.0,
+   "giro": 0.0,
+   "giro_modelo": 0.0,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": false,
+   "ang_anden": 85.9,
+   "largo_anden": 110,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "6": 25.6,
+    "8": 26.0,
+    "10": 29.2
+   },
+   "caja_m": [
+    383.1,
+    34,
+    375.32
+   ],
+   "centro": [
+    0.02,
+    -0.1
+   ]
+  },
+  {
+   "id": "sol",
+   "nombre": "Sol (2009-2021)",
+   "glb": "/models/sol.glb",
+   "lineas_modelo": [
+    "1",
+    "2",
+    "3"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 35.94,
+   "giro_refinado": false,
+   "estacion": "est_90_58",
+   "estacion_nombre": "Puerta del Sol",
+   "lat": 40.416861,
+   "lon": -3.703359,
+   "cota": 20.0,
+   "giro": 0.0,
+   "giro_modelo": 0.0,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": false,
+   "ang_anden": 70.0,
+   "largo_anden": 90,
+   "tipo": "tresbolillo",
+   "cotas_lineas": {
+    "1": 19.0,
+    "2": 20.5,
+    "3": 22.2
+   },
+   "caja_m": [
+    320.47,
+    39,
+    460.74
+   ],
+   "centro": [
+    0.043,
+    -0.122
+   ]
+  },
+  {
+   "id": "pl_castilla",
+   "nombre": "Plaza de Castilla",
+   "glb": "/models/pl_castilla.glb",
+   "lineas_modelo": [
+    "1",
+    "10",
+    "9"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 38.25,
+   "giro_refinado": false,
+   "estacion": "est_90_21",
+   "estacion_nombre": "Plaza de Castilla",
+   "lat": 40.466811,
+   "lon": -3.689183,
+   "cota": 25.5,
+   "giro": 2.0,
+   "giro_modelo": 2.0,
+   "dx": 68.0,
+   "dy": 40.0,
+   "giro_confiable": true,
+   "ang_anden": -114.6,
+   "largo_anden": 90,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "1": 19.0,
+    "9": 26.6,
+    "10": 29.2
+   },
+   "caja_m": [
+    444.62,
+    34,
+    258.21
+   ],
+   "centro": [
+    0.091,
+    -0.104
+   ]
+  },
+  {
+   "id": "cuatro_caminos",
+   "nombre": "Cuatro Caminos",
+   "glb": "/models/cuatro_caminos.glb",
+   "lineas_modelo": [
+    "1",
+    "2",
+    "6"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 26.12,
+   "giro_refinado": false,
+   "estacion": "est_4_6",
+   "estacion_nombre": "Cuatro Caminos",
+   "lat": 40.446916,
+   "lon": -3.70391,
+   "cota": 21.5,
+   "giro": 0.0,
+   "giro_modelo": 0.0,
+   "dx": -12.0,
+   "dy": 64.0,
+   "giro_confiable": true,
+   "ang_anden": 88.1,
+   "largo_anden": 90,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "1": 19.0,
+    "2": 20.5,
+    "6": 25.6
+   },
+   "caja_m": [
+    166.56,
+    64,
+    232.6
+   ],
+   "centro": [
+    0.096,
+    -0.147
+   ]
+  },
+  {
+   "id": "av_america",
+   "nombre": "Avenida de América",
+   "glb": "/models/av_america.glb",
+   "lineas_modelo": [
+    "4",
+    "6",
+    "7",
+    "9"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 39.3,
+   "giro_refinado": false,
+   "estacion": "est_90_4",
+   "estacion_nombre": "Avenida de América",
+   "lat": 40.438054,
+   "lon": -3.676618,
+   "cota": 24.0,
+   "giro": 0.0,
+   "giro_modelo": 0.0,
+   "dx": 0.0,
+   "dy": 0.0,
+   "giro_confiable": false,
+   "ang_anden": 38.3,
+   "largo_anden": 90,
+   "tipo": "tresbolillo",
+   "cotas_lineas": {
+    "4": 21.3,
+    "6": 25.6,
+    "7": 22.2,
+    "9": 26.6
+   },
+   "caja_m": [
+    373.57,
+    32.11,
+    198.21
+   ],
+   "centro": [
+    0.12,
+    -0.18
+   ]
+  },
+  {
+   "id": "arguelles",
+   "nombre": "Argüelles",
+   "glb": "/models/arguelles.glb",
+   "lineas_modelo": [
+    "3",
+    "4",
+    "6"
+   ],
+   "fuente": "modelos3d.estacion",
+   "giro_residuo_deg": 37.27,
+   "giro_refinado": false,
+   "estacion": "est_4_52",
+   "estacion_nombre": "Argüelles",
+   "lat": 40.430589,
+   "lon": -3.715885,
+   "cota": 23.5,
+   "giro": 4.0,
+   "giro_modelo": 4.0,
+   "dx": -32.0,
+   "dy": 16.0,
+   "giro_confiable": true,
+   "ang_anden": -63.2,
+   "largo_anden": 90,
+   "tipo": "dos_niveles",
+   "cotas_lineas": {
+    "3": 22.2,
+    "4": 21.3,
+    "6": 25.6
+   },
+   "caja_m": [
+    231.19,
+    32.5,
+    205.5
+   ],
+   "centro": [
+    0.112,
+    -0.144
+   ]
+  }
+ ]
+}

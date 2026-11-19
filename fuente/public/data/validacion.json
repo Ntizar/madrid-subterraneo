@@ -1,0 +1,265 @@
+{
+ "ok": false,
+ "fallos": [
+  "R1 acacias_esquema_trazado L5: 56.3° de desvío (>8.0°)",
+  "R1 alameda_de_osuna L5: 49.9° de desvío (>8.0°)",
+  "R1 pinar_de_chamartin L4: 54.7° de desvío (>8.0°)",
+  "R1 alonso_martinez L4: 87.6° de desvío (>8.0°)",
+  "R1 alonso_martinez L5: 79.0° de desvío (>8.0°)",
+  "R1 alonso_martinez L10: 80.4° de desvío (>8.0°)",
+  "R1 opera L2: 76.5° de desvío (>8.0°)",
+  "R1 opera L5: 24.9° de desvío (>8.0°)",
+  "R1 opera LR: 17.2° de desvío (>8.0°)",
+  "R1 nnmm L6: 11.7° de desvío (>8.0°)",
+  "R1 nnmm L8: 50.1° de desvío (>8.0°)",
+  "R1 sol L1: 27.8° de desvío (>8.0°)",
+  "R1 pl_castilla L9: 8.9° de desvío (>8.0°)",
+  "R1 pl_castilla L10: 18.4° de desvío (>8.0°)",
+  "R1 cuatro_caminos L1: 13.8° de desvío (>8.0°)",
+  "R1 cuatro_caminos L2: 19.6° de desvío (>8.0°)",
+  "R1 av_america L4: 36.6° de desvío (>8.0°)",
+  "R1 av_america L9: 12.7° de desvío (>8.0°)",
+  "R1 arguelles L6: 28.3° de desvío (>8.0°)"
+ ],
+ "avisos": [
+  "R2 pinar_de_chamartin L1: centro a 32 m de la vía (>25.0 m)",
+  "R2 alonso_martinez L4: centro a 75 m de la vía (>25.0 m)",
+  "R2 alonso_martinez L5: centro a 78 m de la vía (>25.0 m)",
+  "R2 alonso_martinez L10: centro a 53 m de la vía (>25.0 m)",
+  "R2 opera LR: centro a 30 m de la vía (>25.0 m)",
+  "R2 nnmm L6: centro a 141 m de la vía (>25.0 m)",
+  "R2 nnmm L8: centro a 142 m de la vía (>25.0 m)",
+  "R2 nnmm L10: centro a 164 m de la vía (>25.0 m)",
+  "R2 sol L1: centro a 168 m de la vía (>25.0 m)",
+  "R2 sol L2: centro a 178 m de la vía (>25.0 m)",
+  "R2 sol L3: centro a 190 m de la vía (>25.0 m)",
+  "R2 pl_castilla L1: centro a 82 m de la vía (>25.0 m)",
+  "R2 pl_castilla L9: centro a 78 m de la vía (>25.0 m)",
+  "R2 pl_castilla L10: centro a 144 m de la vía (>25.0 m)",
+  "R2 cuatro_caminos L2: centro a 40 m de la vía (>25.0 m)",
+  "R2 cuatro_caminos L6: centro a 121 m de la vía (>25.0 m)",
+  "R2 av_america L4: centro a 41 m de la vía (>25.0 m)",
+  "R2 av_america L6: centro a 56 m de la vía (>25.0 m)",
+  "R2 av_america L7: centro a 146 m de la vía (>25.0 m)",
+  "R2 av_america L9: centro a 131 m de la vía (>25.0 m)",
+  "R2 arguelles L3: centro a 122 m de la vía (>25.0 m)",
+  "R2 arguelles L6: centro a 59 m de la vía (>25.0 m)"
+ ],
+ "detalle": [
+  {
+   "modelo": "acacias_esquema_trazado",
+   "linea": "5",
+   "estacion": "par_4_92",
+   "direccion_deg": 56.3,
+   "planta_m": 8.3
+  },
+  {
+   "modelo": "alameda_de_osuna",
+   "linea": "5",
+   "estacion": "par_4_252",
+   "direccion_deg": 49.9,
+   "planta_m": 18.2
+  },
+  {
+   "modelo": "estacion_del_arte",
+   "linea": "1",
+   "estacion": "par_4_15",
+   "direccion_deg": 7.5,
+   "planta_m": 6.9
+  },
+  {
+   "modelo": "pinar_de_chamartin",
+   "linea": "1",
+   "estacion": "est_4_263",
+   "direccion_deg": 2.3,
+   "planta_m": 32.1
+  },
+  {
+   "modelo": "pinar_de_chamartin",
+   "linea": "4",
+   "estacion": "est_4_263",
+   "direccion_deg": 54.7,
+   "planta_m": 23.6
+  },
+  {
+   "modelo": "alonso_martinez",
+   "linea": "4",
+   "estacion": "est_4_57",
+   "direccion_deg": 87.6,
+   "planta_m": 74.8
+  },
+  {
+   "modelo": "alonso_martinez",
+   "linea": "5",
+   "estacion": "est_4_57",
+   "direccion_deg": 79.0,
+   "planta_m": 77.7
+  },
+  {
+   "modelo": "alonso_martinez",
+   "linea": "10",
+   "estacion": "est_4_57",
+   "direccion_deg": 80.4,
+   "planta_m": 53.2
+  },
+  {
+   "modelo": "opera",
+   "linea": "2",
+   "estacion": "est_4_36",
+   "direccion_deg": 76.5,
+   "planta_m": 3.8
+  },
+  {
+   "modelo": "opera",
+   "linea": "5",
+   "estacion": "est_4_36",
+   "direccion_deg": 24.9,
+   "planta_m": 8.1
+  },
+  {
+   "modelo": "opera",
+   "linea": "R",
+   "estacion": "est_4_36",
+   "direccion_deg": 17.2,
+   "planta_m": 29.6
+  },
+  {
+   "modelo": "nnmm",
+   "linea": "6",
+   "estacion": "est_90_71",
+   "direccion_deg": 11.7,
+   "planta_m": 141.3
+  },
+  {
+   "modelo": "nnmm",
+   "linea": "8",
+   "estacion": "est_90_71",
+   "direccion_deg": 50.1,
+   "planta_m": 142.0
+  },
+  {
+   "modelo": "nnmm",
+   "linea": "10",
+   "estacion": "est_90_71",
+   "direccion_deg": 2.3,
+   "planta_m": 164.1
+  },
+  {
+   "modelo": "sol",
+   "linea": "1",
+   "estacion": "est_90_58",
+   "direccion_deg": 27.8,
+   "planta_m": 168.4
+  },
+  {
+   "modelo": "sol",
+   "linea": "2",
+   "estacion": "est_90_58",
+   "direccion_deg": 1.2,
+   "planta_m": 178.4
+  },
+  {
+   "modelo": "sol",
+   "linea": "3",
+   "estacion": "est_90_58",
+   "direccion_deg": 7.7,
+   "planta_m": 190.3
+  },
+  {
+   "modelo": "pl_castilla",
+   "linea": "1",
+   "estacion": "est_90_21",
+   "direccion_deg": 5.4,
+   "planta_m": 81.9
+  },
+  {
+   "modelo": "pl_castilla",
+   "linea": "9",
+   "estacion": "est_90_21",
+   "direccion_deg": 8.9,
+   "planta_m": 77.8
+  },
+  {
+   "modelo": "pl_castilla",
+   "linea": "10",
+   "estacion": "est_90_21",
+   "direccion_deg": 18.4,
+   "planta_m": 143.9
+  },
+  {
+   "modelo": "cuatro_caminos",
+   "linea": "1",
+   "estacion": "est_4_6",
+   "direccion_deg": 13.8,
+   "planta_m": 17.4
+  },
+  {
+   "modelo": "cuatro_caminos",
+   "linea": "2",
+   "estacion": "est_4_6",
+   "direccion_deg": 19.6,
+   "planta_m": 39.5
+  },
+  {
+   "modelo": "cuatro_caminos",
+   "linea": "6",
+   "estacion": "est_4_6",
+   "direccion_deg": 0.2,
+   "planta_m": 120.6
+  },
+  {
+   "modelo": "av_america",
+   "linea": "4",
+   "estacion": "est_90_4",
+   "direccion_deg": 36.6,
+   "planta_m": 40.6
+  },
+  {
+   "modelo": "av_america",
+   "linea": "6",
+   "estacion": "est_90_4",
+   "direccion_deg": 6.1,
+   "planta_m": 55.6
+  },
+  {
+   "modelo": "av_america",
+   "linea": "7",
+   "estacion": "est_90_4",
+   "direccion_deg": 5.1,
+   "planta_m": 145.6
+  },
+  {
+   "modelo": "av_america",
+   "linea": "9",
+   "estacion": "est_90_4",
+   "direccion_deg": 12.7,
+   "planta_m": 130.9
+  },
+  {
+   "modelo": "arguelles",
+   "linea": "3",
+   "estacion": "est_4_52",
+   "direccion_deg": 3.3,
+   "planta_m": 121.9
+  },
+  {
+   "modelo": "arguelles",
+   "linea": "4",
+   "estacion": "est_4_52",
+   "direccion_deg": 2.9,
+   "planta_m": 19.3
+  },
+  {
+   "modelo": "arguelles",
+   "linea": "6",
+   "estacion": "est_4_52",
+   "direccion_deg": 28.3,
+   "planta_m": 58.6
+  }
+ ],
+ "limites": {
+  "direccion_deg": 8.0,
+  "planta_m": 25.0,
+  "salto_cota_m": 15.0
+ }
+}

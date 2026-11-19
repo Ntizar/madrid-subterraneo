@@ -1,0 +1,1443 @@
+{
+ "meta": {
+  "fuente": "metro.json (cota estimada del CRTM por estación)",
+  "emparejadas": 239,
+  "sin_emparejar": 1
+ },
+ "cotas": {
+  "s153": {
+   "cota": 22.0,
+   "metro_id": "par_4_153",
+   "dist_m": 0.4,
+   "nombre": "Arroyofresno"
+  },
+  "s183": {
+   "cota": 27.0,
+   "metro_id": "par_4_183",
+   "dist_m": 0.4,
+   "nombre": "Rivas Urbanizaciones"
+  },
+  "s50": {
+   "cota": 26.5,
+   "metro_id": "est_4_50",
+   "dist_m": 77.7,
+   "nombre": "Noviciado / Plaza de España"
+  },
+  "s199": {
+   "cota": 31.0,
+   "metro_id": "par_4_199",
+   "dist_m": 0.5,
+   "nombre": "Lago"
+  },
+  "s200": {
+   "cota": 31.0,
+   "metro_id": "par_4_200",
+   "dist_m": 0.0,
+   "nombre": "Batan"
+  },
+  "s12": {
+   "cota": 20.0,
+   "metro_id": "est_90_58",
+   "dist_m": 8.4,
+   "nombre": "Sol"
+  },
+  "s120": {
+   "cota": 28.0,
+   "metro_id": "est_90_71",
+   "dist_m": 13.7,
+   "nombre": "Nuevos Ministerios"
+  },
+  "s175": {
+   "cota": 27.0,
+   "metro_id": "par_4_175",
+   "dist_m": 0.5,
+   "nombre": "Estrella"
+  },
+  "s62": {
+   "cota": 21.0,
+   "metro_id": "par_4_62",
+   "dist_m": 0.2,
+   "nombre": "Lista"
+  },
+  "s185": {
+   "cota": 27.0,
+   "metro_id": "par_4_185",
+   "dist_m": 0.5,
+   "nombre": "La Poveda"
+  },
+  "s101": {
+   "cota": 19.0,
+   "metro_id": "par_4_101",
+   "dist_m": 0.3,
+   "nombre": "Empalme"
+  },
+  "s265": {
+   "cota": 21.0,
+   "metro_id": "par_4_265",
+   "dist_m": 0.6,
+   "nombre": "Manoteras"
+  },
+  "s269": {
+   "cota": 22.0,
+   "metro_id": "l3_san_fermín_orcasur",
+   "dist_m": 17.8,
+   "nombre": "San Fermin-Orcasur"
+  },
+  "s27": {
+   "cota": 18.0,
+   "metro_id": "par_4_27",
+   "dist_m": 0.3,
+   "nombre": "Congosto"
+  },
+  "s270": {
+   "cota": 22.0,
+   "metro_id": "l3_ciudad_de_los_ángeles",
+   "dist_m": 67.6,
+   "nombre": "Ciudad de los Angeles"
+  },
+  "s272": {
+   "cota": 22.0,
+   "metro_id": "l3_san_cristóbal",
+   "dist_m": 21.3,
+   "nombre": "San Cristobal"
+  },
+  "s205": {
+   "cota": 23.5,
+   "metro_id": "est_4_205",
+   "dist_m": 9.1,
+   "nombre": "Puerta del Sur"
+  },
+  "s288": {
+   "cota": 22.0,
+   "metro_id": "par_4_288",
+   "dist_m": 0.5,
+   "nombre": "Coslada Central"
+  },
+  "s135": {
+   "cota": 22.0,
+   "metro_id": "par_4_135",
+   "dist_m": 0.4,
+   "nombre": "Garcia Noblejas"
+  },
+  "s138": {
+   "cota": 22.0,
+   "metro_id": "par_4_138",
+   "dist_m": 0.3,
+   "nombre": "Barrio de la Concepcion"
+  },
+  "s14": {
+   "cota": 18.0,
+   "metro_id": "par_4_14",
+   "dist_m": 0.5,
+   "nombre": "Anton Martin"
+  },
+  "s142": {
+   "cota": 26.5,
+   "metro_id": "est_4_142",
+   "dist_m": 15.6,
+   "nombre": "Gregorio Marañon"
+  },
+  "s143": {
+   "cota": 22.0,
+   "metro_id": "par_4_143",
+   "dist_m": 0.6,
+   "nombre": "Alonso Cano"
+  },
+  "s147": {
+   "cota": 22.0,
+   "metro_id": "par_4_147",
+   "dist_m": 0.3,
+   "nombre": "Francos Rodriguez"
+  },
+  "s149": {
+   "cota": 22.0,
+   "metro_id": "par_4_149",
+   "dist_m": 0.5,
+   "nombre": "Antonio Machado"
+  },
+  "s186": {
+   "cota": 27.0,
+   "metro_id": "par_4_186",
+   "dist_m": 0.1,
+   "nombre": "Arganda del Rey"
+  },
+  "s150": {
+   "cota": 22.0,
+   "metro_id": "par_4_150",
+   "dist_m": 0.5,
+   "nombre": "Peñagrande"
+  },
+  "s161": {
+   "cota": 27.0,
+   "metro_id": "par_4_161",
+   "dist_m": 0.3,
+   "nombre": "Herrera Oria"
+  },
+  "s162": {
+   "cota": 27.0,
+   "metro_id": "par_4_162",
+   "dist_m": 0.4,
+   "nombre": "Barrio del Pilar"
+  },
+  "s203": {
+   "cota": 31.0,
+   "metro_id": "par_4_203",
+   "dist_m": 0.5,
+   "nombre": "Cuatro Vientos"
+  },
+  "s168": {
+   "cota": 27.0,
+   "metro_id": "par_4_168",
+   "dist_m": 0.2,
+   "nombre": "Concha Espina"
+  },
+  "s163": {
+   "cota": 27.0,
+   "metro_id": "par_4_163",
+   "dist_m": 0.6,
+   "nombre": "Ventilla"
+  },
+  "s165": {
+   "cota": 27.0,
+   "metro_id": "par_4_165",
+   "dist_m": 0.5,
+   "nombre": "Duque de Pastrana"
+  },
+  "s166": {
+   "cota": 27.0,
+   "metro_id": "par_4_166",
+   "dist_m": 0.3,
+   "nombre": "Pio Xii"
+  },
+  "s52": {
+   "cota": 23.5,
+   "metro_id": "est_4_52",
+   "dist_m": 6.3,
+   "nombre": "Argüelles"
+  },
+  "s71": {
+   "cota": 23.5,
+   "metro_id": "est_4_71",
+   "dist_m": 4.4,
+   "nombre": "Mar de Cristal"
+  },
+  "s296": {
+   "cota": 22.0,
+   "metro_id": "par_4_296",
+   "dist_m": 0.4,
+   "nombre": "Hospital del Henares"
+  },
+  "s49": {
+   "cota": 20.5,
+   "metro_id": "est_4_49",
+   "dist_m": 5.3,
+   "nombre": "Callao"
+  },
+  "s39": {
+   "cota": 20.5,
+   "metro_id": "est_4_39",
+   "dist_m": 6.3,
+   "nombre": "San Bernardo"
+  },
+  "s4": {
+   "cota": 18.0,
+   "metro_id": "par_4_4",
+   "dist_m": 0.3,
+   "nombre": "Estrecho"
+  },
+  "s217": {
+   "cota": 16.0,
+   "metro_id": "par_4_217",
+   "dist_m": 0.1,
+   "nombre": "Manuela Malasaña"
+  },
+  "s36": {
+   "cota": 19.5,
+   "metro_id": "est_4_36",
+   "dist_m": 2.0,
+   "nombre": "Opera"
+  },
+  "s108": {
+   "cota": 25.0,
+   "metro_id": "est_90_36",
+   "dist_m": 32.4,
+   "nombre": "Plaza Eliptica"
+  },
+  "s159": {
+   "cota": 26.0,
+   "metro_id": "est_90_34",
+   "dist_m": 75.2,
+   "nombre": "Aeropuerto T1-T2-T3"
+  },
+  "s64": {
+   "cota": 24.0,
+   "metro_id": "est_90_4",
+   "dist_m": 5.7,
+   "nombre": "Avenida de America"
+  },
+  "s29": {
+   "cota": 23.5,
+   "metro_id": "est_4_29",
+   "dist_m": 4.6,
+   "nombre": "Manuel Becerra"
+  },
+  "s6": {
+   "cota": 21.5,
+   "metro_id": "est_4_6",
+   "dist_m": 6.6,
+   "nombre": "Cuatro Caminos"
+  },
+  "s202": {
+   "cota": 31.0,
+   "metro_id": "par_4_202",
+   "dist_m": 0.6,
+   "nombre": "Colonia Jardin"
+  },
+  "s264": {
+   "cota": 21.0,
+   "metro_id": "par_4_264",
+   "dist_m": 0.3,
+   "nombre": "Hortaleza"
+  },
+  "s184": {
+   "cota": 27.0,
+   "metro_id": "par_4_184",
+   "dist_m": 0.2,
+   "nombre": "Rivas Vaciamadrid"
+  },
+  "s5": {
+   "cota": 18.0,
+   "metro_id": "par_4_5",
+   "dist_m": 0.4,
+   "nombre": "Alvarado"
+  },
+  "s51": {
+   "cota": 22.0,
+   "metro_id": "l3_ventura_rodríguez",
+   "dist_m": 37.7,
+   "nombre": "Ventura Rodriguez"
+  },
+  "s276": {
+   "cota": 31.0,
+   "metro_id": "par_4_276",
+   "dist_m": 0.2,
+   "nombre": "Las Tablas"
+  },
+  "s274": {
+   "cota": 31.0,
+   "metro_id": "par_4_274",
+   "dist_m": 0.6,
+   "nombre": "Tres Olivos"
+  },
+  "s280": {
+   "cota": 31.0,
+   "metro_id": "par_4_280",
+   "dist_m": 0.6,
+   "nombre": "Marques de la Valdavia"
+  },
+  "s282": {
+   "cota": 31.0,
+   "metro_id": "par_4_282",
+   "dist_m": 0.5,
+   "nombre": "Baunatal"
+  },
+  "s22": {
+   "cota": 18.0,
+   "metro_id": "par_4_22",
+   "dist_m": 0.5,
+   "nombre": "Buenos Aires"
+  },
+  "s19": {
+   "cota": 18.0,
+   "metro_id": "par_4_19",
+   "dist_m": 0.3,
+   "nombre": "Puente de Vallecas"
+  },
+  "s178": {
+   "cota": 27.0,
+   "metro_id": "par_4_178",
+   "dist_m": 0.3,
+   "nombre": "Pavones"
+  },
+  "s273": {
+   "cota": 22.0,
+   "metro_id": "l3_villaverde_alto",
+   "dist_m": 46.9,
+   "nombre": "Villaverde Alto"
+  },
+  "s15": {
+   "cota": 18.0,
+   "metro_id": "par_4_15",
+   "dist_m": 0.3,
+   "nombre": "Estacion del Arte"
+  },
+  "s16": {
+   "cota": 18.0,
+   "metro_id": "est_90_54",
+   "dist_m": 35.6,
+   "nombre": "Atocha"
+  },
+  "s57": {
+   "cota": 23.5,
+   "metro_id": "est_4_57",
+   "dist_m": 25.0,
+   "nombre": "Alonso Martinez"
+  },
+  "s3": {
+   "cota": 18.0,
+   "metro_id": "par_4_3",
+   "dist_m": 0.2,
+   "nombre": "Tetuan"
+  },
+  "s293": {
+   "cota": 18.0,
+   "metro_id": "par_4_293",
+   "dist_m": 0.3,
+   "nombre": "La Gavia"
+  },
+  "s58": {
+   "cota": 21.0,
+   "metro_id": "par_4_58",
+   "dist_m": 0.2,
+   "nombre": "Colon"
+  },
+  "s34": {
+   "cota": 20.0,
+   "metro_id": "par_4_34",
+   "dist_m": 0.1,
+   "nombre": "Sevilla"
+  },
+  "s30": {
+   "cota": 20.5,
+   "metro_id": "est_4_30",
+   "dist_m": 20.1,
+   "nombre": "Goya"
+  },
+  "s31": {
+   "cota": 23.5,
+   "metro_id": "est_4_31",
+   "dist_m": 31.2,
+   "nombre": "Principe de Vergara"
+  },
+  "s32": {
+   "cota": 20.0,
+   "metro_id": "par_4_32",
+   "dist_m": 0.5,
+   "nombre": "Retiro"
+  },
+  "s33": {
+   "cota": 20.0,
+   "metro_id": "par_4_33",
+   "dist_m": 0.4,
+   "nombre": "Banco de España"
+  },
+  "s37": {
+   "cota": 20.0,
+   "metro_id": "par_4_37",
+   "dist_m": 0.6,
+   "nombre": "Santo Domingo"
+  },
+  "s133": {
+   "cota": 22.0,
+   "metro_id": "par_4_133",
+   "dist_m": 0.2,
+   "nombre": "San Blas"
+  },
+  "s134": {
+   "cota": 22.0,
+   "metro_id": "par_4_134",
+   "dist_m": 0.3,
+   "nombre": "Simancas"
+  },
+  "s263": {
+   "cota": 19.5,
+   "metro_id": "est_4_263",
+   "dist_m": 0.6,
+   "nombre": "Pinar de Chamartin"
+  },
+  "s286": {
+   "cota": 22.0,
+   "metro_id": "par_4_286",
+   "dist_m": 1.7,
+   "nombre": "Estadio Metropolitano"
+  },
+  "s285": {
+   "cota": 26.0,
+   "metro_id": "est_90_33",
+   "dist_m": 16.1,
+   "nombre": "Aeropuerto T-4"
+  },
+  "s300": {
+   "cota": 27.0,
+   "metro_id": "par_4_300",
+   "dist_m": 0.3,
+   "nombre": "Rivas Futura"
+  },
+  "s252": {
+   "cota": 19.0,
+   "metro_id": "par_4_252",
+   "dist_m": 0.2,
+   "nombre": "Alameda de Osuna"
+  },
+  "s268": {
+   "cota": 22.0,
+   "metro_id": "l3_hospital_12_de_octubre",
+   "dist_m": 47.9,
+   "nombre": "Hospital 12 de Octubre"
+  },
+  "s267": {
+   "cota": 22.0,
+   "metro_id": "l3_almendrales",
+   "dist_m": 19.4,
+   "nombre": "Almendrales"
+  },
+  "s123": {
+   "cota": 27.0,
+   "metro_id": "par_4_123",
+   "dist_m": 0.5,
+   "nombre": "Vicente Aleixandre"
+  },
+  "s128": {
+   "cota": 27.0,
+   "metro_id": "par_4_128",
+   "dist_m": 0.1,
+   "nombre": "Puerta del Angel"
+  },
+  "s129": {
+   "cota": 27.0,
+   "metro_id": "par_4_129",
+   "dist_m": 0.5,
+   "nombre": "Alto de Extremadura"
+  },
+  "s13": {
+   "cota": 18.0,
+   "metro_id": "par_4_13",
+   "dist_m": 0.5,
+   "nombre": "Tirso de Molina"
+  },
+  "s47": {
+   "cota": 22.0,
+   "metro_id": "l3_lavapiés",
+   "dist_m": 21.6,
+   "nombre": "Lavapies"
+  },
+  "s226": {
+   "cota": 16.0,
+   "metro_id": "par_4_226",
+   "dist_m": 0.5,
+   "nombre": "Getafe Central"
+  },
+  "s7": {
+   "cota": 18.0,
+   "metro_id": "par_4_7",
+   "dist_m": 0.5,
+   "nombre": "Rios Rosas"
+  },
+  "s10": {
+   "cota": 24.5,
+   "metro_id": "est_4_10",
+   "dist_m": 22.1,
+   "nombre": "Tribunal"
+  },
+  "s102": {
+   "cota": 19.0,
+   "metro_id": "par_4_102",
+   "dist_m": 0.3,
+   "nombre": "Campamento"
+  },
+  "s105": {
+   "cota": 27.0,
+   "metro_id": "par_4_105",
+   "dist_m": 0.4,
+   "nombre": "Carpetana"
+  },
+  "s107": {
+   "cota": 27.0,
+   "metro_id": "par_4_107",
+   "dist_m": 0.6,
+   "nombre": "Opañel"
+  },
+  "s109": {
+   "cota": 27.0,
+   "metro_id": "par_4_109",
+   "dist_m": 0.5,
+   "nombre": "Usera"
+  },
+  "s113": {
+   "cota": 27.0,
+   "metro_id": "par_4_113",
+   "dist_m": 0.3,
+   "nombre": "Conde de Casal"
+  },
+  "s115": {
+   "cota": 27.0,
+   "metro_id": "par_4_115",
+   "dist_m": 0.4,
+   "nombre": "O'Donnell"
+  },
+  "s160": {
+   "cota": 26.0,
+   "metro_id": "par_4_160",
+   "dist_m": 0.5,
+   "nombre": "Barajas"
+  },
+  "s18": {
+   "cota": 22.5,
+   "metro_id": "est_4_18",
+   "dist_m": 32.3,
+   "nombre": "Pacifico"
+  },
+  "s230": {
+   "cota": 16.0,
+   "metro_id": "par_4_230",
+   "dist_m": 0.4,
+   "nombre": "El Bercial"
+  },
+  "s234": {
+   "cota": 16.0,
+   "metro_id": "par_4_234",
+   "dist_m": 0.3,
+   "nombre": "Hospital Severo Ochoa"
+  },
+  "s59": {
+   "cota": 21.0,
+   "metro_id": "par_4_59",
+   "dist_m": 0.2,
+   "nombre": "Serrano"
+  },
+  "s60": {
+   "cota": 21.0,
+   "metro_id": "par_4_60",
+   "dist_m": 0.3,
+   "nombre": "Velazquez"
+  },
+  "s63": {
+   "cota": 22.5,
+   "metro_id": "est_4_63",
+   "dist_m": 62.0,
+   "nombre": "Diego de Leon"
+  },
+  "s275": {
+   "cota": 31.0,
+   "metro_id": "par_4_275",
+   "dist_m": 0.2,
+   "nombre": "Montecarmelo"
+  },
+  "s65": {
+   "cota": 21.0,
+   "metro_id": "par_4_65",
+   "dist_m": 0.1,
+   "nombre": "Prosperidad"
+  },
+  "s66": {
+   "cota": 21.0,
+   "metro_id": "par_4_66",
+   "dist_m": 0.4,
+   "nombre": "Alfonso Xiii"
+  },
+  "s67": {
+   "cota": 21.0,
+   "metro_id": "par_4_67",
+   "dist_m": 0.3,
+   "nombre": "Avenida de la Paz"
+  },
+  "s68": {
+   "cota": 21.0,
+   "metro_id": "par_4_68",
+   "dist_m": 0.3,
+   "nombre": "Arturo Soria"
+  },
+  "s69": {
+   "cota": 21.0,
+   "metro_id": "par_4_69",
+   "dist_m": 0.4,
+   "nombre": "Esperanza"
+  },
+  "s70": {
+   "cota": 21.0,
+   "metro_id": "par_4_70",
+   "dist_m": 0.4,
+   "nombre": "Canillas"
+  },
+  "s72": {
+   "cota": 21.0,
+   "metro_id": "par_4_72",
+   "dist_m": 0.2,
+   "nombre": "San Lorenzo"
+  },
+  "s73": {
+   "cota": 21.0,
+   "metro_id": "par_4_73",
+   "dist_m": 0.5,
+   "nombre": "Parque de Santa Maria"
+  },
+  "s74": {
+   "cota": 19.0,
+   "metro_id": "par_4_74",
+   "dist_m": 0.1,
+   "nombre": "Canillejas"
+  },
+  "s75": {
+   "cota": 19.0,
+   "metro_id": "par_4_75",
+   "dist_m": 0.5,
+   "nombre": "Torre Arias"
+  },
+  "s76": {
+   "cota": 19.0,
+   "metro_id": "par_4_76",
+   "dist_m": 0.1,
+   "nombre": "Suanzes"
+  },
+  "s77": {
+   "cota": 19.0,
+   "metro_id": "par_4_77",
+   "dist_m": 0.3,
+   "nombre": "Ciudad Lineal"
+  },
+  "s79": {
+   "cota": 19.0,
+   "metro_id": "par_4_79",
+   "dist_m": 0.6,
+   "nombre": "Quintana"
+  },
+  "s80": {
+   "cota": 19.0,
+   "metro_id": "par_4_80",
+   "dist_m": 0.4,
+   "nombre": "El Carmen"
+  },
+  "s83": {
+   "cota": 23.0,
+   "metro_id": "est_4_83",
+   "dist_m": 101.5,
+   "nombre": "Nuñez de Balboa"
+  },
+  "s84": {
+   "cota": 19.0,
+   "metro_id": "par_4_84",
+   "dist_m": 0.3,
+   "nombre": "Ruben Dario"
+  },
+  "s9": {
+   "cota": 19.5,
+   "metro_id": "est_4_9",
+   "dist_m": 20.8,
+   "nombre": "Bilbao"
+  },
+  "s90": {
+   "cota": 19.0,
+   "metro_id": "par_4_90",
+   "dist_m": 0.1,
+   "nombre": "La Latina"
+  },
+  "s94": {
+   "cota": 19.0,
+   "metro_id": "par_4_94",
+   "dist_m": 0.4,
+   "nombre": "Marques de Vadillo"
+  },
+  "s95": {
+   "cota": 19.0,
+   "metro_id": "par_4_95",
+   "dist_m": 0.5,
+   "nombre": "Urgel"
+  },
+  "s97": {
+   "cota": 19.0,
+   "metro_id": "par_4_97",
+   "dist_m": 0.5,
+   "nombre": "Vista Alegre"
+  },
+  "s98": {
+   "cota": 19.0,
+   "metro_id": "par_4_98",
+   "dist_m": 0.3,
+   "nombre": "Carabanchel"
+  },
+  "s345": {
+   "cota": 27.0,
+   "metro_id": "par_4_345",
+   "dist_m": 7.6,
+   "nombre": "Paco de Lucia"
+  },
+  "s78": {
+   "cota": 20.5,
+   "metro_id": "est_4_78",
+   "dist_m": 7.0,
+   "nombre": "Pueblo Nuevo"
+  },
+  "s124": {
+   "cota": 27.0,
+   "metro_id": "par_4_124",
+   "dist_m": 0.7,
+   "nombre": "Ciudad Universitaria"
+  },
+  "s122": {
+   "cota": 24.5,
+   "metro_id": "est_4_122",
+   "dist_m": 17.4,
+   "nombre": "Guzman El Bueno"
+  },
+  "s176": {
+   "cota": 27.0,
+   "metro_id": "par_4_176",
+   "dist_m": 0.4,
+   "nombre": "Vinateros"
+  },
+  "s177": {
+   "cota": 27.0,
+   "metro_id": "par_4_177",
+   "dist_m": 0.5,
+   "nombre": "Artilleros"
+  },
+  "s20": {
+   "cota": 18.0,
+   "metro_id": "par_4_20",
+   "dist_m": 0.3,
+   "nombre": "Nueva Numancia"
+  },
+  "s181": {
+   "cota": 27.0,
+   "metro_id": "par_4_181",
+   "dist_m": 0.4,
+   "nombre": "San Cipriano"
+  },
+  "s91": {
+   "cota": 19.0,
+   "metro_id": "par_4_91",
+   "dist_m": 0.6,
+   "nombre": "Puerta de Toledo"
+  },
+  "s259": {
+   "cota": 27.0,
+   "metro_id": "par_4_259",
+   "dist_m": 0.3,
+   "nombre": "Arganzuela-Planetario"
+  },
+  "s255": {
+   "cota": 23.0,
+   "metro_id": "par_4_255",
+   "dist_m": 0.4,
+   "nombre": "Carabanchel Alto"
+  },
+  "s140": {
+   "cota": 22.0,
+   "metro_id": "par_4_140",
+   "dist_m": 0.3,
+   "nombre": "Cartagena"
+  },
+  "s139": {
+   "cota": 22.0,
+   "metro_id": "par_4_139",
+   "dist_m": 0.3,
+   "nombre": "Parque de las Avenidas"
+  },
+  "s86": {
+   "cota": 19.0,
+   "metro_id": "par_4_86",
+   "dist_m": 0.5,
+   "nombre": "Chueca"
+  },
+  "s145": {
+   "cota": 22.0,
+   "metro_id": "par_4_145",
+   "dist_m": 0.2,
+   "nombre": "Islas Filipinas"
+  },
+  "s169": {
+   "cota": 27.0,
+   "metro_id": "par_4_169",
+   "dist_m": 0.6,
+   "nombre": "Cruz del Rayo"
+  },
+  "s17": {
+   "cota": 18.0,
+   "metro_id": "par_4_17",
+   "dist_m": 0.4,
+   "nombre": "Menendez Pelayo"
+  },
+  "s173": {
+   "cota": 27.0,
+   "metro_id": "par_4_173",
+   "dist_m": 0.4,
+   "nombre": "Ibiza"
+  },
+  "s136": {
+   "cota": 22.0,
+   "metro_id": "par_4_136",
+   "dist_m": 0.6,
+   "nombre": "Ascao"
+  },
+  "s11": {
+   "cota": 18.5,
+   "metro_id": "est_4_11",
+   "dist_m": 1.1,
+   "nombre": "Gran Via"
+  },
+  "s289": {
+   "cota": 22.0,
+   "metro_id": "par_4_289",
+   "dist_m": 0.5,
+   "nombre": "La Rambla"
+  },
+  "s287": {
+   "cota": 22.0,
+   "metro_id": "par_4_287",
+   "dist_m": 0.4,
+   "nombre": "Barrio del Puerto"
+  },
+  "s290": {
+   "cota": 22.0,
+   "metro_id": "par_4_290",
+   "dist_m": 0.5,
+   "nombre": "San Fernando"
+  },
+  "s291": {
+   "cota": 22.0,
+   "metro_id": "par_4_291",
+   "dist_m": 0.6,
+   "nombre": "Jarama"
+  },
+  "s292": {
+   "cota": 22.0,
+   "metro_id": "par_4_292",
+   "dist_m": 0.2,
+   "nombre": "Henares"
+  },
+  "s294": {
+   "cota": 18.0,
+   "metro_id": "par_4_294",
+   "dist_m": 0.3,
+   "nombre": "Las Suertes"
+  },
+  "s295": {
+   "cota": 18.0,
+   "metro_id": "par_4_295",
+   "dist_m": 0.2,
+   "nombre": "Valdecarros"
+  },
+  "s8": {
+   "cota": 18.0,
+   "metro_id": "par_4_8",
+   "dist_m": 0.4,
+   "nombre": "Iglesia"
+  },
+  "s25": {
+   "cota": 18.0,
+   "metro_id": "par_4_25",
+   "dist_m": 0.5,
+   "nombre": "Sierra de Guadalupe"
+  },
+  "s262": {
+   "cota": 18.0,
+   "metro_id": "par_4_262",
+   "dist_m": 0.6,
+   "nombre": "Bambu"
+  },
+  "s41": {
+   "cota": 21.0,
+   "metro_id": "est_4_41",
+   "dist_m": 15.1,
+   "nombre": "Canal"
+  },
+  "s277": {
+   "cota": 31.0,
+   "metro_id": "par_4_277",
+   "dist_m": 0.7,
+   "nombre": "Ronda de la Comunicacion"
+  },
+  "s53": {
+   "cota": 24.5,
+   "metro_id": "est_90_14",
+   "dist_m": 29.5,
+   "nombre": "Moncloa"
+  },
+  "s100": {
+   "cota": 19.0,
+   "metro_id": "est_90_1",
+   "dist_m": 15.2,
+   "nombre": "Aluche"
+  },
+  "s43": {
+   "cota": 24.5,
+   "metro_id": "est_4_43",
+   "dist_m": 18.0,
+   "nombre": "Legazpi"
+  },
+  "s127": {
+   "cota": 26.0,
+   "metro_id": "est_90_18",
+   "dist_m": 7.6,
+   "nombre": "Principe Pio"
+  },
+  "s187": {
+   "cota": 31.0,
+   "metro_id": "par_4_187",
+   "dist_m": 0.5,
+   "nombre": "Fuencarral"
+  },
+  "s191": {
+   "cota": 31.0,
+   "metro_id": "par_4_191",
+   "dist_m": 0.2,
+   "nombre": "Cuzco"
+  },
+  "s192": {
+   "cota": 31.0,
+   "metro_id": "par_4_192",
+   "dist_m": 0.1,
+   "nombre": "Santiago Bernabeu"
+  },
+  "s2": {
+   "cota": 18.0,
+   "metro_id": "par_4_2",
+   "dist_m": 0.5,
+   "nombre": "Valdeacederas"
+  },
+  "s204": {
+   "cota": 31.0,
+   "metro_id": "par_4_204",
+   "dist_m": 0.2,
+   "nombre": "Joaquin Vilumbrales"
+  },
+  "s207": {
+   "cota": 23.0,
+   "metro_id": "par_4_207",
+   "dist_m": 0.4,
+   "nombre": "Abrantes"
+  },
+  "s208": {
+   "cota": 23.0,
+   "metro_id": "par_4_208",
+   "dist_m": 0.2,
+   "nombre": "Pan Bendito"
+  },
+  "s21": {
+   "cota": 18.0,
+   "metro_id": "par_4_21",
+   "dist_m": 0.2,
+   "nombre": "Portazgo"
+  },
+  "s210": {
+   "cota": 16.0,
+   "metro_id": "par_4_210",
+   "dist_m": 0.5,
+   "nombre": "Parque Lisboa"
+  },
+  "s212": {
+   "cota": 16.0,
+   "metro_id": "par_4_212",
+   "dist_m": 0.5,
+   "nombre": "Parque Oeste"
+  },
+  "s213": {
+   "cota": 16.0,
+   "metro_id": "par_4_213",
+   "dist_m": 0.3,
+   "nombre": "Universidad Rey Juan Carlos"
+  },
+  "s215": {
+   "cota": 16.0,
+   "metro_id": "par_4_215",
+   "dist_m": 0.3,
+   "nombre": "Pradillo"
+  },
+  "s104": {
+   "cota": 27.0,
+   "metro_id": "par_4_104",
+   "dist_m": 0.1,
+   "nombre": "Laguna"
+  },
+  "s216": {
+   "cota": 16.0,
+   "metro_id": "par_4_216",
+   "dist_m": 0.5,
+   "nombre": "Hospital de Mostoles"
+  },
+  "s224": {
+   "cota": 16.0,
+   "metro_id": "par_4_224",
+   "dist_m": 0.4,
+   "nombre": "Conservatorio"
+  },
+  "s218": {
+   "cota": 16.0,
+   "metro_id": "par_4_218",
+   "dist_m": 0.4,
+   "nombre": "Loranca"
+  },
+  "s219": {
+   "cota": 16.0,
+   "metro_id": "par_4_219",
+   "dist_m": 0.6,
+   "nombre": "Hospital de Fuenlabrada"
+  },
+  "s220": {
+   "cota": 16.0,
+   "metro_id": "par_4_220",
+   "dist_m": 0.5,
+   "nombre": "Parque Europa"
+  },
+  "s324": {
+   "cota": 20.0,
+   "metro_id": "par_4_324",
+   "dist_m": 0.6,
+   "nombre": "Avenida de Guadalajara"
+  },
+  "s325": {
+   "cota": 20.0,
+   "metro_id": "par_4_325",
+   "dist_m": 0.4,
+   "nombre": "Las Rosas"
+  },
+  "s111": {
+   "cota": 27.0,
+   "metro_id": "est_90_13",
+   "dist_m": 61.9,
+   "nombre": "Mendez Alvaro"
+  },
+  "s96": {
+   "cota": 23.0,
+   "metro_id": "est_4_96",
+   "dist_m": 11.2,
+   "nombre": "Oporto"
+  },
+  "s45": {
+   "cota": 22.0,
+   "metro_id": "l3_palos_de_la_frontera",
+   "dist_m": 46.8,
+   "nombre": "Palos de la Frontera"
+  },
+  "s40": {
+   "cota": 20.0,
+   "metro_id": "par_4_40",
+   "dist_m": 0.4,
+   "nombre": "Quevedo"
+  },
+  "s222": {
+   "cota": 16.0,
+   "metro_id": "par_4_222",
+   "dist_m": 0.6,
+   "nombre": "Parque de los Estados"
+  },
+  "s223": {
+   "cota": 16.0,
+   "metro_id": "par_4_223",
+   "dist_m": 0.3,
+   "nombre": "Arroyo Culebro"
+  },
+  "s225": {
+   "cota": 16.0,
+   "metro_id": "par_4_225",
+   "dist_m": 0.5,
+   "nombre": "Alonso de Mendoza"
+  },
+  "s227": {
+   "cota": 16.0,
+   "metro_id": "par_4_227",
+   "dist_m": 0.3,
+   "nombre": "Juan de la Cierva"
+  },
+  "s229": {
+   "cota": 16.0,
+   "metro_id": "par_4_229",
+   "dist_m": 0.4,
+   "nombre": "Los Espartales"
+  },
+  "s23": {
+   "cota": 18.0,
+   "metro_id": "par_4_23",
+   "dist_m": 0.3,
+   "nombre": "Alto del Arenal"
+  },
+  "s231": {
+   "cota": 16.0,
+   "metro_id": "par_4_231",
+   "dist_m": 0.5,
+   "nombre": "El Carrascal"
+  },
+  "s232": {
+   "cota": 16.0,
+   "metro_id": "par_4_232",
+   "dist_m": 0.1,
+   "nombre": "Julian Besteiro"
+  },
+  "s44": {
+   "cota": 22.0,
+   "metro_id": "l3_delicias",
+   "dist_m": 64.2,
+   "nombre": "Delicias"
+  },
+  "s233": {
+   "cota": 16.0,
+   "metro_id": "par_4_233",
+   "dist_m": 0.5,
+   "nombre": "Casa del Reloj"
+  },
+  "s236": {
+   "cota": 16.0,
+   "metro_id": "par_4_236",
+   "dist_m": 0.5,
+   "nombre": "San Nicasio"
+  },
+  "s24": {
+   "cota": 18.0,
+   "metro_id": "par_4_24",
+   "dist_m": 0.5,
+   "nombre": "Miguel Hernandez"
+  },
+  "s253": {
+   "cota": 19.0,
+   "metro_id": "par_4_253",
+   "dist_m": 0.2,
+   "nombre": "El Capricho"
+  },
+  "s254": {
+   "cota": 23.0,
+   "metro_id": "par_4_254",
+   "dist_m": 0.3,
+   "nombre": "San Francisco"
+  },
+  "s257": {
+   "cota": 31.0,
+   "metro_id": "par_4_257",
+   "dist_m": 0.3,
+   "nombre": "Aviacion Española"
+  },
+  "s258": {
+   "cota": 26.0,
+   "metro_id": "par_4_258",
+   "dist_m": 0.2,
+   "nombre": "Pinar del Rey"
+  },
+  "s26": {
+   "cota": 18.0,
+   "metro_id": "par_4_26",
+   "dist_m": 0.3,
+   "nombre": "Villa de Vallecas"
+  },
+  "s260": {
+   "cota": 20.0,
+   "metro_id": "par_4_260",
+   "dist_m": 0.3,
+   "nombre": "La Elipa"
+  },
+  "s256": {
+   "cota": 23.0,
+   "metro_id": "par_4_256",
+   "dist_m": 0.5,
+   "nombre": "La Peseta"
+  },
+  "s130": {
+   "cota": 27.0,
+   "metro_id": "par_4_130",
+   "dist_m": 0.3,
+   "nombre": "Lucero"
+  },
+  "s179": {
+   "cota": 27.0,
+   "metro_id": "par_4_179",
+   "dist_m": 0.3,
+   "nombre": "Valdebernardo"
+  },
+  "s152": {
+   "cota": 22.0,
+   "metro_id": "par_4_152",
+   "dist_m": 0.7,
+   "nombre": "Lacoma"
+  },
+  "s151": {
+   "cota": 22.0,
+   "metro_id": "par_4_151",
+   "dist_m": 0.3,
+   "nombre": "Avenida de la Ilustracion"
+  },
+  "s148": {
+   "cota": 22.0,
+   "metro_id": "par_4_148",
+   "dist_m": 0.4,
+   "nombre": "Valdezarza"
+  },
+  "s156": {
+   "cota": 26.5,
+   "metro_id": "est_4_156",
+   "dist_m": 18.0,
+   "nombre": "Colombia"
+  },
+  "s132": {
+   "cota": 22.0,
+   "metro_id": "par_4_132",
+   "dist_m": 0.2,
+   "nombre": "Las Musas"
+  },
+  "s283": {
+   "cota": 31.0,
+   "metro_id": "par_4_283",
+   "dist_m": 0.5,
+   "nombre": "Reyes Catolicos"
+  },
+  "s281": {
+   "cota": 31.0,
+   "metro_id": "par_4_281",
+   "dist_m": 0.0,
+   "nombre": "Manuel de Falla"
+  },
+  "s279": {
+   "cota": 31.0,
+   "metro_id": "par_4_279",
+   "dist_m": 0.5,
+   "nombre": "La Moraleja"
+  },
+  "s278": {
+   "cota": 31.0,
+   "metro_id": "par_4_278",
+   "dist_m": 0.2,
+   "nombre": "La Granja"
+  },
+  "s284": {
+   "cota": 31.0,
+   "metro_id": "par_4_284",
+   "dist_m": 0.4,
+   "nombre": "Hospital Infanta Sofia"
+  },
+  "s119": {
+   "cota": 27.0,
+   "metro_id": "par_4_119",
+   "dist_m": 0.5,
+   "nombre": "Republica Argentina"
+  },
+  "s28": {
+   "cota": 19.5,
+   "metro_id": "est_4_28",
+   "dist_m": 3.5,
+   "nombre": "Ventas"
+  },
+  "s1": {
+   "cota": 25.5,
+   "metro_id": "est_90_21",
+   "dist_m": 10.6,
+   "nombre": "Plaza de Castilla"
+  },
+  "s271": {
+   "cota": 22.0,
+   "metro_id": "l3_villaverde_bajo_cruce",
+   "dist_m": 15.6,
+   "nombre": "Villaverde Bajo Cruce"
+  },
+  "s182": {
+   "cota": 27.0,
+   "metro_id": "par_4_182",
+   "dist_m": 0.6,
+   "nombre": "Puerta de Arganda"
+  },
+  "s261": {
+   "cota": 24.5,
+   "metro_id": "est_90_25",
+   "dist_m": 20.2,
+   "nombre": "Chamartin"
+  },
+  "s188": {
+   "cota": 31.0,
+   "metro_id": "par_4_188",
+   "dist_m": 0.3,
+   "nombre": "Begoña"
+  },
+  "s158": {
+   "cota": 26.0,
+   "metro_id": "par_4_158",
+   "dist_m": 0.5,
+   "nombre": "Feria de Madrid"
+  },
+  "s180": {
+   "cota": 27.0,
+   "metro_id": "par_4_180",
+   "dist_m": 0.5,
+   "nombre": "Vicalvaro"
+  },
+  "s221": {
+   "cota": 16.0,
+   "metro_id": "par_4_221",
+   "dist_m": 0.5,
+   "nombre": "Fuenlabrada Central"
+  },
+  "s99": {
+   "cota": 19.0,
+   "metro_id": "par_4_99",
+   "dist_m": 0.5,
+   "nombre": "Eugenia de Montijo"
+  },
+  "s323": {
+   "cota": 20.0,
+   "metro_id": "par_4_323",
+   "dist_m": 0.5,
+   "nombre": "Alsacia"
+  },
+  "s326": {
+   "cota": 27.0,
+   "metro_id": "par_4_326",
+   "dist_m": 0.5,
+   "nombre": "Mirasierra"
+  },
+  "s305": {
+   "cota": 23.0,
+   "metro_id": "par_4_305",
+   "dist_m": 0.5,
+   "nombre": "La Fortuna"
+  },
+  "s322": {
+   "cota": 20.0,
+   "metro_id": "par_4_322",
+   "dist_m": 0.4,
+   "nombre": "La Almudena"
+  },
+  "s114": {
+   "cota": 27.0,
+   "metro_id": "est_4_114",
+   "dist_m": 3.8,
+   "nombre": "Sainz de Baranda"
+  },
+  "s93": {
+   "cota": 19.0,
+   "metro_id": "par_4_93",
+   "dist_m": 0.3,
+   "nombre": "Piramides"
+  },
+  "s154": {
+   "cota": 22.0,
+   "metro_id": "par_4_154",
+   "dist_m": 0.5,
+   "nombre": "Pitis"
+  },
+  "s235": {
+   "cota": 16.0,
+   "metro_id": "par_4_235",
+   "dist_m": 0.6,
+   "nombre": "Leganes Central"
+  },
+  "s211": {
+   "cota": 16.0,
+   "metro_id": "par_4_211",
+   "dist_m": 0.5,
+   "nombre": "Alcorcon Central"
+  },
+  "s214": {
+   "cota": 16.0,
+   "metro_id": "par_4_214",
+   "dist_m": 0.2,
+   "nombre": "Mostoles Central"
+  },
+  "s228": {
+   "cota": 19.0,
+   "metro_id": "par_4_228",
+   "dist_m": 14.9,
+   "nombre": "El Casar"
+  },
+  "s103": {
+   "cota": 25.0,
+   "metro_id": "est_4_103",
+   "dist_m": 1.5,
+   "nombre": "Casa de Campo"
+  }
+ }
+}
