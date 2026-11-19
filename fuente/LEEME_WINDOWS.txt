@@ -1,0 +1,85 @@
+MADRID SUBTERRÁNEO | ATLAS INDEPENDIENTE
+
+ABRIR EN WINDOWS
+1. Si el paquete acaba en .txt, cambia la extensión a .zip.
+2. Botón derecho > Extraer todo. No abras archivos dentro del ZIP.
+3. Ejecuta INICIAR_WINDOWS.bat. Necesita Node.js instalado.
+4. Se abre http://127.0.0.1:4173 en tu navegador.
+5. Mantén abierta la ventana del servidor. Ctrl+C para cerrarla.
+
+No abras dist/index.html haciendo doble clic: los módulos y los datos necesitan
+un servidor HTTP. La copia local ya está compilada y no requiere npm install.
+
+USO
+- Explorar: busca una estación, filtra líneas, toca un punto o una ficha.
+- Doble clic en un filtro: aísla esa línea. Ver todas devuelve la red completa.
+- Conectar: elige dos complejos y compara menos tramos o menos cambios de línea.
+- Plano / Vista 3D: cámara cenital u orbital. Sin alturas arbitrarias por número de línea.
+- Ciudad: activa una base OpenStreetMap por Internet, con atribución visible.
+- Estaciones 3D: elige una estación para verla SOBRE EL MAPA, no en un visor aparte.
+- Al acercarte aparecen las12geometrías en sus anclajes individualesCRTM.
+- Planta en mapa / Volumen en mapa cambian la cámara del mismo mapa.
+- Ver niveles usa una cámara lateral y recorta el entorno local del mismo mapa.
+- Cada línea se enlaza con la franja correspondiente del archivo, a su nivel relativo.
+- Los enlaces locales son transiciones esquemáticas, no trazados medidos de túneles.
+- Tamaño simbólico ajusta la representación, no la escala física.
+- Inspección aparte abre el visor secundario con opacidad y separación de piezas.
+- Puedes cargar un GLB autocontenido local de hasta40MB. No se sube al servidor.
+- Los favoritos solo se guardan en este navegador. No se comparten con el enlace.
+- Copiar enlace conserva la estación, la conexión, la vista y el modelo sobre mapa.
+
+LÍMITES IMPORTANTES
+No son trenes en vivo ni un planificador operativo. Sin horarios, incidencias,
+esperas, accesibilidad ni cambios de tren dentro de una línea. Los caminos se
+calculan sobre una copia geográfica de la red. Consulta Metro antes de viajar.
+
+Cada modelo se coloca sobre la coordenada oficialCRTM de su estación concreta.
+El anillo naranja marca ese anclaje. La geometría se centra y se normaliza con
+tamaño simbólico ajustable. No son huellas reales de edificios ni túneles: no
+se ha verificado la escala física ni la orientación geográfica del archivo.
+Se conserva la orientación de origen, sin afirmar que coincida con el norte.
+Los niveles internos son los del archivo, sin equivalencia validada en metros.
+La geometría local de las líneas se adapta a sus franjas dentro del modelo.
+Fuera de ese entorno se conserva el trazado geográficoCRTM. Los tramos son trazados geográficos,
+no un levantamiento de ingeniería de los túneles.
+
+DATOS
+Powered by CRTM: https://www.crtm.es/
+Servicio M4_Red, registros29/05/2026, consulta18/11/2026.
+Agrupación mediante CODIGOCTMESTACIONREDMETRO. 240complejos y280conexiones.
+La aplicación es independiente y no está patrocinada por el CRTM.
+Licencia: https://www.crtm.es/licencia-de-uso
+Diseño Aurora: https://github.com/Ntizar/Aurora
+Base urbana opcional: © OpenStreetMap contributors.
+
+EDITAR
+Fuentes en src/, public/, index.html. Node.js y npm:
+ npm ci
+ npm run dev
+ npm run build
+El sitio compilado queda en dist/. Sin claves ni servicios de pago.
+No se ha modificado el repositorio original de David.
+
+MODELOS INCORPORADOS
+12 GLB: 8 originales Albert Guillaumes convertidos y 4 reconstrucciones
+esquemáticas de sus croquis. Créditos y procedencia en cada ficha del visor.
+Sol es la variante histórica2009-2021. Acacias cubre el tramoL5, no el complejo
+entero. No se afirma que los modelos representen el estado actual ni la escala
+real. Son piezas separadas, no mallas preparadas para impresión3D.
+
+PRUEBAS
+Red auditada frente al orden de itinerarios oficiales. 665 pares contrastados
+con BFS independiente para el criterio de menos tramos. Los12modelos se han
+abierto desde el sitio publicado en navegador limpio, con planta y restablecer.
+Corrección espacial revisada en escritorio1280 y móvil390/320: modelo, anclaje
+y trazados en un mismo lienzo.12/12cargan. Probados tamaño, ocultar/mostrar,
+planta/volumen y colección sin diálogo. Sin erroresJS en prueba automatizada.
+No sustituye pruebas en cada dispositivo.
+
+CORRECCIÓN DE NIVELES 18/11/2026
+30 franjas de línea identificadas en12modelos. Se retira la elevación global
+por número de línea. Verificación publicada de30perfiles y sus empalmes,
+pruebas de tamaño0.5/1/2y cámara. Contraste con croquis del autor.
+Sol se conserva como variante histórica2009-2021, no estado actual garantizado.
+El norte y la escala física no están verificados. Los enlaces locales son
+esquemáticos. Las alturas relativas no son cotas reales de profundidad.
