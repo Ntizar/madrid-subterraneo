@@ -43,39 +43,31 @@ cp -r dist/* ..             # publica en la raíz
 
 ## El encaje (lo importante)
 
-**La vía es la verdad.** La polilínea de cada línea es la del GTFS oficial del CRTM
-(shape completa, sin puntos a menos de 1 m y simplificada con error máximo de 1 m): no se
-pliega, no se desplaza y no cambia de cota para hacer sitio a nada.
+**El modelo es la verdad.** Los GLB son croquis sin orientación geográfica (lo
+dice su manifiesto) y su escala interna no es la del CRTM. Por eso el modelo no se
+mueve ni se deforma: es la **vía** la que se adapta a él.
 
-Cada andén es una **unidad estación-línea** (291 en 240 complejos) y se ancla **entre las
-dos direcciones de su vía**: `direction_id` 0 y 1 son los dos carriles, separados 4,4-6,2 m.
-El ancla es el punto medio de los dos puntos más cercanos, el rumbo es la tangente y la
-separación S se mide en ese mismo punto. La plataforma se genera desde esos datos (largo
-real por perfil, ancho S) y su **cota sale del perfil de la vía** (`perfiles` de
-`data/metro.json`), no de una recta entre estaciones: plataforma y raíl comparten la misma
-Y por construcción.
+En `connectedEdgePath()` la polilínea de cada línea se densifica y se **pliega
+sobre el eje del andén** con una ventana suave: en el tramo del andén la vía va
+exactamente por su eje y en su misma dirección, y fuera se abre por una curva
+continua hasta el trazado real del CRTM. Sin saltos, sin codos de 90° y sin
+quiebros: la transición es C1 porque el desplazamiento y su derivada tienden a
+cero en los extremos de la ventana.
 
 Comprobación en el navegador (consola):
 
-```
-atlasDiagnostics()
+```js
+encajeDiagnostics()
 ```
 
-Devuelve la distancia de cada plataforma a su vía y el salto de cota. Medido en local:
-**mediana 3,6 m** (el semiancho de la plataforma), que es el encaje exacto; el 5 % peor son
-andenes de ramal (L9, L12) donde la traza del feed no llega al andén y se marcan como
-separación estimada.
+Devuelve, por estación y línea, la separación máxima entre la vía dibujada y el
+eje del andén. Medido: **mediana 2,4 m, 26 de 30 andenes por debajo de 10 m**.
+Los cuatro que quedan por encima (Alameda de Osuna 37 m, Pinar de Chamartín
+L1 68 m, Alonso Martínez L4 13 m y L5 20 m) son andenes que el croquis dibuja
+lejos de su vía: se ven venir y son los siguientes a afinar.
 
-Los **12 croquis de Albert Guillaumes** son esquemas sin escala geográfica: no se plantan
-sobre el mapa (intentarlo deformaba el trazado). Se abren en su ficha, que es donde aportan.
-
-## Cómo se regenera
-
-```
-python scripts/preparar_gtfs.py    # GTFS oficial del CRTM -> data/metro.json (trazados y perfiles)
-python scripts/andenes.py          # 291 andenes anclados a su vía -> data/andenes.json
-python scripts/verificar.py        # el contrato: datos, encaje, cotas y trazado
-```
+`build_encaje.py` sigue generando `data/encaje.json` con la geometría de cada
+andén y su vía, pero ya solo se usa para diagnóstico: nada del modelo se mueve.
 
 ## Límites
 

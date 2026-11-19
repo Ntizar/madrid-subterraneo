@@ -45,11 +45,11 @@ function calculate(){const a=$('#origin').value,b=$('#destination').value,priori
 async function copyText(text){try{await navigator.clipboard.writeText(text);toast('Copiado')}catch{const a=document.createElement('textarea');a.value=text;document.body.append(a);a.select();const done=document.execCommand('copy');a.remove();toast(done?'Copiado':'No se pudo copiar. Usa la dirección del navegador.')}}
 function initMap(){scene=new THREE.Scene();scene.background=new THREE.Color('#eff4f9');const host=$('#map');camera=new THREE.OrthographicCamera(-20,20,15,-15,.01,500);camera.position.set(0,80,.001);renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));host.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','Mapa geográfico de Metro. También puedes explorar estaciones con el buscador.');controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.maxPolarAngle=Math.PI*.495;controls.enableRotate=false;controls.minZoom=.25;controls.maxZoom=35;controls.screenSpacePanning=true;controls.mouseButtons={LEFT:THREE.MOUSE.PAN,MIDDLE:THREE.MOUSE.DOLLY,RIGHT:THREE.MOUSE.ROTATE};const grid=new THREE.GridHelper(100,50,0xd9e3f0,0xe2eaf4);grid.position.y=-.12;scene.add(grid);scene.add(new THREE.HemisphereLight(0xffffff,0x61758e,.95));const sun=new THREE.DirectionalLight(0xffffff,1.1);sun.position.set(10,30,20);scene.add(sun);mapGroup=new THREE.Group();scene.add(mapGroup);highlightGroup=new THREE.Group();scene.add(highlightGroup);buildMap();window.addEventListener('resize',resize);resize();
  const pointer=new THREE.Vector2(),raycaster=new THREE.Raycaster();let start;renderer.domElement.addEventListener('pointerdown',e=>start=[e.clientX,e.clientY]);renderer.domElement.addEventListener('pointerup',e=>{if(!start||Math.hypot(e.clientX-start[0],e.clientY-start[1])>7)return;let best=null,distance=12;for(const s of data.stations){const visible=s.lines.filter(l=>!hiddenLines.has(l));for(const l of visible){const p=xyz(s.lon,s.lat,layerHeight(l)).project(camera);const dx=(p.x+1)/2*innerWidth-e.clientX,dy=(1-p.y)/2*innerHeight-e.clientY,d=Math.hypot(dx,dy);if(p.z<1&&d<distance){best=s;distance=d}}}if(best)selectStation(best.id)});renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();toast('Gráficos pausados. Recarga para recuperar el mapa. El buscador sigue disponible.')});
- initSpatialModels();initAndenes();const loop=()=>{requestAnimationFrame(loop);if(document.hidden)return;if(cameraTween){const t=Math.min((performance.now()-cameraTween.start)/650,1),v=1-Math.pow(1-t,3);controls.target.lerpVectors(cameraTween.fromTarget,cameraTween.toTarget,v);camera.position.lerpVectors(cameraTween.fromCamera,cameraTween.toCamera,v);camera.zoom=THREE.MathUtils.lerp(cameraTween.fromZoom,cameraTween.toZoom,v);camera.updateProjectionMatrix();if(t===1)cameraTween=null}controls.update();updateSpatialModels();updateLabels();renderer.render(scene,camera)};loop();home(true);}
+ initSpatialModels();const loop=()=>{requestAnimationFrame(loop);if(document.hidden)return;if(cameraTween){const t=Math.min((performance.now()-cameraTween.start)/650,1),v=1-Math.pow(1-t,3);controls.target.lerpVectors(cameraTween.fromTarget,cameraTween.toTarget,v);camera.position.lerpVectors(cameraTween.fromCamera,cameraTween.toCamera,v);camera.zoom=THREE.MathUtils.lerp(cameraTween.fromZoom,cameraTween.toZoom,v);camera.updateProjectionMatrix();if(t===1)cameraTween=null}controls.update();updateSpatialModels();updateLabels();renderer.render(scene,camera)};loop();home(true);}
 function lineMaterial(color,opacity=.95,width=3){return new LineMaterial({color,linewidth:width,worldUnits:false,resolution:new THREE.Vector2(innerWidth,innerHeight),transparent:true,opacity,depthTest:true})}
 let markerTexture=null;function getMarkerTexture(){if(markerTexture)return markerTexture;const c=document.createElement('canvas');c.width=64;c.height=64;const ctx=c.getContext('2d');ctx.beginPath();ctx.arc(32,32,27,0,Math.PI*2);ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=8;ctx.strokeStyle='#47627f';ctx.stroke();markerTexture=new THREE.CanvasTexture(c);markerTexture.colorSpace=THREE.SRGBColorSpace;return markerTexture;}
 function buildMap(){for(const o of [...mapGroup.children]){o.geometry?.dispose();o.material?.dispose();mapGroup.remove(o)}edgeMeshes=[];stationMeshes=[];
- window.__polilineas=new Map();data.lines.forEach(l=>{const positions=[];const pl=[];window.__polilineas.set(l.id,pl);data.edges.filter(e=>e.line===l.id).forEach(e=>{const path=connectedEdgePath(e);for(const q of path)pl.push(q);for(let i=1;i<path.length;i++){if(!withinLevelDetail(path[i-1])&&!withinLevelDetail(path[i]))continue;positions.push(...path[i-1].toArray(),...path[i].toArray())}});if(!positions.length)return;const geometry=new LineSegmentsGeometry();geometry.setPositions(positions);const mesh=new LineSegments2(geometry,lineMaterial(l.color,.95,innerWidth<700?2.8:3.2));mesh.computeLineDistances();mapGroup.add(mesh);edgeMeshes.push({mesh,line:l.id});const stations=data.stations.filter(s=>s.lines.includes(l.id)&&withinLevelDetail(xyz(s.lon,s.lat)));const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(stations.flatMap(s=>stationLinePosition(s,l.id).toArray()),3));geo.setAttribute('color',new THREE.Float32BufferAttribute(stations.flatMap(()=>[1,1,1]),3));const points=new THREE.Points(geo,new THREE.PointsMaterial({size:innerWidth<700?6:6.7,sizeAttenuation:false,map:getMarkerTexture(),alphaTest:.25,transparent:true,vertexColors:true,depthTest:false}));points.renderOrder=5;points.frustumCulled=false;mapGroup.add(points);stationMeshes.push({mesh:points,stations,line:l.id});});
+ data.lines.forEach(l=>{const positions=[];data.edges.filter(e=>e.line===l.id).forEach(e=>{const path=connectedEdgePath(e);for(let i=1;i<path.length;i++){if(!withinLevelDetail(path[i-1])&&!withinLevelDetail(path[i]))continue;positions.push(...path[i-1].toArray(),...path[i].toArray())}});if(!positions.length)return;const geometry=new LineSegmentsGeometry();geometry.setPositions(positions);const mesh=new LineSegments2(geometry,lineMaterial(l.color,.95,innerWidth<700?2.8:3.2));mesh.computeLineDistances();mapGroup.add(mesh);edgeMeshes.push({mesh,line:l.id});const stations=data.stations.filter(s=>s.lines.includes(l.id)&&withinLevelDetail(xyz(s.lon,s.lat)));const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(stations.flatMap(s=>stationLinePosition(s,l.id).toArray()),3));geo.setAttribute('color',new THREE.Float32BufferAttribute(stations.flatMap(()=>[1,1,1]),3));const points=new THREE.Points(geo,new THREE.PointsMaterial({size:innerWidth<700?6:6.7,sizeAttenuation:false,map:getMarkerTexture(),alphaTest:.25,transparent:true,vertexColors:true,depthTest:false}));points.renderOrder=5;points.frustumCulled=false;mapGroup.add(points);stationMeshes.push({mesh:points,stations,line:l.id});});
  for(const entry of spatialModels.values()){if(!entry.group.visible||!entry.loaded)continue;for(const p of entry.m.platforms||[]){if(hiddenLines.has(p.line))continue;const path=worldPlatformPath(entry,p),positions=[];for(let i=1;i<path.length;i++)positions.push(...path[i-1].toArray(),...path[i].toArray());const g=new LineSegmentsGeometry();g.setPositions(positions);const mesh=new LineSegments2(g,lineMaterial(linesById.get(p.line)?.color||'#56687f',1,3.5));mapGroup.add(mesh);edgeMeshes.push({mesh,line:p.line})}}
  if(view==='3d'){const positions=[];data.stations.filter(s=>s.lines.length>1&&!activeStationEntry(s)).forEach(s=>{const min=Math.min(...s.lines.map(layerHeight)),max=Math.max(...s.lines.map(layerHeight));positions.push(...xyz(s.lon,s.lat,min).toArray(),...xyz(s.lon,s.lat,max).toArray())});const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));mapGroup.add(new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x9fb6d3,transparent:true,opacity:.4})));}
  $('#map-labels').innerHTML='';labels=data.stations.map(s=>{const el=document.createElement('span');el.className='map-label';el.textContent=s.name;$('#map-labels').append(el);return {s,el}});updateVisuals();}
@@ -71,190 +71,78 @@ async function openModel(m,file){if(!m&&!file)return;disposeModel();$('#model-di
  }catch(err){$('#model-loading').hidden=false;$('#model-loading').textContent='No se pudo abrir: '+err.message;$('#download-model').hidden=true;}}
 function modelView(top=false){if(!modelCamera||!modelRoot)return;const direction=top?new THREE.Vector3(.001,1,.001):new THREE.Vector3(1,1.1,1.3).normalize();const box=new THREE.Box3().setFromObject(modelRoot),center=box.getCenter(new THREE.Vector3());const corners=[];modelRoot.updateMatrixWorld(true);modelRoot.traverse(o=>{if(!o.isMesh)return;o.geometry.computeBoundingBox();const b=o.geometry.boundingBox;for(const x of [b.min.x,b.max.x])for(const y of [b.min.y,b.max.y])for(const z of [b.min.z,b.max.z])corners.push(new THREE.Vector3(x,y,z).applyMatrix4(o.matrixWorld))});let distance=18;for(let k=0;k<4;k++){modelCamera.position.copy(center).addScaledVector(direction,distance);modelCamera.lookAt(center);modelCamera.updateMatrixWorld();let extent=0;for(const c of corners){const p=c.clone().project(modelCamera);extent=Math.max(extent,Math.abs(p.x),Math.abs(p.y))}distance*=Math.max(.45,extent/.82)}modelCamera.position.copy(center).addScaledVector(direction,distance);modelControls.target.copy(center);modelControls.update()}
 
-async function init(){try{const r=await fetch('data/network.json');if(!r.ok)throw new Error('Datos no disponibles');data=await r.json();try{models=await (await fetch('data/models.json')).json()}catch{models=[]}models.forEach(m=>{m.file=String(m.file||'').replace(/^\//,'')});/* encaje.json se carga en datosAltura: una sola fuente */stationById=new Map(data.stations.map(s=>[s.id,s]));linesById=new Map(data.lines.map(l=>[l.id,l]));$('#station-count').textContent=data.stations.length;$('#info-count').textContent=data.stations.length+' complejos y '+data.edges.length+' conexiones entre ellos';$('#line-grid').innerHTML=data.lines.map(l=>`<button class="line-chip" style="background:${l.color};--line:${l.color}" data-line="${l.id}" title="Mostrar u ocultar ${l.name}. Doble clic para aislar." aria-label="Mostrar u ocultar ${l.name}" aria-pressed="true">${l.id==='R'?'R':'L'+l.id}</button>`).join('');$$('.line-chip').forEach(b=>{b.onclick=()=>lineFilter(b.dataset.line);b.ondblclick=()=>isolateLine(b.dataset.line)});const options=[...data.stations].sort((a,b)=>a.name.localeCompare(b.name,'es')).map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('');$('#origin').innerHTML=options;$('#destination').innerHTML=options;$('#origin').value=data.stations.find(s=>s.name==='Sol')?.id||data.stations[0].id;$('#destination').value=data.stations.find(s=>s.name.includes('Pinar de Chamart'))?.id||data.stations[1].id;renderFeatures();bindDelegated();try{initMap()}catch(err){$('#map').innerHTML='<div class="loading-fail"><strong>No hay aceleración 3D disponible.</strong><p>El buscador y las conexiones siguen funcionando. Activa WebGL o prueba otro navegador para ver el mapa.</p></div>';$('#map-status').textContent='Mapa no disponible · búsqueda y conexiones activas';console.error(err)}const params=new URLSearchParams(location.hash.slice(1));const initialModel=models.find(m=>m.id===params.get("model"));if(params.get('view')==='3d'&&renderer)setView('3d');if(params.has('line')&&linesById.has(params.get('line')))isolateLine(params.get('line'));if(stationById.has(params.get('from'))&&stationById.has(params.get('to'))){$('#origin').value=params.get('from');$('#destination').value=params.get('to');const pri=params.get('priority');if(['changes','stops'].includes(pri))$(`[name=priority][value=${pri}]`).checked=true;setTab('route');calculate()}if(stationById.has(params.get('s')))selectStation(params.get('s'));if(initialModel)focusMapModel(initialModel);window.atlasReady=true;
+async function init(){try{const r=await fetch('data/network.json');if(!r.ok)throw new Error('Datos no disponibles');data=await r.json();try{models=await (await fetch('data/models.json')).json()}catch{models=[]}models.forEach(m=>{m.file=String(m.file||'').replace(/^\//,'')});try{const e=await (await fetch('data/encaje.json')).json();encaje=new Map((e.estaciones||[]).map(x=>[x.id,x]))}catch{encaje=new Map()}stationById=new Map(data.stations.map(s=>[s.id,s]));linesById=new Map(data.lines.map(l=>[l.id,l]));$('#station-count').textContent=data.stations.length;$('#info-count').textContent=data.stations.length+' complejos y '+data.edges.length+' conexiones entre ellos';$('#line-grid').innerHTML=data.lines.map(l=>`<button class="line-chip" style="background:${l.color};--line:${l.color}" data-line="${l.id}" title="Mostrar u ocultar ${l.name}. Doble clic para aislar." aria-label="Mostrar u ocultar ${l.name}" aria-pressed="true">${l.id==='R'?'R':'L'+l.id}</button>`).join('');$$('.line-chip').forEach(b=>{b.onclick=()=>lineFilter(b.dataset.line);b.ondblclick=()=>isolateLine(b.dataset.line)});const options=[...data.stations].sort((a,b)=>a.name.localeCompare(b.name,'es')).map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('');$('#origin').innerHTML=options;$('#destination').innerHTML=options;$('#origin').value=data.stations.find(s=>s.name==='Sol')?.id||data.stations[0].id;$('#destination').value=data.stations.find(s=>s.name.includes('Pinar de Chamart'))?.id||data.stations[1].id;renderFeatures();bindDelegated();try{initMap()}catch(err){$('#map').innerHTML='<div class="loading-fail"><strong>No hay aceleración 3D disponible.</strong><p>El buscador y las conexiones siguen funcionando. Activa WebGL o prueba otro navegador para ver el mapa.</p></div>';$('#map-status').textContent='Mapa no disponible · búsqueda y conexiones activas';console.error(err)}const params=new URLSearchParams(location.hash.slice(1));const initialModel=models.find(m=>m.id===params.get("model"));if(params.get('view')==='3d'&&renderer)setView('3d');if(params.has('line')&&linesById.has(params.get('line')))isolateLine(params.get('line'));if(stationById.has(params.get('from'))&&stationById.has(params.get('to'))){$('#origin').value=params.get('from');$('#destination').value=params.get('to');const pri=params.get('priority');if(['changes','stops'].includes(pri))$(`[name=priority][value=${pri}]`).checked=true;setTab('route');calculate()}if(stationById.has(params.get('s')))selectStation(params.get('s'));if(initialModel)focusMapModel(initialModel);window.atlasReady=true;
  }catch(err){$('#map-status').textContent='No se han podido cargar los datos. Recarga la página.';$('#search-results').innerHTML='<p class="empty">Datos no disponibles. No mostramos una red de ejemplo.</p>';console.error(err)}}
 $$('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));$('#search').addEventListener('input',renderSearch);$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){const first=$('#search-results button');if(first)first.click()}});$('#all-lines').onclick=()=>{hiddenLines.clear();activeLine=null;route=null;$('#route-result').innerHTML='';updateVisuals();home();updateHash()};$('#swap').onclick=()=>{const v=$('#origin').value;$('#origin').value=$('#destination').value;$('#destination').value=v};$('#calculate').onclick=calculate;$('#view-flat').onclick=()=>setView('flat');$('#view-3d').onclick=()=>setView('3d');$('#home').onclick=()=>{activeSpatialModel=null;$('#spatial-selection').hidden=true;$('.spatial-tools').classList.remove('spatial-focused');home()};$('#zoom-in').onclick=()=>{if(camera)flyTo(controls.target,Math.min(35,camera.zoom*1.4))};$('#zoom-out').onclick=()=>{if(camera)flyTo(controls.target,Math.max(.25,camera.zoom/1.4))};$('#share').onclick=()=>copyText(location.href);$('#about').onclick=()=>$('#info-dialog').showModal();$$('.dialog-close').forEach(b=>b.onclick=()=>b.closest('dialog').close());$$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));$('#model-dialog').addEventListener('close',disposeModel);$('#model-iso').onclick=()=>modelView(false);$('#model-top').onclick=()=>modelView(true);$('#model-reset').onclick=()=>{modelView(false);$('#explode').value=0;$('#opacity').value=100;updateModelParts()};function updateModelParts(){const ex=Number($('#explode').value)/100;modelParts.forEach(p=>{p.mesh.position.copy(p.base).addScaledVector(p.direction,ex*1.4);const materials=Array.isArray(p.mesh.material)?p.mesh.material:[p.mesh.material];materials.forEach(m=>{m.opacity=Number($('#opacity').value)/100;m.transparent=m.opacity<1;m.depthWrite=m.opacity>.7})})}$('#explode').oninput=updateModelParts;$('#opacity').oninput=updateModelParts;$('#import-glb').onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>40*1024*1024){toast('El límite local de este visor es 40 MB');return}openModel(null,f);e.target.value=''};$('#mobile-fold').onclick=()=>{const folded=$('.explorer').classList.toggle('folded');$('#mobile-fold').textContent=folded?'Mostrar herramientas ↑':'Ocultar panel ↓'};$('.identity').onclick=e=>{e.preventDefault();closeStation();route=null;hiddenLines.clear();activeLine=null;$('#route-result').innerHTML='';setTab('explore');updateVisuals();home();updateHash()};document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)&&!$('dialog[open]')){e.preventDefault();setTab('explore');$('#search').focus()}if(e.key==='Escape'&&!$('dialog[open]'))closeStation()});init();
 
 $('#city-base').onclick=async()=>{if(!scene)return;if(cityGroup){cityGroup.visible=!cityGroup.visible;$('#city-base').classList.toggle('active',cityGroup.visible);$('#city-base').setAttribute('aria-pressed',String(cityGroup.visible));$('.osm-credit').hidden=!cityGroup.visible;return}if(cityLoading)return;cityLoading=true;$('#city-base').textContent='Cargando…';cityGroup=new THREE.Group();scene.add(cityGroup);$('.osm-credit').hidden=false;const zoom=11,n=2**zoom,toX=lon=>Math.floor((lon+180)/360*n),toY=lat=>Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*n),lon=x=>x/n*360-180,lat=y=>Math.atan(Math.sinh(Math.PI*(1-2*y/n)))*180/Math.PI;const minX=toX(-3.93),maxX=toX(-3.4),minY=toY(40.6),maxY=toY(40.25);let failed=0;const tasks=[];for(let x=minX;x<=maxX;x++)for(let y=minY;y<=maxY;y++){tasks.push(new Promise(resolve=>{new THREE.TextureLoader().load(`https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`,texture=>{texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;const nw=xyz(lon(x),lat(y)),se=xyz(lon(x+1),lat(y+1));const mesh=new THREE.Mesh(new THREE.PlaneGeometry(se.x-nw.x,se.z-nw.z),new THREE.MeshBasicMaterial({map:texture,transparent:true,opacity:.35,depthWrite:false}));mesh.rotation.x=-Math.PI/2;mesh.position.set((nw.x+se.x)/2,-.14,(nw.z+se.z)/2);cityGroup.add(mesh);resolve()},undefined,()=>{failed++;resolve()})}));}await Promise.all(tasks);cityLoading=false;$('#city-base').textContent='Ciudad';$('#city-base').classList.add('active');$('#city-base').setAttribute('aria-pressed','true');if(failed){toast('Base urbana parcial o no disponible. La red sigue funcionando.')}else toast('Base urbana OpenStreetMap activada');};
 
 let colocacion=new Map(),cotasRed={},EXAG=8;
-const VER_DATOS='20261119b';
 const datosAltura=(async()=>{
   try{const r=await fetch('data/colocacion.json');const j=await r.json();colocacion=new Map((j.modelos||[]).map(f=>[f.id,f]));}catch(e){}
   try{const r=await fetch('data/cotas.json');const j=await r.json();cotasRed=j.cotas||{};}catch(e){}
-  try{const r=await fetch('data/encaje.json?v='+VER_DATOS);const j=await r.json();encaje=new Map((j.estaciones||[]).filter(x=>x.estacion).map(x=>[x.id,x]));}catch(e){}
-  try{const r=await fetch('data/metro.json?v='+VER_DATOS);prepararPerfiles(await r.json());}catch(e){}
-  try{const r=await fetch('data/andenes.json?v='+VER_DATOS);const j=await r.json();ANDENES=Object.values(j.andenes||{});window.__andenes=ANDENES;if(typeof scene!=='undefined'&&scene)initAndenes();}catch(e){}
 })();
 const cotaY=(id)=>{const c=cotasRed[id]?.cota;return -((c==null?22:c)/1000)*EXAG;};
 let spatialLevelDetail=false;let spatialModels=new Map(),spatialGroup=null,activeSpatialModel=null,spatialVisible=true,spatialSize=1,spatialLoadCount=0;
-let ANDENES=null,andenGroup=null,andenMesh=null,andenSizeLast=-1,andenPiezas=[];
-const ANDEN_ALTO=0.8;
-// La estación se genera DESDE LA VÍA: plataforma de largo real, pegada a su vía,
-// centrada en el punto del andén y a la cota de su línea. Un andén lateral tiene
-// dos plataformas (una por sentido); uno central, una entre las dos vías.
-function piezasAnden(){
-  const out=[];
-  for(const a of ANDENES){
-    const S=a.S||4.6;
-    if(a.tipo==='central')out.push({a,lado:0,ancho:Math.max(2.5,S-1.6)});
-    else{out.push({a,lado:-1,ancho:3.4});out.push({a,lado:1,ancho:3.4})}
-  }
-  return out;
-}
-function actualizarAndenes(){
-  if(!andenMesh||!ANDENES)return;
-  const mtx=new THREE.Matrix4(),q=new THREE.Quaternion(),p=new THREE.Vector3(),e=new THREE.Euler(),esc=new THREE.Vector3();
-  const k=Math.max(0.5,spatialSize);
-  andenPiezas.forEach((pieza,i)=>{
-    const a=pieza.a,S=(a.S||4.6),ang=THREE.MathUtils.degToRad(a.ang||0);
-    const nx=Math.cos(ang),nz=Math.sin(ang);
-    const off=pieza.lado===0?0:pieza.lado*(S/2+pieza.ancho/2);
-    p.copy(xyz(a.lon,a.lat,-(((a.cota_linea??a.cota??22))/1000)*EXAG));
-    p.x+=nx*off*k/1000;p.z+=nz*off*k/1000;
-    e.set(0,THREE.MathUtils.degToRad(90-(a.ang||0)),0);
-    q.setFromEuler(e);
-    esc.set((a.largo||100)*k,ANDEN_ALTO,pieza.ancho*k);
-    mtx.compose(p,q,esc);
-    andenMesh.setMatrixAt(i,mtx);
-  });
-  andenMesh.instanceMatrix.needsUpdate=true;
-  andenSizeLast=spatialSize;
-}
-function initAndenes(){
-  if(!ANDENES||!ANDENES.length||andenGroup)return;
-  andenPiezas=piezasAnden();
-  andenGroup=new THREE.Group();scene.add(andenGroup);
-  const geo=new THREE.BoxGeometry(1,1,1);
-  const mat=new THREE.MeshLambertMaterial({color:0xe3ebf5,transparent:true,opacity:.95});
-  andenMesh=new THREE.InstancedMesh(geo,mat,andenPiezas.length);
-  andenMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-  andenMesh.renderOrder=2;
-  andenGroup.add(andenMesh);
-  andenGroup.visible=spatialVisible;
-  actualizarAndenes();
-}
-window.atlasDiagnostics = () => {
-  // distancia de cada plataforma a la vía dibujada de su línea y salto de cota
-  const vias = window.__polilineas || new Map();
-  const salida = [];
-  for (const pieza of andenPiezas) {
-    const a = pieza.a;
-    const v = vias.get(a.l) || vias.get(String(a.l));
-    if (!v || v.length < 2) continue;
-    const ang = THREE.MathUtils.degToRad(a.ang || 0);
-    const off = pieza.lado === 0 ? 0 : pieza.lado * ((a.S || 4.6) / 2 + pieza.ancho / 2);
-    const x = xyz(a.lon, a.lat, 0).x + Math.cos(ang) * off / 1000;
-    const z = xyz(a.lon, a.lat, 0).z + Math.sin(ang) * off / 1000;
-    const y = -(((a.cota_linea ?? a.cota ?? 22)) / 1000) * EXAG;
-    let mejor = null;
-    for (let i = 0; i < v.length - 1; i++) {
-      const p = v[i], q = v[i + 1];
-      const dx = q.x - p.x, dz = q.z - p.z;
-      const n2 = dx * dx + dz * dz || 1e-12;
-      const t = Math.max(0, Math.min(1, ((x - p.x) * dx + (z - p.z) * dz) / n2));
-      const cx = p.x + dx * t, cz = p.z + dz * t, cy = p.y + (q.y - p.y) * t;
-      const d = Math.hypot(x - cx, z - cz);
-      if (!mejor || d < mejor.d) mejor = { d, dy: y - cy };
-    }
-    if (mejor) salida.push({ est: a.est, linea: a.l, dist_m: +(mejor.d * 1000).toFixed(2), salto_cota_m: +(mejor.dy * 1000).toFixed(2) });
-  }
-  const ds = salida.map(o => o.dist_m).sort((x, y) => x - y);
-  const ys = salida.map(o => Math.abs(o.salto_cota_m)).sort((x, y) => x - y);
-  return { n: salida.length, dist_mediana: ds[ds.length >> 1], dist_p95: ds[Math.floor(ds.length * .95)],
-           cota_max: ys[ys.length - 1], peores: salida.sort((a, b) => b.dist_m - a.dist_m).slice(0, 5), muestra: salida.slice(0, 3) };
-};
 function initSpatialModels(){spatialGroup=new THREE.Group();scene.add(spatialGroup);window.spatialModelDiagnostics=[];for(const m of models){const group=new THREE.Group();const anchor=xyz(m.anchor.lon,m.anchor.lat,.035);group.position.copy(anchor);group.visible=false;spatialGroup.add(group);const ring=new THREE.Mesh(new THREE.RingGeometry(.028,.043,32),new THREE.MeshBasicMaterial({color:0xff9147,side:THREE.DoubleSide,depthTest:false}));ring.rotation.x=-Math.PI/2;ring.renderOrder=20;group.add(ring);const entry={m,group,root:null,ring,loaded:false};spatialModels.set(m.id,entry);loadSpatialModel(entry)}}
-async function loadSpatialModel(entry){const {m,group}=entry;await datosAltura;try{const gltf=await new GLTFLoader().loadAsync(m.file);const root=gltf.scene;const box=new THREE.Box3().setFromObject(root),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());const enc=encaje.get(m.id),fila=colocacion.get(m.id);
-// metros_por_unidad es la escala REAL del croquis (la calculó build_encaje.py);
-// 1e-3 asumía 1 unidad = 1 mm, y por eso el modelo salía 4-6 veces pequeño
-const factor=((enc&&enc.metros_por_unidad)||1000)*1e-3;
-root.position.sub(center);const wrapper=new THREE.Group();wrapper.add(root);wrapper.scale.setScalar(factor);
-const giro=(enc&&enc.giro_conjunto_deg!=null)?enc.giro_conjunto_deg:(fila?.giro||0);
-wrapper.rotation.y=THREE.MathUtils.degToRad(giro);
-if(enc&&enc.traslacion_conjunto){wrapper.position.x+=enc.traslacion_conjunto[0]*factor;wrapper.position.z-=enc.traslacion_conjunto[1]*factor;}
-else if(fila){wrapper.position.x+=(fila.dx||0)*1e-3;wrapper.position.z-=(fila.dy||0)*1e-3;}
-const yAnden=(enc&&enc.andenes&&enc.andenes[0]&&enc.andenes[0].path_encajado)?enc.andenes[0].path_encajado[0][1]:0;
-wrapper.position.y=-(fila?.cota??22)/1000*EXAG-yAnden*factor;group.add(wrapper);
+async function loadSpatialModel(entry){const {m,group}=entry;await datosAltura;try{const gltf=await new GLTFLoader().loadAsync(m.file);const root=gltf.scene;const box=new THREE.Box3().setFromObject(root),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());const factor=1e-3;root.position.sub(center);const wrapper=new THREE.Group();wrapper.add(root);wrapper.scale.setScalar(factor);
+const fila=colocacion.get(m.id);
+if(fila&&fila.giro!=null)wrapper.rotation.y=THREE.MathUtils.degToRad(fila.giro);
+if(fila){wrapper.position.x+=(fila.dx||0)*1e-3;wrapper.position.z-=(fila.dy||0)*1e-3;}
+wrapper.position.y=-(fila?.cota??22)/1000*EXAG+size.y*factor/2;group.add(wrapper);
 /* el modelo no se toca: es la verdad. La vía se adapta a él. */
 root.traverse(o=>{if(!o.isMesh)return;o.castShadow=false;o.receiveShadow=false;o.userData.mapModelId=m.id;const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,30),new THREE.LineBasicMaterial({color:0x324a68,transparent:true,opacity:.35}));edge.name='map_outline';o.add(edge)});entry.root=wrapper;entry.sourceCenter=center.clone();entry.sourceFactor=factor;entry.loaded=true;spatialRebuildNeeded=true;spatialLoadCount++;$('#spatial-status').textContent=`${spatialLoadCount}/12 modelos listos · visibles al acercar`;window.spatialModelDiagnostics.push({id:m.id,anchor:m.anchor,loaded:true,normalized_max_extent:.5,profiles:m.platforms.map(p=>({line:p.line,meshes:p.mesh_names,level_in_file:p.level_in_file}))});if(activeSpatialModel===m.id)$('#spatial-status').textContent=m.name+' sobre su anclaje CRTM'}catch(err){entry.error=err.message;window.spatialModelDiagnostics.push({id:m.id,loaded:false,error:err.message});$('#spatial-status').textContent='Algún modelo no se pudo cargar. El atlas sigue disponible.'}}
 let spatialRebuildNeeded=false;
 function activeStationEntry(s){for(const entry of spatialModels.values()){if(entry.loaded&&entry.group.visible&&s.raw.some(r=>entry.m.raw.includes(r)))return entry}return null}
 function worldPlatformPath(entry,p){entry.group.updateMatrixWorld(true);const base=p.path;return base.map(a=>new THREE.Vector3(a[0],a[1],a[2]).sub(entry.sourceCenter).applyMatrix4(entry.root.matrixWorld))}
 function stationLinePosition(s,line){const entry=activeStationEntry(s),p=entry?.m.platforms?.find(p=>p.line===line);if(p){const path=worldPlatformPath(entry,p);return path[Math.floor(path.length/2)].clone().add(new THREE.Vector3(0,.001,0))}return xyz(s.lon,s.lat,layerHeight(line)+.02)}
-// --- Cota y trazado: la vía del CRTM es la verdad -------------------------
-// El perfil de metro.json da la cota a lo largo de la vía (rampas suaves y
-// monótonas). La vía se dibuja tal cual: no se pliega sobre ningún croquis.
-let perfilesLinea=new Map(),shapesLinea=new Map();
-function prepararPerfiles(metro){
-  if(!metro||!metro.shapes)return;
-  const ids=new Map();
-  for(const p of metro.patterns||[]){
-    if(!ids.has(String(p.l)))ids.set(String(p.l),new Set());
-    ids.get(String(p.l)).add(p.s);
-  }
-  for(const [linea,set] of ids){
-    const si=[...set].sort((a,b)=>a-b)[0];
-    const sh=metro.shapes[si],pf=metro.perfiles?.[String(si)];
-    if(!sh)continue;
-    shapesLinea.set(linea,sh);
-    if(pf&&pf.length)perfilesLinea.set(linea,pf);
-  }
-}
-const cotaEnPerfil=(linea,s)=>{
-  const pf=perfilesLinea.get(String(linea));
-  if(!pf||!pf.length||s==null)return null;
-  if(s<=pf[0][0])return -(pf[0][1]/1000)*EXAG;
-  for(let i=0;i<pf.length-1;i++){
-    const s0=pf[i][0],c0=pf[i][1],s1=pf[i+1][0],c1=pf[i+1][1];
-    if(s>=s0&&s<=s1){const t=s1>s0?(s-s0)/(s1-s0):0;return -((c0+(c1-c0)*t)/1000)*EXAG}
-  }
-  return -(pf[pf.length-1][1]/1000)*EXAG;
-};
-// distancia recorrida sobre la traza del punto del mundo (x,z) más cercano
-const sEnTraza=(linea,x,z)=>{
-  const sh=shapesLinea.get(String(linea));
-  if(!sh||!sh.cum)return null;
-  const lat=40.43-z/111.32,lon=x/84.8-3.7;
-  const pts=sh.pts,cum=sh.cum;
-  const kx=111320*Math.cos(lat*Math.PI/180),ky=111320;
-  let mejor=1e18,s=0;
-  for(let i=0;i<pts.length-1;i++){
-    const ax=(pts[i][1]-lon)*kx,ay=(pts[i][0]-lat)*ky;
-    const bx=(pts[i+1][1]-lon)*kx,by=(pts[i+1][0]-lat)*ky;
-    const dx=bx-ax,dy=by-ay,n2=dx*dx+dy*dy;
-    const t=n2===0?0:Math.max(0,Math.min(1,-(ax*dx+ay*dy)/n2));
-    const d=Math.hypot(ax+dx*t,ay+dy*t);
-    if(d<mejor){mejor=d;s=cum[i]+(cum[i+1]-cum[i])*t}
-  }
-  return mejor<80?s:null;
-};
 function connectedEdgePath(e){
-  // densificar sin mover un solo punto de la vía; la cota sale del perfil
-  const base=e.coords.map(c=>xyz(c[0],c[1],0));
-  const linea=String(e.line);
-  const sA=sEnTraza(linea,base[0].x,base[0].z);
-  const sB=sEnTraza(linea,base[base.length-1].x,base[base.length-1].z);
-  const puntos=[];
-  const nTramos=base.length-1;
-  for(let i=0;i<nTramos;i++){
-    const a=base[i],b=base[i+1],d=Math.hypot(b.x-a.x,b.z-a.z),n=Math.max(1,Math.ceil(d/0.008));
-    for(let k=0;k<n;k++){
-      const p=a.clone().lerp(b,k/n);
-      const t=(i+k/n)/(nTramos||1);
-      const c=(sA!=null&&sB!=null)?cotaEnPerfil(linea,sA+(sB-sA)*t):null;
-      p.y=(c!=null)?c:(cotaY(e.a)+(cotaY(e.b)-cotaY(e.a))*t);
-      puntos.push(p);
+  // La vía se adapta al andén: se pliega sobre su eje con una ventana suave, así
+  // entra y sale en la dirección del andén sin quiebros ni giros imposibles.
+  // densificar: sin puntos intermedios la vía no puede plegarse sobre el andén
+  const ya=cotaY(e.a),yb=cotaY(e.b);
+  const base=e.coords.map((c,i)=>{const t=e.coords.length>1?i/(e.coords.length-1):0;return xyz(c[0],c[1],ya+(yb-ya)*t);});
+  const points=[];
+  for(let i=0;i<base.length-1;i++){
+    const a=base[i],b=base[i+1],d=Math.hypot(b.x-a.x,b.z-a.z),n=Math.max(1,Math.ceil(d/0.01));
+    for(let k=0;k<n;k++)points.push(a.clone().lerp(b,k/n));
+  }
+  points.push(base[base.length-1].clone());
+  for(const id of [e.a,e.b]){
+    const s=stationById.get(id),entry=(s&&[...spatialModels.values()].find(en=>en.loaded&&s.raw.some(r=>en.m.raw.includes(r))))||activeStationEntry(s),profile=entry?.m.platforms?.find(p=>p.line===e.line);
+    if(!profile)continue;
+    const strip=worldPlatformPath(entry,profile);
+    if(!strip||strip.length<3)continue;
+    const ejeAnden=(pts)=>{let mx=0,mz=0;pts.forEach(p=>{mx+=p.x;mz+=p.z});mx/=pts.length;mz/=pts.length;
+      let mej=null;for(let i=0;i<90;i++){const a=(i*2*Math.PI)/180,co=Math.cos(a),si=Math.sin(a);let u0=1e9,u1=-1e9,v0=1e9,v1=-1e9;
+        for(const p of pts){const dx=p.x-mx,dz=p.z-mz,u=dx*co+dz*si,v=-dx*si+dz*co;
+          if(u<u0)u0=u;if(u>u1)u1=u;if(v<v0)v0=v;if(v>v1)v1=v;}
+        const ar=(u1-u0)*(v1-v0);if(!mej||ar<mej[0])mej=[ar,a,(v1-v0)>(u1-u0)];}
+      let a=mej[1];if(mej[2])a+=Math.PI/2;return a;};
+    const ang=ejeAnden(strip),c=new THREE.Vector3();
+    strip.forEach(v=>c.add(v));c.multiplyScalar(1/strip.length);
+    const tx=Math.cos(ang),tz=Math.sin(ang),nx=-Math.sin(ang),nz=Math.cos(ang);
+    let umin=1e9,umax=-1e9;
+    strip.forEach(v=>{const u=(v.x-c.x)*tx+(v.z-c.z)*tz;umax=Math.max(umax,u);umin=Math.min(umin,u);});
+    const medio=Math.max((umax-umin)/2,0.02);
+    // radio de influencia: hasta el punto más cercano de la vía y un margen
+    let rmin=Infinity;
+    for(const p of points){const r=Math.hypot(p.x-c.x,p.z-c.z);if(r<rmin)rmin=r;}
+    const ancho=Math.max(medio*1.6,0.02);
+    for(const p of points){
+      const r=Math.hypot(p.x-c.x,p.z-c.z);
+      const k=1-(r-rmin)/ancho;
+      if(k<=0)continue;
+      const w=k*k*(3-2*k);
+      if(w<=0.001)continue;
+      const du=(p.x-c.x)*tx+(p.z-c.z)*tz,dv=(p.x-c.x)*nx+(p.z-c.z)*nz;
+      const dv2=dv-dv*w;                       // se pliega hacia el eje del andén
+      p.x=c.x+du*tx+dv2*nx;p.z=c.z+du*tz+dv2*nz;
     }
   }
-  const fin=base[base.length-1].clone();
-  const cFin=(sA!=null&&sB!=null)?cotaEnPerfil(linea,sB):null;
-  fin.y=(cFin!=null)?cFin:cotaY(e.b);
-  puntos.push(fin);
-  return puntos;
+  return points;
 }
-
-function updateSpatialModels(){if(andenGroup){andenGroup.visible=spatialVisible&&camera.zoom>2.2;if(andenSizeLast!==spatialSize)actualizarAndenes();}if(!spatialGroup)return;let changed=spatialRebuildNeeded;spatialRebuildNeeded=false;for(const entry of spatialModels.values()){const {m,group,root}=entry;const s=data.stations.find(s=>s.raw.some(r=>m.raw.includes(r)));const line=s?.lines.find(l=>!hiddenLines.has(l));const visible=!!line&&entry.loaded&&activeSpatialModel===m.id;if(group.visible!==visible)changed=true;group.visible=visible;group.position.y=.035;if(root){const base=root.userData.baseScale||(root.userData.baseScale=root.scale.x);if(root.scale.x!==base*spatialSize)changed=true;root.scale.setScalar(base*spatialSize)}}if(changed){buildMap();updateVisuals()}}
+function updateSpatialModels(){if(!spatialGroup)return;let changed=spatialRebuildNeeded;spatialRebuildNeeded=false;for(const entry of spatialModels.values()){const {m,group,root}=entry;const s=data.stations.find(s=>s.raw.some(r=>m.raw.includes(r)));const line=s?.lines.find(l=>!hiddenLines.has(l));const visible=spatialVisible&&(!spatialLevelDetail||!activeSpatialModel||activeSpatialModel===m.id)&&!!line&&entry.loaded&&(camera.zoom>5||activeSpatialModel===m.id);if(group.visible!==visible)changed=true;group.visible=visible;group.position.y=.035;if(root){const base=root.userData.baseScale||(root.userData.baseScale=root.scale.x);if(root.scale.x!==base*spatialSize)changed=true;root.scale.setScalar(base*spatialSize)}}if(changed){buildMap();updateVisuals()}}
 function focusMapModel(m,{top=false,side=false}={}){if(!m||!camera)return;activeSpatialModel=m.id;spatialLevelDetail=side;spatialVisible=true;spatialRebuildNeeded=true;$('#map-models-toggle').textContent='Ocultar 3D';$('#map-models-toggle').setAttribute('aria-pressed','true');const s=data.stations.find(s=>s.raw.some(r=>m.raw.includes(r)));if(s){hiddenLines.clear();selected=s.id}$('#station-card').hidden=true;$('.map-title').hidden=true;$('#spatial-selection').hidden=false;$('.spatial-tools').classList.add('spatial-focused');$('#spatial-name').textContent=m.name+' · SOBRE EL MAPA';$('#spatial-credit').textContent='Anclaje CRTM '+m.anchor.raw_station_code+' · '+m.anchor.lat.toFixed(5)+', '+m.anchor.lon.toFixed(5)+'. Enlace a '+m.platforms.length+' líneas en sus franjas del archivo. Orden alto→bajo: '+m.platforms.slice().sort((a,b)=>b.level_in_file-a.level_in_file).map(p=>p.line==='R'?'R':'L'+p.line).join(' / ')+'. Andén y vía a la misma cota real.';$('#spatial-top').onclick=()=>focusMapModel(m,{top:true});$('#spatial-oblique').onclick=()=>focusMapModel(m);$('#spatial-levels').onclick=()=>focusMapModel(m,{side:true});$('#spatial-inspect').onclick=()=>openModel(m);setView('flat');controls.enableRotate=!top;$('.north').textContent=top?'N ↑':'Órbita libre';const target=xyz(m.anchor.lon,m.anchor.lat,layerHeight(s?.lines[0]||'1'));const zoom=innerWidth<700?18:(side?48:32);controls.maxZoom=100;const worldW=40*innerWidth/innerHeight/zoom;if(innerWidth>700)target.x-=worldW*.025;else {const offset=top?new THREE.Vector3(0,0,1):new THREE.Vector3(.35,-.7,.48).normalize();target.addScaledVector(offset,40/zoom*.245)}flyTo(target,zoom);if(cameraTween&&!top)cameraTween.toCamera=target.clone().add((side?new THREE.Vector3(0,.04,1.2):new THREE.Vector3(.8,1.3,1.1)).multiplyScalar(40));updateVisuals();updateHash();const p=new URLSearchParams(location.hash.slice(1));p.set('model',m.id);history.replaceState(null,'','#'+p.toString());if(!spatialModels.get(m.id)?.loaded)toast('Cargando geometría en su estación…');}
 $('#map-model-size').oninput=()=>{spatialRebuildNeeded=true;spatialSize=Number($('#map-model-size').value)/100;$('#map-size-value').textContent='×'+spatialSize.toFixed(1)};
 $('#map-models-toggle').onclick=()=>{spatialVisible=!spatialVisible;$('#map-models-toggle').textContent=spatialVisible?'Ocultar 3D':'Mostrar 3D';$('#map-models-toggle').setAttribute('aria-pressed',String(spatialVisible))};
