@@ -15,6 +15,7 @@ const cargando = $('#cargando');
 const estado = { id: null, nivel: null, tierra: 1, tuneles: true, etiquetas: true, tamano: 1 };
 
 let datos = [], modelos = [], colores = {}, nombresLinea = {};
+let encaje = null;   // vías reales en coordenadas del modelo, por estación
 
 // ---------- escena ----------------------------------------------------------
 const renderer = new THREE.WebGLRenderer({ canvas: lienzo, antialias: true, alpha: true });
@@ -374,11 +375,29 @@ function arcoTunel(curva, radio, angIni, angFin, nSeg = 90, nRad = 10) {
   return g;
 }
 
-function tunelesEstacion(metadatos) {
+function tunelesEstacion(metadatos, enc) {
   const g = new THREE.Group();
   g.name = 'tuneles';
   (metadatos.platforms || []).forEach((p) => {
-    const pts = (p.path || []).map(([x, y, z]) => new THREE.Vector3(x, y, z));
+    const anden = (enc?.andenes || []).find((a) => String(a.linea) === String(p.line));
+    let pts;
+    if (anden?.via && anden.via.length >= 2) {
+      // vía real (medida contra la red) en coordenadas del modelo, a la cota del andén
+      const cotaV = p.level_in_file ?? 0;
+      pts = anden.via.map(([x, z]) => new THREE.Vector3(x, cotaV, z));
+      // el andén del croquis se queda donde está: la vía se aparta a su costado
+      const mx = (pts[0].x + pts[pts.length - 1].x) / 2, mz = (pts[0].z + pts[pts.length - 1].z) / 2;
+      const ancho0 = Number(p.platform_width || 7);
+      const dx = pts[pts.length - 1].x - pts[0].x, dz = pts[pts.length - 1].z - pts[0].z;
+      const l = Math.hypot(dx, dz) || 1;
+      const nx = -dz / l, nz = dx / l;
+      const centroPlaca = (p.path || []).reduce((acc, q) => [acc[0] + q[0] / p.path.length, acc[1] + q[2] / p.path.length], [0, 0]);
+      const lado = Math.sign((centroPlaca[0] - mx) * nx + (centroPlaca[1] - mz) * nz) || 1;
+      const desvio = lado * (ancho0 / 2 + 1.8);
+      pts = pts.map((q) => new THREE.Vector3(q.x - nx * desvio, q.y, q.z - nz * desvio));
+    } else {
+      pts = (p.path || []).map(([x, y, z]) => new THREE.Vector3(x, y, z));
+    }
     if (pts.length < 2) return;
     const a = pts[0], b = pts[pts.length - 1];
     const dirA = new THREE.Vector3().subVectors(pts[0], pts[1]).normalize();
@@ -558,7 +577,9 @@ async function cargarEstacion(id, opciones = {}) {
   est.position.x -= centro.x;
   est.position.z -= centro.z;
   caja.translate(new THREE.Vector3(-centro.x, 0, -centro.z));
-  const mallaTuneles = tunelesEstacion(meta);
+  const enc = encaje?.get(meta.id) || null;
+  alinearAndenes(est, enc);
+  const mallaTuneles = tunelesEstacion(meta, enc);
   const volumenes = volumenesDePlacas(est, meta);
   const terreno = bloquesTerreno(caja);
 
@@ -589,6 +610,23 @@ async function cargarEstacion(id, opciones = {}) {
   etiquetasHTML(meta);
   cargando.hidden = true;
   ubicacion(meta.id);
+}
+
+// Gira cada andén del croquis hasta que su eje coincide con el de su vía real
+function alinearAndenes(est, enc) {
+  if (!enc) return;
+  (enc.andenes || []).forEach((a) => {
+    const g = Number(a.giro_fino_deg || 0);
+    if (!g) return;
+    const R = new THREE.Matrix4().makeRotationY(THREE.MathUtils.degToRad(g));
+    est.traverse((o) => {
+      if (!o.isMesh || String(o.userData.linea) !== String(a.linea)) return;
+      o.updateMatrix();
+      o.matrix.premultiply(R);
+      o.matrixAutoUpdate = false;
+      o.updateMatrixWorld(true);
+    });
+  });
 }
 
 function encuadrar(caja, meta) {
@@ -749,11 +787,13 @@ function ubicacion(id) {
 
 // ---------- arranque ------------------------------------------------------------
 async function inicio() {
-  const [red, mods] = await Promise.all([
+  const [red, mods, enc] = await Promise.all([
     fetch('data/network.json').then((r) => r.json()),
     fetch('data/models.json').then((r) => r.json()),
+    fetch('data/encaje.json').then((r) => r.json()).catch(() => ({ estaciones: [] })),
   ]);
   modelos = mods;
+  encaje = new Map((enc.estaciones || []).filter((e) => e.giro_deg !== undefined).map((e) => [e.id, e]));
   (red.lines || []).forEach((l) => {
     colores[l.id] = l.color;
     nombresLinea[l.id] = l.id === 'R' ? 'Ramal' : 'L' + l.id;
@@ -775,7 +815,8 @@ async function inicio() {
     raiz.scale.setScalar(f);
   });
 
-  const pedido = (location.hash.match(/e=([\w-]+)/) || [])[1];
+  const pedido = (location.hash.match(/e=([\w-]+)/) || [])[1]
+    || (location.search.match(/[?&]e=([\w-]+)/) || [])[1];
   const inicial = mods.find((m) => m.id === pedido) ? pedido : 'alonso_martinez';
   sel.value = inicial;
   await cargarEstacion(inicial);

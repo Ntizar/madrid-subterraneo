@@ -1,0 +1,64 @@
+:root{ --marco:#fffaf3; --borde:#e3ded3; --tinta:#1b1d21; }
+html,body{height:100%;margin:0}
+body{overflow:hidden;background:radial-gradient(120% 90% at 70% 0%, #fbfaf6 0%, #e9edf1 55%, #d9dee3 100%)}
+#lienzo{position:fixed;inset:0;display:block;width:100%;height:100%}
+
+.cab{
+  position:fixed;top:1rem;left:1rem;max-width:min(26rem,78vw);
+  padding:1rem 1.15rem;border-radius:.9rem;
+  background:color-mix(in srgb, var(--marco) 94%, transparent);
+  border:1px solid var(--borde);box-shadow:0 6px 24px rgba(40,32,20,.10);
+}
+.cab .nz-lbl{margin:0 0 .2rem}
+.cab h1{margin:0;font-size:1.4rem;line-height:1.1;letter-spacing:-.01em;color:var(--tinta)}
+.cab p:last-child{margin:.35rem 0 0;line-height:1.35}
+
+.leyenda{
+  position:fixed;left:1rem;bottom:3.2rem;display:flex;flex-wrap:wrap;gap:.3rem;
+  max-width:min(30rem,80vw);padding:.5rem;border-radius:.75rem;
+  background:color-mix(in srgb, var(--marco) 92%, transparent);border:1px solid var(--borde);
+}
+.leyenda__b{
+  display:inline-flex;align-items:center;gap:.35rem;min-height:34px;padding:.2rem .55rem;
+  border:1px solid transparent;border-radius:.5rem;background:#fff;cursor:pointer;
+  font:inherit;font-size:.8rem;color:var(--tinta)}
+.leyenda__b:hover{border-color:#c9c2b3}
+.leyenda__b.is-off{opacity:.38}
+.leyenda__punto{width:.7rem;height:.7rem;border-radius:50%;flex:0 0 auto}
+
+.pie{
+  position:fixed;left:1rem;right:1rem;bottom:.55rem;display:flex;justify-content:space-between;
+  gap:1rem;align-items:center;pointer-events:none}
+.pie span{pointer-events:auto}
+
+.tarjeta{
+  position:fixed;right:1rem;bottom:3.2rem;width:min(20rem,80vw);
+  padding:.9rem 1rem;border-radius:.9rem;background:var(--marco);
+  border:1px solid var(--borde);box-shadow:0 10px 30px rgba(40,32,20,.14)}
+.tarjeta p{margin:0}
+.tarjeta .nz-lbl{margin-bottom:.15rem}
+.tarjeta__nombre{margin:0;font-size:1.15rem;font-weight:600;color:var(--tinta)}
+.tarjeta__btn{
+  display:inline-block;margin-top:.6rem;padding:.45rem .8rem;border-radius:.5rem;
+  background:#22201c;color:#fff;text-decoration:none;font-size:.85rem}
+.tarjeta__btn:hover{background:#3a352c}
+
+@media (max-width: 760px){
+  .cab{left:.6rem;right:.6rem;top:.6rem;max-width:none;padding:.75rem .9rem}
+  .cab h1{font-size:1.15rem}
+  .leyenda{left:.6rem;right:.6rem;bottom:.6rem;max-width:none}
+  .pie{bottom:auto;top:auto;display:none}
+  .tarjeta{left:.6rem;right:.6rem;bottom:7.4rem;width:auto}
+}
+
+.modeladas{
+  position:fixed;right:1rem;top:1rem;width:min(14rem,60vw);max-height:46vh;overflow:auto;
+  padding:.7rem;border-radius:.8rem;background:color-mix(in srgb, var(--marco) 94%, transparent);
+  border:1px solid var(--borde);box-shadow:0 6px 24px rgba(40,32,20,.10);
+  display:flex;flex-direction:column;gap:.25rem}
+.modeladas .nz-lbl{margin:.1rem 0 .2rem}
+.modeladas__b{
+  text-align:left;font:inherit;font-size:.82rem;min-height:32px;padding:.15rem .4rem;
+  border:1px solid transparent;border-radius:.4rem;background:transparent;color:var(--tinta);cursor:pointer}
+.modeladas__b:hover{background:#fff;border-color:#d9d2c4}
+@media (max-width: 760px){ .modeladas{display:none} }

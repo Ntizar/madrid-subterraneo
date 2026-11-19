@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Estaciones en corte · Metro de Madrid</title>
-<meta name="description" content="Estaciones del Metro de Madrid en corte natural: la estación dentro del terreno, con sus túneles, sus niveles y su andén.">
+<title>Metro de Madrid · la red en su sitio</title>
+<meta name="description" content="Red del Metro de Madrid con la geometría real del CRTM y las estaciones modeladas en 3D colocadas en su sitio.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Ntizar/Aurora@v10/tokens.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Ntizar/Aurora@v10/packs/all.css">
-<link rel="stylesheet" href="css/estacion.css">
+<link rel="stylesheet" href="css/mapa.css">
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
@@ -17,46 +17,28 @@
 </head>
 <body class="nz">
 
-<div class="maqueta" id="maqueta">
-  <canvas id="lienzo" aria-label="Corte 3D de la estación seleccionada"></canvas>
-  <div class="etiquetas" id="etiquetas" aria-hidden="true"></div>
-  <div class="cargando" id="cargando" hidden><span class="maq-spin" aria-hidden="true"></span> Cargando la estación…</div>
+<canvas id="lienzo" aria-label="Red del Metro de Madrid en 3D"></canvas>
+
+<header class="cab">
+  <p class="nz-lbl">Madrid subterráneo</p>
+  <h1>La red, en su sitio</h1>
+  <p class="nz-text--muted nz-text--small" id="sub">Geometría real del CRTM · 240 estaciones · 13 líneas · 12 estaciones modeladas en 3D</p>
+</header>
+
+<aside class="leyenda" id="leyenda" aria-label="Líneas"></aside>
+
+<footer class="pie">
+  <span id="ayuda" class="nz-text--small nz-text--muted">Arrastra para girar · rueda para acercar · pulsa una estación con modelo para verla en corte</span>
+  <span class="nz-lbl">Hecho con ❤️ por David Antizar</span>
+</footer>
+
+<div class="tarjeta" id="tarjeta" hidden>
+  <p class="nz-lbl" id="tarjeta-lbl">Estación</p>
+  <p class="tarjeta__nombre" id="tarjeta-nombre"></p>
+  <p class="nz-text--small nz-text--muted" id="tarjeta-lineas"></p>
+  <a class="tarjeta__btn" id="tarjeta-ir" href="#">Ver en corte →</a>
 </div>
 
-<aside class="panel" aria-label="Estaciones y niveles">
-  <header class="panel__cab">
-    <p class="nz-lbl">Madrid subterráneo</p>
-    <h1 class="panel__titulo">Estaciones en corte</h1>
-    <p class="nz-text--muted nz-text--small" id="sub">La estación dentro del terreno, no flotando encima.</p>
-  </header>
-
-  <section class="bloque">
-    <label class="nz-lbl" for="sel-estacion">Estación</label>
-    <select class="maq-sel" id="sel-estacion"></select>
-    <p class="nz-text--muted nz-text--small" id="ficha"></p>
-  </section>
-
-  <section class="bloque">
-    <p class="nz-lbl">Niveles</p>
-    <div class="niveles" id="niveles"></div>
-  </section>
-
-  <section class="bloque">
-    <p class="nz-lbl">Corte</p>
-    <div class="controles">
-      <label class="fila"><span>Tierra</span><input type="range" id="tierra" min="0" max="100" value="100"></label>
-      <label class="fila fila--check"><input type="checkbox" id="tuneles" checked><span>Túneles</span></label>
-      <label class="fila fila--check"><input type="checkbox" id="etiqueta-on" checked><span>Etiquetas de nivel</span></label>
-      <label class="fila"><span>Tamaño</span><input type="range" id="tamano" min="40" max="200" value="100"></label>
-    </div>
-  </section>
-
-  <footer class="panel__pie">
-    <p class="nz-text--muted nz-text--small" id="aviso">Los niveles son los del archivo de origen, no profundidades reales.</p>
-    <p class="nz-lbl">Hecho con ❤️ por David Antizar</p>
-  </footer>
-</aside>
-
-<script type="module" src="estacion.js"></script>
+<script type="module" src="mapa.js"></script>
 </body>
 </html>
