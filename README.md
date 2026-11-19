@@ -43,19 +43,16 @@ cp -r dist/* ..             # publica en la raíz
 
 ## El encaje (lo importante)
 
-Los GLB son croquis: el propio manifiesto avisa de que no tienen orientación
-geográfica. `build_encaje.py` mide, andén a andén:
+**El modelo es la verdad.** Los GLB son croquis sin orientación geográfica (lo
+dice su manifiesto) y su escala interna no es la del CRTM. Por eso el modelo no se
+mueve ni se deforma: es la **vía** la que se adapta a él.
 
-1. El eje largo del andén (rectángulo de área mínima sobre su contorno, no PCA:
-   la PCA falla en placas casi cuadradas).
-2. El rumbo del tramo de vía del CRTM más cercano a ese andén.
-3. El giro que alinea ambos y el desplazamiento que deja el borde del andén a
-   6,9 m del eje de la vía.
-
-El resultado (`data/encaje.json`) lleva `giro_fino_deg`, `traslacion`,
-`path_encajado` y la vía real. El atlas gira cada placa con esos valores y dibuja
-la línea sobre `path_encajado`, así que la línea entra y sale de la estación por
-donde va la vía de verdad, sin quiebros.
+En `connectedEdgePath()` la polilínea de cada línea se densifica y se **pliega
+sobre el eje del andén** con una ventana suave: en el tramo del andén la vía va
+exactamente por su eje y en su misma dirección, y fuera se abre por una curva
+continua hasta el trazado real del CRTM. Sin saltos, sin codos de 90° y sin
+quiebros: la transición es C1 porque el desplazamiento y su derivada tienden a
+cero en los extremos de la ventana.
 
 Comprobación en el navegador (consola):
 
@@ -63,10 +60,14 @@ Comprobación en el navegador (consola):
 encajeDiagnostics()
 ```
 
-Devuelve, por estación y línea, la diferencia angular entre el andén y su vía.
-Medido: 0–13,5°, la mayoría por debajo de 2°; desajuste de distancia 0,0 m.
-Los dos modelos sin red actual (Sol 2009-2021 y Acacias esquema) quedan como
-estaban, sin encaje.
+Devuelve, por estación y línea, la separación máxima entre la vía dibujada y el
+eje del andén. Medido: **mediana 2,4 m, 26 de 30 andenes por debajo de 10 m**.
+Los cuatro que quedan por encima (Alameda de Osuna 37 m, Pinar de Chamartín
+L1 68 m, Alonso Martínez L4 13 m y L5 20 m) son andenes que el croquis dibuja
+lejos de su vía: se ven venir y son los siguientes a afinar.
+
+`build_encaje.py` sigue generando `data/encaje.json` con la geometría de cada
+andén y su vía, pero ya solo se usa para diagnóstico: nada del modelo se mueve.
 
 ## Límites
 

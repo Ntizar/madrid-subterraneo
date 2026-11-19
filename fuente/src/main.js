@@ -80,27 +80,57 @@ $('#city-base').onclick=async()=>{if(!scene)return;if(cityGroup){cityGroup.visib
 let spatialLevelDetail=false;let spatialModels=new Map(),spatialGroup=null,activeSpatialModel=null,spatialVisible=true,spatialSize=1,spatialLoadCount=0;
 function initSpatialModels(){spatialGroup=new THREE.Group();scene.add(spatialGroup);window.spatialModelDiagnostics=[];for(const m of models){const group=new THREE.Group();const anchor=xyz(m.anchor.lon,m.anchor.lat,.035);group.position.copy(anchor);group.visible=false;spatialGroup.add(group);const ring=new THREE.Mesh(new THREE.RingGeometry(.028,.043,32),new THREE.MeshBasicMaterial({color:0xff9147,side:THREE.DoubleSide,depthTest:false}));ring.rotation.x=-Math.PI/2;ring.renderOrder=20;group.add(ring);const entry={m,group,root:null,ring,loaded:false};spatialModels.set(m.id,entry);loadSpatialModel(entry)}}
 async function loadSpatialModel(entry){const {m,group}=entry;try{const gltf=await new GLTFLoader().loadAsync(m.file);const root=gltf.scene;const box=new THREE.Box3().setFromObject(root),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());const factor=.5/Math.max(size.x,size.y,size.z);root.position.sub(center);const wrapper=new THREE.Group();wrapper.add(root);wrapper.scale.setScalar(factor);wrapper.position.y=.04+size.y*factor/2;group.add(wrapper);
-const enc=encaje.get(m.id);
-if(enc)for(const a of (enc.andenes||[])){if(!a.meshes||!a.meshes.length||!a.path_encajado)continue;
-const gp=new THREE.Group();wrapper.add(gp);
-const nombres=new Set(a.meshes);const suyos=[];root.traverse(o=>{if(o.isMesh&&(nombres.has(o.name)||nombres.has(o.parent&&o.parent.name)))suyos.push(o)});
-suyos.forEach(o=>gp.attach(o));
-const d=THREE.MathUtils.degToRad(a.giro_fino_deg||0),cd=Math.cos(d),sd=Math.sin(d);
-const cx=center.x,cz=center.z,rcx=cx*cd-cz*sd,rcz=cx*sd+cz*cd;
-gp.rotation.y=-d;gp.position.set(rcx-cx+a.traslacion[0],0,rcz-cz+a.traslacion[1]);
-gp.userData.linea=a.linea;gp.userData.path=a.path_encajado;a.mallas=suyos.length;
-(entry.meshGroups=entry.meshGroups||[]).push(gp);}
-if(enc&&enc.giro_conjunto_deg&&entry.meshGroups){const usados=new Set();entry.meshGroups.forEach(g=>g.traverse(o=>{if(o.isMesh)usados.add(o)}));
-const resto=[];root.traverse(o=>{if(o.isMesh&&!usados.has(o))resto.push(o)});
-if(resto.length){const gh=new THREE.Group();wrapper.add(gh);resto.forEach(o=>gh.attach(o));
-const d2=THREE.MathUtils.degToRad(enc.giro_conjunto_deg),cd2=Math.cos(d2),sd2=Math.sin(d2);
-const cx2=center.x,cz2=center.z;const tc=enc.traslacion_conjunto||[0,0];gh.rotation.y=-d2;gh.position.set(cx2*cd2-cz2*sd2-cx2+tc[0],0,cx2*sd2+cz2*cd2-cz2+tc[1]);entry.grupoConjunto=gh;}}
+/* el modelo no se toca: es la verdad. La vía se adapta a él. */
 root.traverse(o=>{if(!o.isMesh)return;o.castShadow=false;o.receiveShadow=false;o.userData.mapModelId=m.id;const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,30),new THREE.LineBasicMaterial({color:0x324a68,transparent:true,opacity:.35}));edge.name='map_outline';o.add(edge)});entry.root=wrapper;entry.sourceCenter=center.clone();entry.sourceFactor=factor;entry.loaded=true;spatialRebuildNeeded=true;spatialLoadCount++;$('#spatial-status').textContent=`${spatialLoadCount}/12 modelos listos · visibles al acercar`;window.spatialModelDiagnostics.push({id:m.id,anchor:m.anchor,loaded:true,normalized_max_extent:.5,profiles:m.platforms.map(p=>({line:p.line,meshes:p.mesh_names,level_in_file:p.level_in_file}))});if(activeSpatialModel===m.id)$('#spatial-status').textContent=m.name+' sobre su anclaje CRTM'}catch(err){entry.error=err.message;window.spatialModelDiagnostics.push({id:m.id,loaded:false,error:err.message});$('#spatial-status').textContent='Algún modelo no se pudo cargar. El atlas sigue disponible.'}}
 let spatialRebuildNeeded=false;
 function activeStationEntry(s){for(const entry of spatialModels.values()){if(entry.loaded&&entry.group.visible&&s.raw.some(r=>entry.m.raw.includes(r)))return entry}return null}
-function worldPlatformPath(entry,p){entry.group.updateMatrixWorld(true);const enc=encaje.get(entry.m.id);const fila=enc&&(enc.andenes||[]).find(a=>String(a.linea)===String(p.line)&&a.path_encajado);const base=fila?fila.path_encajado:p.path;return base.map(a=>new THREE.Vector3(...a).sub(entry.sourceCenter).multiplyScalar(entry.sourceFactor*spatialSize).add(new THREE.Vector3(0,entry.root.position.y,0)).add(entry.group.position))}
+function worldPlatformPath(entry,p){entry.group.updateMatrixWorld(true);const enc=encaje.get(entry.m.id);const fila=enc&&(enc.andenes||[]).find(a=>String(a.linea)===String(p.line)&&a.path_encajado);const base=p.path;return base.map(a=>new THREE.Vector3(...a).sub(entry.sourceCenter).multiplyScalar(entry.sourceFactor*spatialSize).add(new THREE.Vector3(0,entry.root.position.y,0)).add(entry.group.position))}
 function stationLinePosition(s,line){const entry=activeStationEntry(s),p=entry?.m.platforms?.find(p=>p.line===line);if(p){const path=worldPlatformPath(entry,p);return path[Math.floor(path.length/2)].clone().add(new THREE.Vector3(0,.001,0))}return xyz(s.lon,s.lat,layerHeight(line)+.02)}
-function connectedEdgePath(e){let points=e.coords.map(c=>xyz(c[0],c[1],layerHeight(e.line)));for(const id of [e.a,e.b]){const s=stationById.get(id),entry=activeStationEntry(s),profile=entry?.m.platforms?.find(p=>p.line===e.line);if(!profile)continue;const strip=worldPlatformPath(entry,profile),anchor=xyz(entry.m.anchor.lon,entry.m.anchor.lat),radius=.38*spatialSize;let reversed=false;if(points[0].distanceTo(anchor)>points.at(-1).distanceTo(anchor)){points.reverse();reversed=true}let k=0;while(k<points.length-2&&Math.hypot(points[k].x-anchor.x,points[k].z-anchor.z)<radius)k++;let outer=points[k].clone();if(k===0&&points.length>1){const next=points[1],d=Math.hypot(next.x-anchor.x,next.z-anchor.z);outer=anchor.clone().lerp(next,Math.min(1,radius/Math.max(d,.001)));outer.y=layerHeight(e.line)}const incident=data.edges.filter(x=>x.line===e.line&&(x.a===s.id||x.b===s.id));let index=strip[0].distanceTo(outer)<strip.at(-1).distanceTo(outer)?0:strip.length-1;if(incident.length===2){const neighborOf=x=>{const n=stationById.get(x.a===s.id?x.b:x.a);return xyz(n.lon,n.lat)};const a=neighborOf(incident[0]),b=neighborOf(incident[1]);const straight=a.distanceTo(strip[0])+b.distanceTo(strip.at(-1)),cross=a.distanceTo(strip.at(-1))+b.distanceTo(strip[0]);index=(incident[0]===e)===(straight<=cross)?0:strip.length-1}const first=strip[index];const neighbor=first===strip[0]?strip[1]:strip.at(-2);const tangent=first.clone().sub(neighbor).normalize();const gap=outer.distanceTo(first);const curve=new THREE.CubicBezierCurve3(first,first.clone().addScaledVector(tangent,Math.min(.07*spatialSize,gap*.3)),outer.clone().lerp(first,.2),outer);points=[...curve.getPoints(14),...points.slice(k===0?1:k+1)];if(reversed)points.reverse()}return points}
+function connectedEdgePath(e){
+  // La vía se adapta al andén: se pliega sobre su eje con una ventana suave, así
+  // entra y sale en la dirección del andén sin quiebros ni giros imposibles.
+  // densificar: sin puntos intermedios la vía no puede plegarse sobre el andén
+  const base=e.coords.map(c=>xyz(c[0],c[1],layerHeight(e.line)));
+  const points=[];
+  for(let i=0;i<base.length-1;i++){
+    const a=base[i],b=base[i+1],d=Math.hypot(b.x-a.x,b.z-a.z),n=Math.max(1,Math.ceil(d/0.01));
+    for(let k=0;k<n;k++)points.push(a.clone().lerp(b,k/n));
+  }
+  points.push(base[base.length-1].clone());
+  for(const id of [e.a,e.b]){
+    const s=stationById.get(id),entry=(s&&[...spatialModels.values()].find(en=>en.loaded&&s.raw.some(r=>en.m.raw.includes(r))))||activeStationEntry(s),profile=entry?.m.platforms?.find(p=>p.line===e.line);
+    if(!profile)continue;
+    const strip=worldPlatformPath(entry,profile);
+    if(!strip||strip.length<3)continue;
+    const ejeAnden=(pts)=>{let mx=0,mz=0;pts.forEach(p=>{mx+=p.x;mz+=p.z});mx/=pts.length;mz/=pts.length;
+      let mej=null;for(let i=0;i<90;i++){const a=(i*2*Math.PI)/180,co=Math.cos(a),si=Math.sin(a);let u0=1e9,u1=-1e9,v0=1e9,v1=-1e9;
+        for(const p of pts){const dx=p.x-mx,dz=p.z-mz,u=dx*co+dz*si,v=-dx*si+dz*co;
+          if(u<u0)u0=u;if(u>u1)u1=u;if(v<v0)v0=v;if(v>v1)v1=v;}
+        const ar=(u1-u0)*(v1-v0);if(!mej||ar<mej[0])mej=[ar,a,(v1-v0)>(u1-u0)];}
+      let a=mej[1];if(mej[2])a+=Math.PI/2;return a;};
+    const ang=ejeAnden(strip),c=new THREE.Vector3();
+    strip.forEach(v=>c.add(v));c.multiplyScalar(1/strip.length);
+    const tx=Math.cos(ang),tz=Math.sin(ang),nx=-Math.sin(ang),nz=Math.cos(ang);
+    let umin=1e9,umax=-1e9;
+    strip.forEach(v=>{const u=(v.x-c.x)*tx+(v.z-c.z)*tz;umax=Math.max(umax,u);umin=Math.min(umin,u);});
+    const medio=Math.max((umax-umin)/2,0.02);
+    // radio de influencia: hasta el punto más cercano de la vía y un margen
+    let rmin=Infinity;
+    for(const p of points){const r=Math.hypot(p.x-c.x,p.z-c.z);if(r<rmin)rmin=r;}
+    const ancho=Math.max(medio*1.6,0.02);
+    for(const p of points){
+      const r=Math.hypot(p.x-c.x,p.z-c.z);
+      const k=1-(r-rmin)/ancho;
+      if(k<=0)continue;
+      const w=k*k*(3-2*k);
+      if(w<=0.001)continue;
+      const du=(p.x-c.x)*tx+(p.z-c.z)*tz,dv=(p.x-c.x)*nx+(p.z-c.z)*nz;
+      const dv2=dv-dv*w;                       // se pliega hacia el eje del andén
+      p.x=c.x+du*tx+dv2*nx;p.z=c.z+du*tz+dv2*nz;
+    }
+  }
+  return points;
+}
 function updateSpatialModels(){if(!spatialGroup)return;let changed=spatialRebuildNeeded;spatialRebuildNeeded=false;for(const entry of spatialModels.values()){const {m,group,root}=entry;const s=data.stations.find(s=>s.raw.some(r=>m.raw.includes(r)));const line=s?.lines.find(l=>!hiddenLines.has(l));const visible=spatialVisible&&(!spatialLevelDetail||!activeSpatialModel||activeSpatialModel===m.id)&&!!line&&entry.loaded&&(camera.zoom>5||activeSpatialModel===m.id);if(group.visible!==visible)changed=true;group.visible=visible;group.position.y=.035;if(root){const base=root.userData.baseScale||(root.userData.baseScale=root.scale.x);if(root.scale.x!==base*spatialSize)changed=true;root.scale.setScalar(base*spatialSize)}}if(changed){buildMap();updateVisuals()}}
 function focusMapModel(m,{top=false,side=false}={}){if(!m||!camera)return;activeSpatialModel=m.id;spatialLevelDetail=side;spatialVisible=true;spatialRebuildNeeded=true;$('#map-models-toggle').textContent='Ocultar 3D';$('#map-models-toggle').setAttribute('aria-pressed','true');const s=data.stations.find(s=>s.raw.some(r=>m.raw.includes(r)));if(s){hiddenLines.clear();selected=s.id}$('#station-card').hidden=true;$('.map-title').hidden=true;$('#spatial-selection').hidden=false;$('.spatial-tools').classList.add('spatial-focused');$('#spatial-name').textContent=m.name+' · SOBRE EL MAPA';$('#spatial-credit').textContent='Anclaje CRTM '+m.anchor.raw_station_code+' · '+m.anchor.lat.toFixed(5)+', '+m.anchor.lon.toFixed(5)+'. Enlace a '+m.platforms.length+' líneas en sus franjas del archivo. Orden alto→bajo: '+m.platforms.slice().sort((a,b)=>b.level_in_file-a.level_in_file).map(p=>p.line==='R'?'R':'L'+p.line).join(' / ')+'. Niveles del archivo, no profundidad real.';$('#spatial-top').onclick=()=>focusMapModel(m,{top:true});$('#spatial-oblique').onclick=()=>focusMapModel(m);$('#spatial-levels').onclick=()=>focusMapModel(m,{side:true});$('#spatial-inspect').onclick=()=>openModel(m);setView('flat');controls.enableRotate=!top;$('.north').textContent=top?'N ↑':'Órbita libre';const target=xyz(m.anchor.lon,m.anchor.lat,layerHeight(s?.lines[0]||'1'));const zoom=innerWidth<700?18:(side?48:32);controls.maxZoom=100;const worldW=40*innerWidth/innerHeight/zoom;if(innerWidth>700)target.x-=worldW*.025;else {const offset=top?new THREE.Vector3(0,0,1):new THREE.Vector3(.35,-.7,.48).normalize();target.addScaledVector(offset,40/zoom*.245)}flyTo(target,zoom);if(cameraTween&&!top)cameraTween.toCamera=target.clone().add((side?new THREE.Vector3(0,.04,1.2):new THREE.Vector3(.8,1.3,1.1)).multiplyScalar(40));updateVisuals();updateHash();const p=new URLSearchParams(location.hash.slice(1));p.set('model',m.id);history.replaceState(null,'','#'+p.toString());if(!spatialModels.get(m.id)?.loaded)toast('Cargando geometría en su estación…');}
 $('#map-model-size').oninput=()=>{spatialRebuildNeeded=true;spatialSize=Number($('#map-model-size').value)/100;$('#map-size-value').textContent='×'+spatialSize.toFixed(1)};
@@ -110,60 +140,35 @@ window.stationConnectionDiagnostics=()=>[...spatialModels.values()].filter(e=>e.
 
 function withinLevelDetail(p){if(!spatialLevelDetail||!activeSpatialModel)return true;const m=spatialModels.get(activeSpatialModel)?.m;if(!m)return true;const a=xyz(m.anchor.lon,m.anchor.lat);return Math.hypot(p.x-a.x,p.z-a.z)<.8*spatialSize}
 window.encajeDiagnostics = () => {
+  // Mide lo que importa: cuánto se separa la vía DIBUJADA del eje del andén.
   const salida = [];
   for (const entry of spatialModels.values()) {
     if (!entry.loaded) continue;
-    const enc = encaje.get(entry.m.id);
     const s = data.stations.find((st) => st.raw.some((r) => entry.m.raw.includes(r)));
-    const dirPCA = (pts) => {
-      let mx = 0, mz = 0;
-      for (const p of pts) { mx += p.x; mz += p.z; }
-      mx /= pts.length; mz /= pts.length;
-      let mejor = null;
-      for (let i = 0; i < 90; i++) {
-        const a = (i * 2 * Math.PI) / 180;
-        const c = Math.cos(a), sn = Math.sin(a);
-        let minU = 1e9, maxU = -1e9, minV = 1e9, maxV = -1e9;
-        for (const p of pts) {
-          const dx = p.x - mx, dz = p.z - mz;
-          const u = dx * c + dz * sn, v = -dx * sn + dz * c;
-          if (u < minU) minU = u; if (u > maxU) maxU = u;
-          if (v < minV) minV = v; if (v > maxV) maxV = v;
-        }
-        const du = maxU - minU, dv = maxV - minV, area = du * dv;
-        if (!mejor || area < mejor.area) mejor = { area: area, a: a, du: du, dv: dv };
-      }
-      let a = mejor.a;
-      if (mejor.dv > mejor.du) a += Math.PI / 2;
-      return ((a * 180) / Math.PI);
-    };
-    const ang = (p, q) => (Math.atan2(q.z - p.z, q.x - p.x) * 180) / Math.PI;
+    if (!s) continue;
     const andenes = [];
-    for (const a of enc && enc.andenes ? enc.andenes : []) {
-      if (!a.path_encajado) continue;
-      const strip = worldPlatformPath(entry, { line: a.linea, path: a.path_encajado });
-      const stripAng = dirPCA(strip);
-      let viaAng = null;
-      if (a.via && a.via.length > 1) {
-        const base = new THREE.Vector3(0, entry.root.position.y, 0).add(entry.group.position);
-        const viaPts = a.via.map((v) => new THREE.Vector3(v[0], 0, v[1]).sub(entry.sourceCenter).multiplyScalar(entry.sourceFactor * spatialSize).add(base));
-        const mid = strip[Math.floor(strip.length / 2)];
-        let best = null;
-        for (let i = 0; i < viaPts.length - 1; i++) {
-          const med = viaPts[i].clone().lerp(viaPts[i + 1], 0.5);
-          const d = Math.hypot(med.x - mid.x, med.z - mid.z);
-          if (!best || d < best.d) best = { d: d, i: i };
-        }
-        viaAng = ang(viaPts[best.i], viaPts[best.i + 1]);
+    for (const p of entry.m.platforms || []) {
+      const strip = worldPlatformPath(entry, p);
+      if (!strip || strip.length < 3) continue;
+      const edges = data.edges.filter((e) => e.line === p.line && (e.a === s.id || e.b === s.id));
+      if (!edges.length) continue;
+      const linea = edges.flatMap((e) => connectedEdgePath(e));
+      // centro del andén (el contorno es un anillo: sus esquinas no sirven de testigo)
+      const cen = new THREE.Vector3();
+      strip.forEach((v) => cen.add(v));
+      cen.multiplyScalar(1 / strip.length);
+      let peor = Infinity;
+      for (const q of linea) {
+        const d = Math.hypot(q.x - cen.x, q.z - cen.z);
+        if (d < peor) peor = d;
       }
-      let dif = null;
-      if (viaAng !== null) {
-        const d180 = ((((stripAng - viaAng) % 180) + 180) % 180);
-        dif = Math.min(d180, 180 - d180);
-      }
-      andenes.push({ linea: a.linea, giro: a.giro_fino_deg, mallas: a.mallas, angulo_anden: Number(stripAng.toFixed(2)), angulo_via: viaAng === null ? null : Number(viaAng.toFixed(2)), diferencia: dif === null ? null : Number(dif.toFixed(2)), desajuste: a.desajuste_m });
+      andenes.push({
+        linea: p.line,
+        nivel: p.level_in_file,
+        separacion_max_m: Number((peor * 1000).toFixed(1)),
+      });
     }
-    salida.push({ id: entry.m.id, factor: Number(entry.sourceFactor.toFixed(5)), esperado: enc ? Number((0.5 / enc.maxdim).toFixed(5)) : null, andenes: andenes });
+    if (andenes.length) salida.push({ id: entry.m.id, andenes: andenes });
   }
   return salida;
 };
