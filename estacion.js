@@ -382,19 +382,9 @@ function tunelesEstacion(metadatos, enc) {
     const anden = (enc?.andenes || []).find((a) => String(a.linea) === String(p.line));
     let pts;
     if (anden?.via && anden.via.length >= 2) {
-      // vía real (medida contra la red) en coordenadas del modelo, a la cota del andén
+      // vía real (del CRTM) en coordenadas del modelo, a la cota del andén
       const cotaV = p.level_in_file ?? 0;
       pts = anden.via.map(([x, z]) => new THREE.Vector3(x, cotaV, z));
-      // el andén del croquis se queda donde está: la vía se aparta a su costado
-      const mx = (pts[0].x + pts[pts.length - 1].x) / 2, mz = (pts[0].z + pts[pts.length - 1].z) / 2;
-      const ancho0 = Number(p.platform_width || 7);
-      const dx = pts[pts.length - 1].x - pts[0].x, dz = pts[pts.length - 1].z - pts[0].z;
-      const l = Math.hypot(dx, dz) || 1;
-      const nx = -dz / l, nz = dx / l;
-      const centroPlaca = (p.path || []).reduce((acc, q) => [acc[0] + q[0] / p.path.length, acc[1] + q[2] / p.path.length], [0, 0]);
-      const lado = Math.sign((centroPlaca[0] - mx) * nx + (centroPlaca[1] - mz) * nz) || 1;
-      const desvio = lado * (ancho0 / 2 + 1.8);
-      pts = pts.map((q) => new THREE.Vector3(q.x - nx * desvio, q.y, q.z - nz * desvio));
     } else {
       pts = (p.path || []).map(([x, y, z]) => new THREE.Vector3(x, y, z));
     }
@@ -406,7 +396,7 @@ function tunelesEstacion(metadatos, enc) {
     const curva = new THREE.CatmullRomCurve3(cuerpo, false, 'catmullrom', 0.35);
     const largo = curva.getLength();
     const seg = Math.max(32, Math.round(largo / 2.2));
-    const RADIO = 5.1;
+    const RADIO = 7.4;
     const anchoAnden = Number(p.platform_width || 7);
 
     // bóveda: tres piezas (hombro izquierdo, hombro derecho y contrabóveda)
@@ -615,14 +605,15 @@ async function cargarEstacion(id, opciones = {}) {
 // Gira cada andén del croquis hasta que su eje coincide con el de su vía real
 function alinearAndenes(est, enc) {
   if (!enc) return;
+  est.rotation.y = -THREE.MathUtils.degToRad(enc.giro_conjunto_deg || 0);
   (enc.andenes || []).forEach((a) => {
-    const g = Number(a.giro_fino_deg || 0);
-    if (!g) return;
-    const R = new THREE.Matrix4().makeRotationY(THREE.MathUtils.degToRad(g));
+    if (!a.via) return;
+    const R = new THREE.Matrix4().makeRotationY(-THREE.MathUtils.degToRad(a.giro_fino_deg || 0));
+    const T = new THREE.Matrix4().makeTranslation(a.traslacion[0], 0, a.traslacion[1]);
     est.traverse((o) => {
       if (!o.isMesh || String(o.userData.linea) !== String(a.linea)) return;
       o.updateMatrix();
-      o.matrix.premultiply(R);
+      o.matrix.premultiply(R).premultiply(T);
       o.matrixAutoUpdate = false;
       o.updateMatrixWorld(true);
     });
@@ -793,7 +784,7 @@ async function inicio() {
     fetch('data/encaje.json').then((r) => r.json()).catch(() => ({ estaciones: [] })),
   ]);
   modelos = mods;
-  encaje = new Map((enc.estaciones || []).filter((e) => e.giro_deg !== undefined).map((e) => [e.id, e]));
+  encaje = new Map((enc.estaciones || []).filter((e) => e.giro_conjunto_deg !== undefined).map((e) => [e.id, e]));
   (red.lines || []).forEach((l) => {
     colores[l.id] = l.color;
     nombresLinea[l.id] = l.id === 'R' ? 'Ramal' : 'L' + l.id;
@@ -849,4 +840,34 @@ window.__maq = {
   estado, get caja() { return actual?.userData.caja; },
   get escena() { return escena; }, get camara() { return camara; },
   get modelos() { return modelos; }, get actual() { return actual; },
+  get encaje() { return encaje; },
+  // Verificación del encaje sobre la malla ya transformada: distancia del andén a su vía
+  verificar() {
+    const enc = encaje?.get(estado.id);
+    if (!enc || !actual) return null;
+    actual.updateMatrixWorld(true);
+    const out = [];
+    (enc.andenes || []).forEach((a) => {
+      if (!a.via) return;
+      // centroide de las mallas del andén, en coordenadas de mundo
+      const caja = new THREE.Box3();
+      let n = 0;
+      actual.traverse((o) => {
+        if (!o.isMesh || String(o.userData.linea) !== String(a.linea)) return;
+        const b = new THREE.Box3().setFromObject(o);
+        if (b.isEmpty()) return;
+        caja.union(b); n++;
+      });
+      if (!n) return;
+      const c = caja.getCenter(new THREE.Vector3());
+      // distancia del centro del andén al eje de la vía (puntos en mundo)
+      const a0 = new THREE.Vector3(a.via[0][0], 0, a.via[0][1]).applyMatrix4(actual.matrixWorld);
+      const a1 = new THREE.Vector3(a.via[a.via.length - 1][0], 0, a.via[a.via.length - 1][1]).applyMatrix4(actual.matrixWorld);
+      const dir = a1.clone().sub(a0).normalize();
+      const v = c.clone().sub(a0);
+      const perp = v.clone().sub(dir.clone().multiplyScalar(v.dot(dir))).length();
+      out.push({ linea: a.linea, desde_eje_m: +(perp * Math.abs(actual.matrixWorld.elements[0])).toFixed(2), mallas: n });
+    });
+    return { estacion: estado.id, giro: enc.giro_conjunto_deg, andenes: out };
+  },
 };

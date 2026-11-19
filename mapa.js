@@ -143,7 +143,7 @@ const modeloPorNombre = new Map(modelos.map((m) => [norm(m.name), m]));
 const encajePorId = new Map(encaje.estaciones.map((e) => [e.id, e]));
 
 for (const e of encaje.estaciones) {
-  if (!e.giro_deg === undefined || !e.escala) continue;
+  if (e.giro_conjunto_deg === undefined || !e.escala) continue;
   const meta = metaModelos.get(e.id);
   if (!meta) continue;
   try {
@@ -156,10 +156,30 @@ for (const e of encaje.estaciones) {
       o.material.roughness = 0.9;
       o.material.metalness = 0;
     });
+    // mallas del croquis que son andén (mesh_names del manifiesto)
+    const porLinea = new Map();
+    (meta.platforms || []).forEach((p) => (p.mesh_names || []).forEach((n) => porLinea.set(n, p.line)));
+    obj.traverse((o) => {
+      if (!o.isMesh) return;
+      const l = porLinea.get(o.name) || porLinea.get(o.parent?.name);
+      if (l !== undefined) o.userData.linea = l;
+    });
     const pos = aMundo(e.lon, e.lat);
     obj.position.copy(pos).setY(0);
-    obj.rotation.y = -THREE.MathUtils.degToRad(e.giro_deg);
+    obj.rotation.y = -THREE.MathUtils.degToRad(e.giro_conjunto_deg || 0);
     obj.scale.setScalar(e.escala);
+    // cada andén a su vía real
+    (e.andenes || []).forEach((a) => {
+      if (!a.via) return;
+      const R = new THREE.Matrix4().makeRotationY(-THREE.MathUtils.degToRad(a.giro_fino_deg || 0));
+      const T = new THREE.Matrix4().makeTranslation(a.traslacion[0], 0, a.traslacion[1]);
+      obj.traverse((o) => {
+        if (!o.isMesh || String(o.userData.linea) !== String(a.linea)) return;
+        o.updateMatrix();
+        o.matrix.premultiply(R).premultiply(T);
+        o.matrixAutoUpdate = false;
+      });
+    });
     obj.userData.encaje = e;
     escena.add(obj);
     modelosColocados.push(obj);
@@ -244,14 +264,14 @@ const lista = document.createElement('div');
 lista.className = 'modeladas';
 lista.id = 'modeladas';
 lista.innerHTML = '<p class="nz-lbl">Modeladas en 3D</p>';
-encaje.estaciones.filter((e) => e.giro_deg !== undefined).forEach((e) => {
+encaje.estaciones.filter((e) => e.giro_conjunto_deg !== undefined).forEach((e) => {
   const b = document.createElement('button');
   b.type = 'button'; b.className = 'modeladas__b';
   b.textContent = e.nombre;
   b.addEventListener('click', () => {
     volarA(aMundo(e.lon, e.lat), 2200);
     $('#tarjeta-nombre').textContent = e.nombre;
-    $('#tarjeta-lineas').textContent = 'Giro medido ' + e.giro_deg + '° · escala ' + e.escala;
+    $('#tarjeta-lineas').textContent = 'Andenes encajados en su vía · escala ' + e.escala;
     const meta = encaje.estaciones.find((x) => x.id === e.id);
     const ir = $('#tarjeta-ir');
     ir.hidden = false; ir.dataset.id = e.id; ir.href = 'estacion.html?e=' + e.id;
