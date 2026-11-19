@@ -1,2 +1,4 @@
 node_modules/
 fuente/node_modules/
+fuente/dist/
+data/gtfs/
