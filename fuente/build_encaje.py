@@ -213,8 +213,24 @@ for m in mods:
             "desajuste_m": round(desajuste, 2) if desajuste is not None else None,
         })
 
+        # --- transformación de conjunto: media ponderada (peso = largo del andén)
+        ac = ass = tx = tz = peso = 0.0
+        for a in andenes:
+            if a.get("giro_fino_deg") is None:
+                continue
+            w = a.get("largo") or 1.0
+            ac += math.cos(math.radians(a["giro_fino_deg"])) * w
+            ass += math.sin(math.radians(a["giro_fino_deg"])) * w
+            tx += a["traslacion"][0] * w
+            tz += a["traslacion"][1] * w
+            peso += w
+        conj_deg = math.degrees(math.atan2(ass, ac)) if peso else 0.0
+        conj_t = (tx / peso if peso else 0.0, tz / peso if peso else 0.0)
+
     salida.append({
         "id": m["id"], "estacion": sid, "nombre": s["name"],
+        "giro_conjunto_deg": round(conj_deg, 3),
+        "traslacion_conjunto": [round(conj_t[0], 4), round(conj_t[1], 4)],
         "metros_por_unidad": round(metros_por_unidad, 4),
         "maxdim": round(maxdim, 4),
         "peor_desajuste_m": round(peor, 2),

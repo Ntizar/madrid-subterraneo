@@ -88,7 +88,13 @@ suyos.forEach(o=>gp.attach(o));
 const d=THREE.MathUtils.degToRad(a.giro_fino_deg||0),cd=Math.cos(d),sd=Math.sin(d);
 const cx=center.x,cz=center.z,rcx=cx*cd-cz*sd,rcz=cx*sd+cz*cd;
 gp.rotation.y=-d;gp.position.set(rcx-cx+a.traslacion[0],0,rcz-cz+a.traslacion[1]);
-a.mallas=suyos.length;}
+gp.userData.linea=a.linea;gp.userData.path=a.path_encajado;a.mallas=suyos.length;
+(entry.meshGroups=entry.meshGroups||[]).push(gp);}
+if(enc&&enc.giro_conjunto_deg&&entry.meshGroups){const usados=new Set();entry.meshGroups.forEach(g=>g.traverse(o=>{if(o.isMesh)usados.add(o)}));
+const resto=[];root.traverse(o=>{if(o.isMesh&&!usados.has(o))resto.push(o)});
+if(resto.length){const gh=new THREE.Group();wrapper.add(gh);resto.forEach(o=>gh.attach(o));
+const d2=THREE.MathUtils.degToRad(enc.giro_conjunto_deg),cd2=Math.cos(d2),sd2=Math.sin(d2);
+const cx2=center.x,cz2=center.z;const tc=enc.traslacion_conjunto||[0,0];gh.rotation.y=-d2;gh.position.set(cx2*cd2-cz2*sd2-cx2+tc[0],0,cx2*sd2+cz2*cd2-cz2+tc[1]);entry.grupoConjunto=gh;}}
 root.traverse(o=>{if(!o.isMesh)return;o.castShadow=false;o.receiveShadow=false;o.userData.mapModelId=m.id;const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,30),new THREE.LineBasicMaterial({color:0x324a68,transparent:true,opacity:.35}));edge.name='map_outline';o.add(edge)});entry.root=wrapper;entry.sourceCenter=center.clone();entry.sourceFactor=factor;entry.loaded=true;spatialRebuildNeeded=true;spatialLoadCount++;$('#spatial-status').textContent=`${spatialLoadCount}/12 modelos listos · visibles al acercar`;window.spatialModelDiagnostics.push({id:m.id,anchor:m.anchor,loaded:true,normalized_max_extent:.5,profiles:m.platforms.map(p=>({line:p.line,meshes:p.mesh_names,level_in_file:p.level_in_file}))});if(activeSpatialModel===m.id)$('#spatial-status').textContent=m.name+' sobre su anclaje CRTM'}catch(err){entry.error=err.message;window.spatialModelDiagnostics.push({id:m.id,loaded:false,error:err.message});$('#spatial-status').textContent='Algún modelo no se pudo cargar. El atlas sigue disponible.'}}
 let spatialRebuildNeeded=false;
 function activeStationEntry(s){for(const entry of spatialModels.values()){if(entry.loaded&&entry.group.visible&&s.raw.some(r=>entry.m.raw.includes(r)))return entry}return null}
@@ -160,4 +166,25 @@ window.encajeDiagnostics = () => {
     salida.push({ id: entry.m.id, factor: Number(entry.sourceFactor.toFixed(5)), esperado: enc ? Number((0.5 / enc.maxdim).toFixed(5)) : null, andenes: andenes });
   }
   return salida;
+};
+window.__mallasDiag = () => {
+  const out = [];
+  for (const entry of spatialModels.values()) {
+    if (!entry.loaded || !entry.meshGroups) continue;
+    const filas = [];
+    for (const g of entry.meshGroups) {
+      const box = new THREE.Box3();
+      const nombres = [];
+      let n = 0;
+      g.traverse((o) => { if (o.isMesh) { box.expandByObject(o); nombres.push(o.name); n++; } });
+      const c = box.getCenter(new THREE.Vector3());
+      const strip = worldPlatformPath(entry, { line: g.userData.linea, path: g.userData.path });
+      const sc = new THREE.Vector3();
+      strip.forEach((v) => sc.add(v));
+      sc.multiplyScalar(1 / strip.length);
+      filas.push({ linea: g.userData.linea, mallas: n, nombres: nombres.slice(0, 3), distCentroM: Math.round(c.distanceTo(sc) * 1000) });
+    }
+    out.push({ id: entry.m.id, filas: filas });
+  }
+  return out;
 };

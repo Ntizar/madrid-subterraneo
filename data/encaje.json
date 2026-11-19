@@ -14,6 +14,11 @@
    "id": "alameda_de_osuna",
    "estacion": "s252",
    "nombre": "Alameda de Osuna",
+   "giro_conjunto_deg": -41.524,
+   "traslacion_conjunto": [
+    -17.4611,
+    -2.583
+   ],
    "metros_por_unidad": 6.5742,
    "maxdim": 76.055,
    "peor_desajuste_m": 0.0,
@@ -145,6 +150,11 @@
    "id": "estacion_del_arte",
    "estacion": "s15",
    "nombre": "Estacion del Arte",
+   "giro_conjunto_deg": 21.73,
+   "traslacion_conjunto": [
+    6.6727,
+    -11.4511
+   ],
    "metros_por_unidad": 3.9846,
    "maxdim": 125.4845,
    "peor_desajuste_m": 0.0,
@@ -1133,6 +1143,11 @@
    "id": "pinar_de_chamartin",
    "estacion": "s263",
    "nombre": "Pinar de Chamartin",
+   "giro_conjunto_deg": 19.584,
+   "traslacion_conjunto": [
+    12.1816,
+    -21.1434
+   ],
    "metros_por_unidad": 5.9114,
    "maxdim": 84.583,
    "peor_desajuste_m": 0.0,
@@ -1377,6 +1392,11 @@
    "id": "alonso_martinez",
    "estacion": "s57",
    "nombre": "Alonso Martinez",
+   "giro_conjunto_deg": -52.161,
+   "traslacion_conjunto": [
+    6.6019,
+    -17.3216
+   ],
    "metros_por_unidad": 2.3981,
    "maxdim": 208.4969,
    "peor_desajuste_m": 0.0,
@@ -2990,6 +3010,11 @@
    "id": "opera",
    "estacion": "s36",
    "nombre": "Opera",
+   "giro_conjunto_deg": -1.178,
+   "traslacion_conjunto": [
+    0.701,
+    -8.6499
+   ],
    "metros_por_unidad": 5.597,
    "maxdim": 89.333,
    "peor_desajuste_m": 0.0,
@@ -4435,6 +4460,11 @@
    "id": "nnmm",
    "estacion": "s120",
    "nombre": "Nuevos Ministerios",
+   "giro_conjunto_deg": 15.338,
+   "traslacion_conjunto": [
+    -53.1415,
+    35.5411
+   ],
    "metros_por_unidad": 1.3051,
    "maxdim": 383.1018,
    "peor_desajuste_m": 0.0,
@@ -5233,6 +5263,11 @@
    "id": "pl_castilla",
    "estacion": "s1",
    "nombre": "Plaza de Castilla",
+   "giro_conjunto_deg": -5.164,
+   "traslacion_conjunto": [
+    -12.1555,
+    6.254
+   ],
    "metros_por_unidad": 1.1246,
    "maxdim": 444.6165,
    "peor_desajuste_m": 0.02,
@@ -6110,6 +6145,11 @@
    "id": "cuatro_caminos",
    "estacion": "s6",
    "nombre": "Cuatro Caminos",
+   "giro_conjunto_deg": 2.961,
+   "traslacion_conjunto": [
+    7.7456,
+    20.3011
+   ],
    "metros_por_unidad": 2.1496,
    "maxdim": 232.5993,
    "peor_desajuste_m": 0.0,
@@ -6908,6 +6948,11 @@
    "id": "av_america",
    "estacion": "s64",
    "nombre": "Avenida de America",
+   "giro_conjunto_deg": 1.937,
+   "traslacion_conjunto": [
+    -13.8802,
+    5.0715
+   ],
    "metros_por_unidad": 1.3384,
    "maxdim": 373.5681,
    "peor_desajuste_m": 0.0,
@@ -9262,6 +9307,11 @@
    "id": "arguelles",
    "estacion": "s52",
    "nombre": "Argüelles",
+   "giro_conjunto_deg": -2.622,
+   "traslacion_conjunto": [
+    13.4375,
+    -4.5992
+   ],
    "metros_por_unidad": 2.1628,
    "maxdim": 231.1854,
    "peor_desajuste_m": 0.0,
